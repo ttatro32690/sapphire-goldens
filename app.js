@@ -12,7 +12,7 @@ var indexRoutes = require("./routes/index"),
     galleryRoutes = require("./routes/gallery"),
     goldenRoutes = require("./routes/goldens");
     
-app.use(indexRoutes);
+app.use("/", indexRoutes);
 app.use("/about", aboutRoutes);
 app.use("/contact", contactRoutes);
 app.use("/gallery", galleryRoutes);
