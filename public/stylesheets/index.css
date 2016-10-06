@@ -4,6 +4,25 @@ body {
     font-weight: 600;
 }
 
+.navbar-default{
+    background: none;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-brand:hover{
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 1px;
+}
+
+.main-image{
+    margin: auto;
+}
+
+.club{
+    max-width: 200px;
+    margin: auto;
+}
+
 #main-content{
     margin-top: 25px;
     text-align: center;
