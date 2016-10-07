@@ -45,6 +45,10 @@ body {
     color: black;
 }
 
+.fa:hover{
+    color: blue;
+}
+
 .container{
     margin-top: 25px;
 }
@@ -55,6 +59,10 @@ body {
 
 #about{
     text-align: center;
+}
+
+#footer{
+    margin-top: 25px;
 }
 
 #main-content{
