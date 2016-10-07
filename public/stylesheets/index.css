@@ -2,16 +2,32 @@ body {
     font-family: 'Roboto Slab', serif;
     letter-spacing: .2rem;
     font-weight: 600;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content{
+    background: rgba(200, 200, 200, .50);
 }
 
 .navbar-default{
     background: none;
 }
 
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-brand{
+    color: black;
+}
+
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-brand:hover{
     border-bottom: 2px solid #e7e7e7;
     padding-bottom: 13px;
+}
+
+.img-responsive{
+    padding: 0;
+    margin: auto;
 }
 
 .main-image{
@@ -21,9 +37,26 @@ body {
 .club{
     max-width: 200px;
     margin: auto;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.fa {
+    color: black;
+}
+
+.container{
+    margin-top: 25px;
+}
+
+.view{
+    color: black;
+}
+
+#about{
+    text-align: center;
 }
 
 #main-content{
-    margin-top: 25px;
     text-align: center;
 }
