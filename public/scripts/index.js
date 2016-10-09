@@ -50,7 +50,7 @@ goldenApp.directive('header', function(){
 goldenApp.directive('footer', function(){
    return{
       templateUrl: '/views/templates/footer.ejs',
-      replace: true
+      replace: true,
    }
 });
 
@@ -70,11 +70,11 @@ goldenApp.directive('petAgreement', function(){
 
 // CONTROLLERS
 goldenApp.controller("indexController", ['$scope', function($scope){
-
+   
 }]);
 
 goldenApp.controller("contactController", ['$scope', function($scope){
-   $scope.subScreen = "agreement";
+   
 }]);
 
 goldenApp.controller("goldenController", ['$scope', function($scope){
@@ -82,7 +82,6 @@ goldenApp.controller("goldenController", ['$scope', function($scope){
 }]);
 
 goldenApp.controller("galleryController", ['$scope', function($scope){
-
    $scope.images = [
          '/public/images/sapphire01.png',
          '/public/images/sapphire02.png',
