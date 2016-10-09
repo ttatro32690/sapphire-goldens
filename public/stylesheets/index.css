@@ -5,6 +5,7 @@ body {
     background: url("https://hd.unsplash.com/photo-1422565096762-bdb997a56a84");
     background-repeat: no-repeat;
     background-size: 100%;
+    background-attachment: fixed;
 }
 
 .content{

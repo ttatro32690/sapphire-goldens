@@ -51,6 +51,18 @@ goldenApp.directive('footer', function(){
    }
 });
 
+goldenApp.directive('petApplication', function(){
+   return{
+      templateUrl: '/views/templates/application.ejs'
+   }
+});
+
+goldenApp.directive('petAgreementContract', function(){
+   return{
+      templateUrl: '/views/templates/agreement.ejs'
+   }
+});
+
 // CONTROLLERS
 goldenApp.controller("indexController", ['$scope', function($scope){
 
