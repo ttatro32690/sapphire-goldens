@@ -9,27 +9,22 @@ goldenApp.config(function ($routeProvider){
    $routeProvider
    
    .when('/', {
-      templateUrl: '/views/templates/landing.ejs',
+      templateUrl: '/views/pages/landing.ejs',
       controller: 'indexController'
    })
    
-   .when('/about', {
-        templateUrl: '/views/templates/about.ejs',
-        controller: 'aboutController'
-   })
-   
    .when('/contact', {
-        templateUrl: '/views/templates/contact.ejs',
+        templateUrl: '/views/pages/contact.ejs',
         controller: 'contactController'
    })
    
    .when('/goldens', {
-        templateUrl: '/views/templates/goldens.ejs',
+        templateUrl: '/views/pages/goldens.ejs',
         controller: 'goldenController'
    })
    
    .when('/gallery', {
-        templateUrl: '/views/templates/gallery.ejs',
+        templateUrl: '/views/pages/gallery.ejs',
         controller: 'galleryController'
    });
    
@@ -41,6 +36,18 @@ goldenApp.config(function ($routeProvider){
 goldenApp.directive('dogImages', function(){
    return{
       templateUrl: '/views/templates/images.ejs',
+   }
+});
+
+goldenApp.directive('header', function(){
+   return{
+      templateUrl: '/views/templates/header.ejs'
+   }
+});
+
+goldenApp.directive('footer', function(){
+   return{
+      templateUrl: '/views/templates/footer.ejs'
    }
 });
 
