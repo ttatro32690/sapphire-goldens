@@ -2,8 +2,9 @@ body {
     font-family: 'Roboto Slab', serif;
     letter-spacing: .2rem;
     font-weight: 600;
+    background: url("https://hd.unsplash.com/photo-1422565096762-bdb997a56a84");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 .content{
@@ -56,6 +57,18 @@ body {
 .view{
     color: black;
 }
+
+.grid-image{
+    width: 100% !important;
+    height: auto !important;
+}
+
+#image-grid{
+    column-count: 5;
+    column-gap: 0px;  
+}
+
+
 
 #about{
     text-align: center;

@@ -8,7 +8,7 @@ $( document ).ready(function() {
       "https://hd.unsplash.com/photo-1467993195535-d1d849e4793c"
       ];
 
-    $('body').css('background-image', 'url("' + pictures[0] + '")');
+    // $('body').css('background-image', 'url("' + pictures[0] + '")');
 
     onWindowResize();
     
