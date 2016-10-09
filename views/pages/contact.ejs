@@ -1,13 +1,21 @@
-<div class="container">
-    <h1>Contact</h1>
-    <p>Name: Linda Kauranen</p>
-    <p>Phone: 508-946-4169</p>
-    <p>Email: SapphireGoldens@comcast.net</p>
+<div class="container" id="contact">
     
-    <div class="row">
-        <pet-agreement-contract></pet-agreement-contract>
+    <div class="panel panel-body">
+        <h1>Contact</h1>
+        <p>Name: Linda Kauranen</p>
+        <p>Phone: 508-946-4169</p>
+        <p>Email: SapphireGoldens@comcast.net</p>
     </div>
-    <div class="row">
+    
+    <ol class="breadcrumb">
+        <li><a href="#/contact" ng-model="subScreen" ng-click="subScreen = 'agreement'" ng-init="subScreen = 'agreement'">Agreement</a></li>
+        <li><a href="#/contact" ng-model="subScreen" ng-click="subScreen = 'application'">Application</a></li>
+    </ol>
+    
+    <div ng-if="subScreen === 'agreement'" class="row">
+        <pet-agreement></pet-agreement>
+    </div>
+    <div ng-if="subScreen === 'application'" class="row">
         <pet-application></pet-application>
     </div>
     

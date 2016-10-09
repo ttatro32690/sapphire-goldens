@@ -64,6 +64,10 @@ body {
     height: auto !important;
 }
 
+#contact{
+    font-weight: 500;
+}
+
 #image-grid{
     column-count: 5;
     column-gap: 0px;  

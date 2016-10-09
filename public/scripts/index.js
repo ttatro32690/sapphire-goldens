@@ -14,8 +14,8 @@ goldenApp.config(function ($routeProvider){
    })
    
    .when('/contact', {
-        templateUrl: '/views/pages/contact.ejs',
-        controller: 'contactController'
+      templateUrl: '/views/pages/contact.ejs',
+      controller: 'contactController'
    })
    
    .when('/goldens', {
@@ -36,30 +36,35 @@ goldenApp.config(function ($routeProvider){
 goldenApp.directive('dogImages', function(){
    return{
       templateUrl: '/views/templates/images.ejs',
+      replace: true
    }
 });
 
 goldenApp.directive('header', function(){
    return{
-      templateUrl: '/views/templates/header.ejs'
+      templateUrl: '/views/templates/header.ejs',
+      replace: true
    }
 });
 
 goldenApp.directive('footer', function(){
    return{
-      templateUrl: '/views/templates/footer.ejs'
+      templateUrl: '/views/templates/footer.ejs',
+      replace: true
    }
 });
 
 goldenApp.directive('petApplication', function(){
    return{
-      templateUrl: '/views/templates/application.ejs'
+      templateUrl: '/views/templates/application.ejs',
+      replace: true
    }
 });
 
-goldenApp.directive('petAgreementContract', function(){
+goldenApp.directive('petAgreement', function(){
    return{
-      templateUrl: '/views/templates/agreement.ejs'
+      templateUrl: '/views/templates/agreement.ejs',
+      replace: true
    }
 });
 
@@ -69,7 +74,7 @@ goldenApp.controller("indexController", ['$scope', function($scope){
 }]);
 
 goldenApp.controller("contactController", ['$scope', function($scope){
-
+   $scope.subScreen = "agreement";
 }]);
 
 goldenApp.controller("goldenController", ['$scope', function($scope){
