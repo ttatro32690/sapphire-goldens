@@ -1,8 +1,15 @@
-var express = require("express"),
-    favicon = require("serve-favicon"),
-        app = express();
+var mongoose = require("mongoose"),
+     express = require("express"),
+     favicon = require("serve-favicon"),
+         app = express();
 
 app.set("view engine", "ejs");
+
+var db = process.env.DATABASEURL || "mongodb://localhost/sapphire";
+mongoose.connect(db);
+
+var seeds = require("./seeds");
+seeds();
 
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
