@@ -2,7 +2,6 @@ var angular;
 
 var goldenApp = angular.module('goldenApp', ['ngRoute']);
 
-
 // ROUTES
 goldenApp.config(function ($routeProvider){
     
@@ -68,20 +67,37 @@ goldenApp.directive('petAgreement', function(){
    }
 });
 
+goldenApp.service('SapphireService', ['$http', function($http){
+   
+   this.getSapphire = function() {
+      return $http.get('/sapphire')
+            .then(function successCallback(response){
+               return response;
+            }, function errorCallback(response){
+               
+            });      
+   };
+      
+}]);
+
 // CONTROLLERS
-goldenApp.controller("indexController", ['$scope', function($scope){
+goldenApp.controller("indexController", ['$scope', 'SapphireService', function($scope, SapphireService){
+   SapphireService.getSapphire().then(function(response){
+      $scope.sapphire = response.data;
+   });
    
 }]);
 
 goldenApp.controller("contactController", ['$scope', function($scope){
-   
+   $scope.subScreen = "agreement";
 }]);
 
 goldenApp.controller("goldenController", ['$scope', function($scope){
-
+   
 }]);
 
 goldenApp.controller("galleryController", ['$scope', function($scope){
+   
    $scope.images = [
          '/public/images/sapphire01.png',
          '/public/images/sapphire02.png',

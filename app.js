@@ -3,10 +3,14 @@ var mongoose = require("mongoose"),
      favicon = require("serve-favicon"),
          app = express();
 
-app.set("view engine", "ejs");
-
 var db = process.env.DATABASEURL || "mongodb://localhost/sapphire";
 mongoose.connect(db);
+
+app.set("view engine", "ejs")
+
+app.get("/", function(req, res){
+    res.render("index");
+});
 
 var seeds = require("./seeds");
 seeds();
@@ -15,9 +19,8 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + "/public/images/favicon.ico")); 
 
-app.get("/", function(req, res){
-    res.render("index");
-});
+var sapphireRoutes = require("./routes/sapphire");
+app.use(sapphireRoutes);
 
 app.get('*', function(req, res){
     res.sendFile(__dirname + req.url);

@@ -1,10 +1,10 @@
 <header></header>
 
-<div class="container panel panel-body" id="main-content">
+<div class="container panel panel-body" ng-model="sapphire" id="main-content">
     <div class="row">
         <div class="col-md-12">
-            <h1>Welcome to Sapphire Goldens</h1>
-            <p>A Proud Member of Yankee Golden Retriever Club & Golden Retriever Club of America</p>
+            <h1>{{ sapphire.mainTitle }}</h1>
+            <p>{{ sapphire.motto }}</p>
             <div class="row">
                 <div class="col-md-3 col-md-offset-3">
                     <a href="https://www.grca.org/"><img class="club thumbnail img-responsive" src="http://www.goldensrule2015.org/wp-content/uploads/2013/08/GRCALogo-e1424111591365.jpg"></a>
@@ -21,24 +21,7 @@
     <h1>Our Story</h1>
     <hr>
     <div class="col-md-7">
-    <p>
-        We are the Kauranen family from Southeastern MA.
-        Other than the love that we share for one another, we share a common passion for our Golden Retrievers. 
-    </p>
-    <p>
-        Our 1st Golden put us under <em>"The Golden Spell"</em>. Her name was Shadow and is 13 yrs. old in this picture with us.
-        We spend much of our time and energy making sure the 8 Goldens that own us, are happy and healthy.
-    </p>
-    <p>
-        Our first litter of puppies was born 20 yrs. ago and historically Sapphire Goldens produce 4 litters per year. 
-        Our girls are from champion pedigrees and although we have always used Champions from local Show Kennels, we are hoping that we will have our own champions someday. All have hip, heart and eye clearances. 
-    </p>
-    <p>
-        Our objective is to raise Golden Retrievers that are healthy, beautiful to the breed standard, and have that "I want to be by your side" personality.
-    </p>
-    <p>
-        <strong>Linda, Steven & Kerri</strong>
-    </p>
+        <p ng-repeat="story in sapphire.story">{{story}}</p>
     </div>
     <div class="col-md-5" id="about-img">
         <img class="thumbnail img-responsive" src="/public/images/about.png">
