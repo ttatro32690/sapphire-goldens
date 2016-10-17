@@ -25,7 +25,8 @@ goldenApp.config(function ($routeProvider){
    .when('/gallery', {
         templateUrl: '/views/pages/gallery.ejs',
         controller: 'galleryController'
-   });
+   })
+   .otherwise({redirectTo: '/'});
    
 });
 
