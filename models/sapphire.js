@@ -7,4 +7,4 @@ var SapphireSchema = mongoose.Schema({
     story: [String]
 });
 
-module.exports = mongoose.model("Sapphire", SapphireSchema)
+module.exports = mongoose.model('Sapphire', SapphireSchema);
