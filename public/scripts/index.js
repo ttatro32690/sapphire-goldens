@@ -8,8 +8,13 @@ goldenApp.config(function ($routeProvider){
    $routeProvider
    
    .when('/', {
-      templateUrl: '/views/pages/landing.ejs',
-      controller: 'indexController'
+      templateUrl: '/views/pages/home.ejs',
+      controller: 'homeController'
+   })
+   
+   .when('/about', {
+      templateUrl: 'views/pages/about.ejs',
+      controller: 'aboutController'
    })
    
    .when('/contact', {
@@ -82,7 +87,11 @@ goldenApp.service('SapphireService', ['$http', function($http){
 }]);
 
 // CONTROLLERS
-goldenApp.controller("indexController", ['$scope', 'SapphireService', function($scope, SapphireService){
+goldenApp.controller('homeController', ['$scope', function($scope){
+   
+}]);
+
+goldenApp.controller('aboutController', ['$scope', 'SapphireService', function($scope, SapphireService){
    SapphireService.getSapphire().then(function(response){
       $scope.sapphire = response.data;
    });

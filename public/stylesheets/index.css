@@ -13,7 +13,8 @@ p {
 }
 
 .navbar-default{
-    background: none;
+    background: rgba(256,256,256,0.50);
+    border-bottom: 2px solid blue;
 }
 
 .navbar-default .navbar-nav>li>a,
@@ -51,10 +52,6 @@ p {
     color: blue;
 }
 
-.container{
-    margin-top: 25px;
-}
-
 .view{
     color: black;
 }
@@ -62,6 +59,12 @@ p {
 .grid-image{
     width: 100% !important;
     height: auto !important;
+}
+
+.jumbotron{
+    margin-top: 10%;
+    text-align: center;
+    background: rgba(256,256,256,0.50);
 }
 
 #contact{
@@ -81,8 +84,14 @@ p {
 
 #footer{
     margin-top: 25px;
+    background: rgba(256,256,256, 0.50);
+    border-top: 2px solid blue;
 }
 
 #main-content{
     text-align: center;
+}
+
+#home{
+    height: 100%;
 }
