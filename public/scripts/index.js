@@ -42,35 +42,35 @@ goldenApp.directive('dogImages', function(){
    return{
       templateUrl: '/views/templates/images.ejs',
       replace: true
-   }
+   };
 });
 
 goldenApp.directive('header', function(){
    return{
       templateUrl: '/views/templates/header.ejs',
       replace: true
-   }
+   };
 });
 
 goldenApp.directive('footer', function(){
    return{
       templateUrl: '/views/templates/footer.ejs',
       replace: true,
-   }
+   };
 });
 
 goldenApp.directive('petApplication', function(){
    return{
       templateUrl: '/views/templates/application.ejs',
       replace: true
-   }
+   };
 });
 
 goldenApp.directive('petAgreement', function(){
    return{
       templateUrl: '/views/templates/agreement.ejs',
       replace: true
-   }
+   };
 });
 
 goldenApp.service('SapphireService', ['$http', function($http){
@@ -98,15 +98,15 @@ goldenApp.controller('aboutController', ['$scope', 'SapphireService', function($
    
 }]);
 
-goldenApp.controller("contactController", ['$scope', function($scope){
+goldenApp.controller('contactController', ['$scope', function($scope){
    $scope.subScreen = "agreement";
 }]);
 
-goldenApp.controller("goldenController", ['$scope', function($scope){
+goldenApp.controller('goldenController', ['$scope', function($scope){
    
 }]);
 
-goldenApp.controller("galleryController", ['$scope', function($scope){
+goldenApp.controller('galleryController', ['$scope', function($scope){
    
    $scope.images = [
          '/public/images/sapphire01.png',
@@ -149,5 +149,4 @@ goldenApp.controller("galleryController", ['$scope', function($scope){
          '/public/images/sapphire38.png',
          '/public/images/sapphire39.png',
       ];
-
 }]);

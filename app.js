@@ -19,13 +19,9 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 var sapphireRoutes = require('./routes/sapphire');
 app.use(sapphireRoutes);
 
-// app.get('/', function(req, res){
-//     res.render('index');
-// });
-
 app.get('*', function(req, res){
     if(req.url === '/'){
-        res.render('index')
+        res.render('index');
     } else {
         fs.access(__dirname + req.url, fs.F_OK, function(err) {
                 if (!err) {

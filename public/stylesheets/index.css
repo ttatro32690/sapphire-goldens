@@ -12,31 +12,6 @@ p {
     text-indent: 35px;
 }
 
-.navbar-default{
-    background: rgba(256,256,256,0.50);
-    border-bottom: 2px solid blue;
-}
-
-.navbar-default .navbar-nav>li>a,
-.navbar-default .navbar-brand{
-    color: black;
-}
-
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-brand:hover{
-    border-bottom: 2px solid #e7e7e7;
-    padding-bottom: 13px;
-}
-
-.img-responsive{
-    padding: 0;
-    margin: auto;
-}
-
-.main-image{
-    margin: auto;
-}
-
 .club{
     max-width: 200px;
     margin: auto;
@@ -52,13 +27,14 @@ p {
     color: blue;
 }
 
-.view{
-    color: black;
-}
-
 .grid-image{
     width: 100% !important;
     height: auto !important;
+}
+
+.img-responsive{
+    padding: 0;
+    margin: auto;
 }
 
 .jumbotron{
@@ -67,8 +43,38 @@ p {
     background: rgba(256,256,256,0.50);
 }
 
+.navbar-default{
+    background: rgba(256,256,256,0.50);
+    border-bottom: 2px solid blue;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-brand{
+    color: black;
+}-
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-brand:hover{
+    border-bottom: 2px solid #e7e7e7;
+    padding-bottom: 13px;
+}
+
+.view{
+    color: black;
+}
+
+#about{
+    text-align: center;
+}
+
 #contact{
     font-weight: 500;
+}
+
+#footer{
+    margin-top: 25px;
+    background: rgba(256, 256, 256, 0.50);
+    border-top: 2px solid blue;
 }
 
 #image-grid{
@@ -76,22 +82,6 @@ p {
     column-gap: 0px;  
 }
 
-
-
-#about{
-    text-align: center;
-}
-
-#footer{
-    margin-top: 25px;
-    background: rgba(256,256,256, 0.50);
-    border-top: 2px solid blue;
-}
-
 #main-content{
     text-align: center;
-}
-
-#home{
-    height: 100%;
 }
