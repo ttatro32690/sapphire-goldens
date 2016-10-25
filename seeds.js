@@ -1,4 +1,5 @@
 var Sapphire = require('./models/sapphire');
+var Image = require('./models/image');
 
 var sapphireData = {
     mainTitle: "Welcome to Sapphire Goldens",
@@ -10,7 +11,49 @@ var sapphireData = {
         "Our objective is to raise Golden Retrievers that are healthy, beautiful to the breed standard, and have that 'I want to be by your side' personality.",
         "Linda, Steven & Kerri"
     ]
-}
+};
+
+var imageData = [
+         '/public/images/sapphire01.png',
+         '/public/images/sapphire02.png',
+         '/public/images/sapphire03.png',
+         '/public/images/sapphire04.png',
+         '/public/images/sapphire05.png',
+         '/public/images/sapphire06.png',
+         '/public/images/sapphire07.png',
+         '/public/images/sapphire08.png',
+         '/public/images/sapphire09.png',
+         '/public/images/sapphire10.png',
+         '/public/images/sapphire11.png',
+         '/public/images/sapphire12.png',
+         '/public/images/sapphire13.png',
+         '/public/images/sapphire14.png',
+         '/public/images/sapphire15.png',
+         '/public/images/sapphire16.png',
+         '/public/images/sapphire17.png',
+         '/public/images/sapphire18.png',
+         '/public/images/sapphire19.png',
+         '/public/images/sapphire20.png',
+         '/public/images/sapphire21.png',
+         '/public/images/sapphire22.png',
+         '/public/images/sapphire23.png',
+         '/public/images/sapphire24.png',
+         '/public/images/sapphire25.png',
+         '/public/images/sapphire26.png',
+         '/public/images/sapphire27.png',
+         '/public/images/sapphire28.png',
+         '/public/images/sapphire29.png',
+         '/public/images/sapphire30.png',
+         '/public/images/sapphire31.png',
+         '/public/images/sapphire32.png',
+         '/public/images/sapphire33.png',
+         '/public/images/sapphire34.png',
+         '/public/images/sapphire35.png',
+         '/public/images/sapphire36.png',
+         '/public/images/sapphire37.png',
+         '/public/images/sapphire38.png',
+         '/public/images/sapphire39.png'
+      ];
 
 function seedDB() {
     Sapphire.remove({}, function(err){
@@ -26,7 +69,27 @@ function seedDB() {
                }
             });
         }
-    })
+    });
+    
+    Image.remove({}, function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Removed Image Gallery Links");
+            imageData.forEach(function(image){
+                var imageObject = {
+                    imageUrl: image
+                };
+                Image.create(imageObject, function(err, createdImage){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log("Image Created " + createdImage.imageUrl);
+                    }
+                });
+            });
+        }
+    });
 }
 
 module.exports = seedDB;

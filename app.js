@@ -17,7 +17,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/images/favicon.ico')); 
 
 var sapphireRoutes = require('./routes/sapphire');
+var imageRoutes = require('./routes/image');
+
 app.use(sapphireRoutes);
+app.use(imageRoutes);
 
 app.get('*', function(req, res){
     if(req.url === '/'){
