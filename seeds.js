@@ -60,12 +60,12 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            console.log("Removed Sapphire Goldens Data");
+            // console.log("Removed Sapphire Goldens Data");
             Sapphire.create(sapphireData, function(err, sapphire){
                if(err){
                    console.log(err);
                } else {
-                   console.log("Sapphire Data Initialized");
+                //   console.log("Sapphire Data Initialized");
                }
             });
         }
@@ -75,7 +75,7 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            console.log("Removed Image Gallery Links");
+            // console.log("Removed Image Gallery Links");
             imageData.forEach(function(image){
                 var imageObject = {
                     imageUrl: image
@@ -84,7 +84,7 @@ function seedDB() {
                     if(err){
                         console.log(err);
                     } else {
-                        console.log("Image Created " + createdImage.imageUrl);
+                        // console.log("Image Created " + createdImage.imageUrl);
                     }
                 });
             });

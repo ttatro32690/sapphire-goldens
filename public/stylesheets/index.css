@@ -8,8 +8,19 @@ body {
     background-attachment: fixed;
 }
 
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 p {
     text-indent: 35px;
+}
+
+img{
+    max-height: 300px;
 }
 
 .club{
@@ -21,6 +32,7 @@ p {
 
 .content{
     margin-top: 25px;
+    padding-bottom: 60px;
 }
 
 .fa {
@@ -53,7 +65,7 @@ p {
 
 .navbar-default{
     background: rgba(256,256,256,0.50);
-    border-bottom: 2px solid blue;
+    /*border-bottom: 2px solid blue;*/
 }
 
 .navbar-default .navbar-nav>li>a,
@@ -63,12 +75,15 @@ p {
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-brand:hover{
-    border-bottom: 2px solid #e7e7e7;
+    border-bottom: 2px solid blue;
+    background: #e7e7e7;
     padding-bottom: 13px;
 }
 
 .view{
     color: black;
+    min-height: 100%;
+    position: relative;
 }
 
 #about{
@@ -80,7 +95,10 @@ p {
 }
 
 #footer{
-    margin-top: 25px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 60px;
     background: rgba(256, 256, 256, 0.50);
     border-top: 2px solid blue;
 }
