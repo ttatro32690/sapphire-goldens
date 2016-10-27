@@ -1,6 +1,5 @@
 var goldenApp;
 
-// DIRECTIVES
 goldenApp.directive('dogImages', function(){
    return{
       templateUrl: '/views/templates/images.ejs',
