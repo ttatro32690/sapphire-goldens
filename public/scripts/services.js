@@ -1,28 +1,14 @@
 var goldenApp;
 
-goldenApp.factory('ImageService', ['$http', function($http){
+goldenApp.factory('ImageService', ['$resource', function($resource){
    return {
-      getImage: function(){
-         return $http.get('/image')
-         .then(function successCallback(response){
-            return response;
-         }, function errorCallback(response){
-            
-         });
-      }
+      Image: $resource('/image')
    };
 }]);
 
-goldenApp.factory('SapphireService', ['$http', function($http){
-   
+goldenApp.factory('SapphireService', ['$resource', function($resource){
    return{
-      getSapphire: function() {
-      return $http.get('/sapphire')
-            .then(function successCallback(response){
-               return response;
-            }, function errorCallback(response){
-               
-            });      
-   }};
+       Sapphire: $resource('/sapphire')
+   };
       
 }]);

@@ -11,6 +11,7 @@ router.get('/image', function(req, res){
         if(err){
             console.log(err);
         } else {
+            console.log(image);
             res.send(image);
         }
     });
