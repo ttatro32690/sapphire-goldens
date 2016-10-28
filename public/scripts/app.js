@@ -1,35 +1,41 @@
 var angular;
-var goldenApp = angular.module('goldenApp', ['ngRoute', 'ngResource']);
+var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource']);
 
 // ROUTES
-goldenApp.config(function ($routeProvider){
-// Potentially Switch to StateProvider instead using ui-router
-   $routeProvider
+goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+   // Default page
+   // Add catch all redirect
+   $urlRouterProvider.otherwise('/');
    
-   .when('/', {
+   $stateProvider
+   .state('landing', {
+      url: '/',
       templateUrl: '/views/pages/home.ejs',
       controller: 'homeController'
    })
    
-   .when('/about', {
+   .state('about', {
+      url: '/about',
       templateUrl: 'views/pages/about.ejs',
       controller: 'aboutController'
    })
    
-   .when('/contact', {
+   .state('contact', {
+      url: '/contact',
       templateUrl: '/views/pages/contact.ejs',
       controller: 'contactController'
    })
    
-   .when('/goldens', {
-        templateUrl: '/views/pages/goldens.ejs',
-        controller: 'goldenController'
+   .state('goldens', {
+      url: '/goldens',
+      templateUrl: '/views/pages/goldens.ejs',
+      controller: 'goldenController'
    })
    
-   .when('/gallery', {
-        templateUrl: '/views/pages/gallery.ejs',
-        controller: 'galleryController'
-   })
-   .otherwise({redirectTo: '/'});
+   .state('gallery', {
+      url: '/gallery',
+      templateUrl: '/views/pages/gallery.ejs',
+      controller: 'galleryController'
+   });
    
-});
+}]);
