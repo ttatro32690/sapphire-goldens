@@ -19,12 +19,6 @@ goldenApp.controller('goldenController', ['$scope', function($scope){
    
 }]);
 
-goldenApp.controller('galleryController', ['$scope', '$resource', '$routeParams', 'ImageService', function($scope, $resource, $routeParams, ImageService){
+goldenApp.controller('galleryController', ['$scope', 'ImageService', function($scope, ImageService){
    $scope.images = ImageService.Image.query();
-       console.log($scope.images);
-   
-   $scope.updateImage = function(){
-      console.log($routeParams.id);
-   };
-   
 }]);

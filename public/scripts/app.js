@@ -3,7 +3,7 @@ var goldenApp = angular.module('goldenApp', ['ngRoute', 'ngResource']);
 
 // ROUTES
 goldenApp.config(function ($routeProvider){
-    
+// Potentially Switch to StateProvider instead using ui-router
    $routeProvider
    
    .when('/', {
