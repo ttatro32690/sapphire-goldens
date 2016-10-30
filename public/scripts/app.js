@@ -10,31 +10,31 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    $stateProvider
    .state('landing', {
       url: '/',
-      templateUrl: '/views/pages/home.ejs',
+      templateUrl: '/views/pages/home/index.ejs',
       controller: 'homeController'
    })
    
    .state('about', {
       url: '/about',
-      templateUrl: 'views/pages/about.ejs',
+      templateUrl: 'views/pages/about/index.ejs',
       controller: 'aboutController'
    })
    
    .state('contact', {
       url: '/contact',
-      templateUrl: '/views/pages/contact.ejs',
+      templateUrl: '/views/pages/contact/index.ejs',
       controller: 'contactController'
    })
    
    .state('goldens', {
       url: '/goldens',
-      templateUrl: '/views/pages/goldens.ejs',
+      templateUrl: '/views/pages/goldens/index.ejs',
       controller: 'goldenController'
    })
    
    .state('gallery', {
       url: '/gallery',
-      templateUrl: '/views/pages/gallery.ejs',
+      templateUrl: '/views/pages/gallery/index.ejs',
       controller: 'galleryController'
    });
    
