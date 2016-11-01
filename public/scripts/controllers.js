@@ -1,6 +1,6 @@
 var goldenApp;
 
-goldenApp.controller('homeController', ['$scope', function($scope){
+goldenApp.controller('homeController', ['$scope', '$stateParams', function($scope, $stateParams){
    
 }]);
 

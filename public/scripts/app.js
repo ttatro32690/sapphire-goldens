@@ -3,8 +3,6 @@ var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource']);
 
 // ROUTES
 goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
-   // Default page
-   // Add catch all redirect
    $urlRouterProvider.otherwise('/');
    
    $stateProvider
@@ -29,6 +27,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('goldens', {
       url: '/goldens',
       templateUrl: '/views/pages/goldens/index.ejs',
+      controller: 'goldenController'
+   })
+   
+   .state('goldens/new',{
+      url: '/goldens/new',
+      templateUrl: '/views/pages/goldens/new.ejs',
       controller: 'goldenController'
    })
    
