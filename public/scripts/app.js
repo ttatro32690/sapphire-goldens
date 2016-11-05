@@ -3,6 +3,7 @@ var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource']);
 
 // ROUTES
 goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+   
    $urlRouterProvider.otherwise('/');
    
    $stateProvider
@@ -24,22 +25,44 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       controller: 'contactController'
    })
    
+   .state('agreement', {
+      parent: 'contact',
+      url: '/agreement',
+      templateUrl: '/views/templates/agreement.ejs',
+      controller: 'agreementController'
+   })
+   
+   .state('application', {
+      parent: 'contact',
+      url: '/application',
+      templateUrl: '/views/templates/application.ejs',
+      controller: 'applicationController'
+   })
+   
    .state('goldens', {
       url: '/goldens',
-      templateUrl: '/views/pages/goldens/index.ejs',
+      templateUrl: '/views/pages/goldens/goldens.ejs',
       controller: 'goldenController'
    })
    
-   .state('goldens/new',{
-      url: '/goldens/new',
+   .state('goldensIndex',{
+      parent: 'goldens',
+      url: '/index',
+      templateUrl: '/views/pages/goldens/index.ejs',
+      controller: 'goldenIndexController'
+   })
+   
+   .state('goldensNew',{
+      parent: 'goldens',
+      url: '/new',
       templateUrl: '/views/pages/goldens/new.ejs',
-      controller: 'goldenController'
+      controller: 'goldenNewController'
    })
    
    .state('gallery', {
       url: '/gallery',
       templateUrl: '/views/pages/gallery/index.ejs',
-      controller: 'galleryController'
+      controller: 'galleryIndexController'
    });
    
 }]);

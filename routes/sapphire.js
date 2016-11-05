@@ -13,4 +13,14 @@ router.get('/sapphire', function(req, res){
     });
 });
 
+router.put('/:id', function(req, res){
+    Sapphire.findByIdAndUpdate(req.params.id, req.body.sapphire, function(err, sapphire){
+        if(err){
+            res.send(err);
+        } else {
+            res.send(sapphire);
+        }
+    });
+});
+
 module.exports = router;

@@ -1,14 +1,9 @@
 var goldenApp;
 
-goldenApp.factory('ImageService', ['$resource', function($resource){
-   return {
-      Image: $resource('/image')
-   };
+goldenApp.factory('Image', ['$resource', function($resource){
+   return $resource('/image/:id', {id: '@_id'});
 }]);
 
-goldenApp.factory('SapphireService', ['$resource', function($resource){
-   return{
-       Sapphire: $resource('/sapphire')
-   };
-      
+goldenApp.factory('Sapphire', ['$resource', function($resource){
+   return $resource('/sapphire/:id', {id: '@_id'});
 }]);

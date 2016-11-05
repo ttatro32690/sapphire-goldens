@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var fs = require('fs');
-
 var Image = require('../models/image');
 
 // INDEX ROUTE
@@ -14,11 +12,6 @@ router.get('/image', function(req, res){
             res.send(image);
         }
     });
-});
-
-// NEW ROUTE
-router.get('/image/new', function(req, res){
-    
 });
 
 // CREATE ROUTE

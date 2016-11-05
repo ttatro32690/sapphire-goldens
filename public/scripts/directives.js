@@ -21,17 +21,3 @@ goldenApp.directive('footer', function(){
    };
 });
 
-goldenApp.directive('petApplication', function(){
-   return{
-      templateUrl: '/views/templates/application.ejs',
-      replace: true
-   };
-});
-
-goldenApp.directive('petAgreement', function(){
-   return{
-      templateUrl: '/views/templates/agreement.ejs',
-      replace: true
-   };
-});
-

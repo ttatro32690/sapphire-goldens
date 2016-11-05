@@ -4,21 +4,36 @@ goldenApp.controller('homeController', ['$scope', '$stateParams', function($scop
    
 }]);
 
-goldenApp.controller('aboutController', ['$scope', 'SapphireService', function($scope, SapphireService){
+goldenApp.controller('aboutController', ['$scope', 'Sapphire', function($scope, Sapphire){
 
-    $scope.sapphires = SapphireService.Sapphire.query();
-    console.log($scope.sapphire);
+    $scope.sapphires = Sapphire.query();
        
 }]);
 
-goldenApp.controller('contactController', ['$scope', function($scope){
-   $scope.subScreen = "agreement";
+goldenApp.controller('contactController', ['$scope', '$state', function($scope, $state){
+   $state.go('agreement');
 }]);
 
-goldenApp.controller('goldenController', ['$scope', function($scope){
+goldenApp.controller('agreementController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('applicationController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $state){
+    $state.go('goldensIndex');
+}]);
+
+goldenApp.controller('goldenNewController', ['$scope', function($scope){
    
 }]);
 
-goldenApp.controller('galleryController', ['$scope', 'ImageService', function($scope, ImageService){
-   $scope.images = ImageService.Image.query();
+goldenApp.controller('goldenIndexController', ['$scope', function($scope){
+   
+}]);
+
+goldenApp.controller('galleryIndexController', ['$scope', 'Image', function($scope, Image){
+   $scope.images = Image.query();
 }]);

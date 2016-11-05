@@ -1,8 +1,9 @@
-var mongoose = require('mongoose'),
-     express = require('express'),
-     favicon = require('serve-favicon'),
-         fs = require('fs'),
-         app = express();
+var bodyParser = require('body-parser'),
+      mongoose = require('mongoose'),
+       express = require('express'),
+       favicon = require('serve-favicon'),
+            fs = require('fs'),
+           app = express();
 
 var db = process.env.DATABASEURL || 'mongodb://localhost/sapphire';
 mongoose.connect(db);
@@ -11,6 +12,9 @@ app.set('view engine', 'ejs');
 
 var seeds = require('./seeds');
 seeds();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
