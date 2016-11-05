@@ -3,8 +3,11 @@
     <div class="container panel panel-body">
             <h1>Gallery</h1>
     </div>
-        <div class="container panel panel-body" id="image-grid">
-            <dog-images ng-model='images' ng-repeat='image in images'></dog-images>
+        <!--<div class="container panel panel-body" id="image-grid">-->
+        <div class="container panel panel-body">
+            <div class="row">
+                <dog-images ng-model='images' ng-repeat='image in images'></dog-images>
+            </div>
         </div>
     </div>
 </div>
