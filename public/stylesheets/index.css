@@ -19,10 +19,6 @@ p {
     text-indent: 35px;
 }
 
-img{
-    max-height: 300px;
-}
-
 .club{
     max-width: 200px;
     margin: auto;
@@ -46,15 +42,27 @@ img{
 .grid-image{
     width: 100% !important;
     height: auto !important;
+    position: relative;
+    display: block;
+}
+
+.image-row {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em; 
+}
+
+.image{
+    /*padding: .25rem;*/
+    width: 100%;
+    display: inline-block;
+    box-sizing:  border-box;
 }
 
 .img-responsive{
     padding: 0;
     margin: auto;
-}
-
-.img-row{
-    height: auto;
 }
 
 .jumbotron{
@@ -65,7 +73,6 @@ img{
 
 .navbar-default{
     background: rgba(256,256,256,0.50);
-    /*border-bottom: 2px solid blue;*/
 }
 
 .navbar-default .navbar-nav>li>a,
@@ -101,11 +108,6 @@ img{
     margin-top: 60px;
     background: rgba(256, 256, 256, 0.50);
     border-top: 2px solid blue;
-}
-
-#image-grid{
-    column-count: 5;
-    column-gap: 0px;  
 }
 
 #main-content{
