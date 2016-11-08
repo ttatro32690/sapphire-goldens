@@ -52,6 +52,27 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       controller: 'goldenIndexController'
    })
    
+   .state('goldensFemale', {
+      parent: 'goldens',
+      url: '/females',
+      templateUrl: '/views/pages/goldens/show.ejs',
+      controller: 'goldenFemaleController'
+   })
+   
+   .state('goldensMale', {
+      parent: 'goldens',
+      url: '/males',
+      templateUrl: '/views/pages/goldens/show.ejs',
+      controller: 'goldenMaleController'
+   })
+   
+   .state('goldensLitter', {
+      parent: 'goldens',
+      url: '/litters',
+      templateUrl: '/views/pages/goldens/show.ejs',
+      controller: 'goldenLitterController'
+   })
+   
    .state('goldensNew',{
       parent: 'goldens',
       url: '/new',

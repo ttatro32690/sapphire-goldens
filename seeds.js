@@ -29,7 +29,6 @@ var imageData = [
          '/public/images/sapphire13.png',
          '/public/images/sapphire14.png',
          '/public/images/sapphire15.png',
-         '/public/images/sapphire16.png',
          '/public/images/sapphire17.png',
          '/public/images/sapphire18.png',
          '/public/images/sapphire19.png',
