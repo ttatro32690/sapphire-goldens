@@ -20,11 +20,19 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/images/favicon.ico')); 
 
-var sapphireRoutes = require('./routes/sapphire');
-var imageRoutes = require('./routes/image');
 
-app.use(sapphireRoutes);
-app.use(imageRoutes);
+// Routes
+var applicationRoutes = require('./routes/application'),
+      agreementRoutes = require('./routes/agreement'),
+       sapphireRoutes = require('./routes/sapphire'),
+         goldenRoutes = require('./routes/goldens'),
+          imageRoutes = require('./routes/image');
+
+app.use('/application', applicationRoutes);
+app.use('/agreement', agreementRoutes);
+app.use('/sapphire', sapphireRoutes);
+app.use('/goldens', goldenRoutes);
+app.use('/image', imageRoutes);
 
 app.get('*', function(req, res){
     if(req.url === '/'){

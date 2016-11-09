@@ -4,7 +4,7 @@ var router = express.Router();
 var Image = require('../models/image');
 
 // INDEX ROUTE
-router.get('/image', function(req, res){
+router.get('/', function(req, res){
     Image.find({}, function(err, image){
         if(err){
             console.log(err);
@@ -15,27 +15,22 @@ router.get('/image', function(req, res){
 });
 
 // CREATE ROUTE
-router.post('/image', function(req, res){
+router.post('/', function(req, res){
     
 });
 
 // SHOW ROUTE
-router.get('/image/:id', function(req, res){
-    
-});
-
-// EDIT ROUTE
-router.get('/image/:id/edit', function(req, res){
+router.get('/:id', function(req, res){
     
 });
 
 // UPDATE ROUTE
-router.put('/image/:id', function(req, res){
+router.put('/:id', function(req, res){
     
 });
 
 // DESTROY ROUTE
-router.delete('/image/:id', function(req, res){
+router.delete('/:id', function(req, res){
     
 });
 

@@ -3,7 +3,7 @@ var router = express.Router();
 
 var Sapphire = require('../models/sapphire');
 
-router.get('/sapphire', function(req, res){
+router.get('/', function(req, res){
     Sapphire.find({}, function(err, sapphire){
         if(err){
             console.log(err);
