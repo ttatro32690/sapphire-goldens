@@ -44,7 +44,7 @@ router.put('/:id', function(req, res){
 });
 
 router.delete('/:id', function(req, res){
-    Goldens.remove(req.params.id, function(err){
+    Goldens.findByIdAndRemove(req.params.id, function(err){
        if(err){
            console.log(err);
        } else {

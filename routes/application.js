@@ -44,7 +44,7 @@ router.put('/:id', function(req, res){
 });
 
 router.delete('/:id', function(req, res){
-    Application.remove(req.params.id, function(err){
+    Application.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.log(err);
         } else {

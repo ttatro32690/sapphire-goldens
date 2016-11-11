@@ -82,20 +82,45 @@ goldenApp.controller('applicationController', ['$scope', function($scope){
     
 }]);
 
-goldenApp.controller('applicationIndexController', ['$scope', function($scope){
-    
+goldenApp.controller('applicationIndexController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
+    $scope.applications = Application.query();    
 }]);
 
-goldenApp.controller('applicationNewController', ['$scope', function($scope){
+goldenApp.controller('applicationNewController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
+    $scope.new = true;
     
+    $scope.application = new Application();
+    
+    $scope.saveApplication = function(){
+        $scope.application.$save(function(){
+            
+        }).then(function(res){
+            $state.go('applicationShow', {id: res._id});
+        });
+    };
 }]);
 
-goldenApp.controller('applicationEditController', ['$scope', function($scope){
+goldenApp.controller('applicationEditController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
+    $scope.edit = true;
     
+    $scope.application = Application.get({id: $stateParams.id});
+    
+    $scope.updateApplication = function(){
+        $scope.application.$update(function(){
+            $state.go('applicationShow', {id: $stateParams.id});
+        });
+    };
 }]);
 
-goldenApp.controller('applicationShowController', ['$scope', function($scope){
+goldenApp.controller('applicationShowController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
     
+    $scope.application = Application.get({id: $stateParams.id});
+    
+    $scope.deleteApplication = function(){
+        $scope.application.$remove(function(){
+            $state.go('applicationIndex');
+        });
+    };
 }]);
 
 //===================

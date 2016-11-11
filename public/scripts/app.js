@@ -101,7 +101,7 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('applicationShow', {
       parent: 'application',
       url: '/:id/show',
-      templateUrl: '/views/pages/application/view.ejs',
+      templateUrl: '/views/pages/application/show.ejs',
       controller: 'applicationShowController'
    })
 
