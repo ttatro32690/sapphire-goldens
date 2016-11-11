@@ -29,19 +29,49 @@ goldenApp.controller('agreementController', ['$scope', function($scope){
     
 }]);
 
-goldenApp.controller('agreementIndexController', ['$scope', function($scope){
+goldenApp.controller('agreementIndexController', ['$scope', 'Agreement', function($scope, Agreement){
+    
+    $scope.agreements = Agreement.query(); 
     
 }]);
 
-goldenApp.controller('agreementNewController', ['$scope', function($scope){
+goldenApp.controller('agreementNewController', ['$scope', '$state', '$stateParams', 'Agreement', function($scope, $state, $stateParams, Agreement){
+    
+    $scope.new = true;
+    
+    $scope.agreement = new Agreement();
+    
+    $scope.saveAgreement = function(){
+        $scope.agreement.$save().then(function(res){
+            $state.go('agreementShow', {id: res._id});
+        });
+    };
     
 }]);
 
-goldenApp.controller('agreementEditController', ['$scope', function($scope){
+goldenApp.controller('agreementEditController', ['$scope', '$state', '$stateParams', 'Agreement', function($scope, $state, $stateParams, Agreement){
+    
+    $scope.edit = true;
+    
+    $scope.agreement = Agreement.get({id: $stateParams.id});
+    
+    $scope.updateAgreement = function(){
+        $scope.agreement.$update(function(){
+            $state.go('agreementShow', {id: $stateParams.id});
+        });
+    };
     
 }]);
 
-goldenApp.controller('agreementShowController', ['$scope', function($scope){
+goldenApp.controller('agreementShowController', ['$scope', '$state', '$stateParams', 'Agreement', function($scope, $state, $stateParams, Agreement){
+    
+    $scope.agreement = Agreement.get({id: $stateParams.id});
+    
+    $scope.deleteAgreement = function(){
+        $scope.agreement.$remove(function(){
+            $state.go('agreementIndex');
+        });
+    };
     
 }]);
 
@@ -72,7 +102,9 @@ goldenApp.controller('applicationShowController', ['$scope', function($scope){
 // Golden Controllers
 //===================
 goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $state){
+    
     $state.go('goldensIndex');
+    
 }]);
 
 goldenApp.controller('goldenIndexController', ['$scope', function($scope){
@@ -96,7 +128,9 @@ goldenApp.controller('goldenShowController', ['$scope', function($scope){
 // Gallery Controllers
 //====================
 goldenApp.controller('galleryController', ['$scope', '$state', function($scope, $state){
+    
    $state.go('galleryIndex');
+   
 }]);
 
 goldenApp.controller('galleryIndexController', ['$scope', '$state', 'Image', function($scope, $state, Image){

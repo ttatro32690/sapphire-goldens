@@ -41,28 +41,28 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    })
 
    .state('agreementIndex', {
-      parent: 'contact',
+      parent: 'agreement',
       url: '/index',
       templateUrl: '/views/pages/agreement/index.ejs',
       controller: 'agreementIndexController'
    })
 
    .state('agreementNew', {
-      parent: 'contact',
+      parent: 'agreement',
       url: '/new',
-      templateUrl: '/views/pages/agreement/new.ejs',
+      templateUrl: '/views/pages/agreement/edit.ejs',
       controller: 'agreementNewController'
    })
    
    .state('agreementEdit', {
-      parent: 'contact',
+      parent: 'agreement',
       url: '/:id/edit',
       templateUrl: '/views/pages/agreement/edit.ejs',
       controller: 'agreementEditController'
    })
    
    .state('agreementShow', {
-      parent: 'contact',
+      parent: 'agreement',
       url: '/:id/show',
       templateUrl: '/views/pages/agreement/show.ejs',
       controller: 'agreementShowController'

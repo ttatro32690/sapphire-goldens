@@ -1,0 +1,89 @@
+<div class="panel panel-body">
+    <h4>Agreement Form</h4>
+    <span class="pull-right">
+        <a ui-sref="agreementEdit({id: agreement._id})" class="btn btn-primary btn-xs">Edit</a>
+        <a ng-click="deleteAgreement()" class="btn btn-primary btn-xs">Delete</a>
+    </span>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+    <form class="form-horizontal">
+        <div class="form-group container-fluid">
+            <label>Special Provisions for This Sale</label>
+            <input ng-model="agreement.specialProvision" type="text" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label>Sire</label>
+                <input ng-model="agreement.sire" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label>AKC #</label>
+                <input ng-model="agreement.sireAkcNo" type="text" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label>Dam</label>
+                <input ng-model="agreement.dam" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label>AKC #</label>
+                <input ng-model="agreement.damAkcNo" type="text" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group container-fluid">
+            <label>Date Whelped</label>
+            <input ng-model="agreement.dateWhelped" type="date" class="form-control" readonly>
+        </div>
+        <p>The buyer has read and understood the terms of this Pet Agreement/Contract and agrees to those terms</p>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label>Buyer</label>
+                <input ng-model="agreement.buyer" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label>Signed Date</label>
+                <input ng-model="agreement.buyerDate" type="date" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>Address</label>
+                <input ng-model="agreement.address" type="text" class="form-control" readonly>    
+            </div>
+            <div class="col-sm-3">
+                <label>City</label>
+                <input ng-model="agreement.poBox" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-3">
+                <label>State</label>
+                <input ng-model="agreement.state" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-3">
+                <label>ZIP</label>
+                <input ng-model="agreement.zip" type="text" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label>Telephone</label>
+                <input ng-model="agreement.phone" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label>Email</label>
+                <input ng-model="agreement.email" type="text" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label>Breeder</label>
+                <input ng-model="agreement.breeder" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label>Signed Date</label>
+                <input ng-model="agreement.breederDate" type="date" class="form-control" readonly>
+            </div>
+        </div>
+    </form>
+</div>

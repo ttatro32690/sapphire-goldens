@@ -1,84 +1,85 @@
 <div class="col-md-8 col-md-offset-2">
-    <hr>
-    <h3>Agreement Form</h3>
+    <h3 ng-if="new">New Agreement Form</h3>
+    <h3 ng-if="edit">Update Agreement Form</h3>
     <form class="form-horizontal">
         <div class="form-group container-fluid">
             <label>Special Provisions for This Sale</label>
-            <input type="text" class="form-control" placeholder="Special Provisions">
+            <input ng-model="agreement.specialProvision" type="text" class="form-control" placeholder="Special Provisions">
         </div>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Sire</label>
-                <input type="text" class="form-control" placeholder="Sire">
+                <input ng-model="agreement.sire" type="text" class="form-control" placeholder="Sire">
             </div>
             <div class="col-sm-6">
                 <label>AKC #</label>
-                <input type="text" class="form-control" placeholder="AKC#">
+                <input ng-model="agreement.sireAkcNo" type="text" class="form-control" placeholder="AKC#">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Dam</label>
-                <input type="text" class="form-control" placeholder="Dam">
+                <input ng-model="agreement.dam" type="text" class="form-control" placeholder="Dam">
             </div>
             <div class="col-sm-6">
                 <label>AKC #</label>
-                <input type="text" class="form-control" placeholder="AKC#">
+                <input ng-model="agreement.damAkcNo" type="text" class="form-control" placeholder="AKC#">
             </div>
         </div>
         <div class="form-group container-fluid">
             <label>Date Whelped</label>
-            <input type="date" class="form-control" placeholder="1970-01-01">
+            <input ng-model="agreement.dateWhelped" type="date" class="form-control" placeholder="1970-01-01">
         </div>
         <p>The buyer has read and understood the terms of this Pet Agreement/Contract and agrees to those terms</p>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Buyer</label>
-                <input type="text" class="form-control" placeholder="Buyer">
+                <input ng-model="agreement.buyer" type="text" class="form-control" placeholder="Buyer">
             </div>
             <div class="col-sm-6">
                 <label>Signed Date</label>
-                <input type="date" class="form-control" placeholder="Date">
+                <input ng-model="agreement.buyerDate" type="date" class="form-control" placeholder="Date">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
                 <label>Address</label>
-                <input type="text" class="form-control" placeholder="Address">    
+                <input ng-model="agreement.address" type="text" class="form-control" placeholder="Address">    
             </div>
             <div class="col-sm-3">
                 <label>City</label>
-                <input type="text" class="form-control" placeholder="City">
+                <input ng-model="agreement.poBox" type="text" class="form-control" placeholder="City">
             </div>
             <div class="col-sm-3">
                 <label>State</label>
-                <input type="text" class="form-control" placeholder="State">
+                <input ng-model="agreement.state" type="text" class="form-control" placeholder="State">
             </div>
             <div class="col-sm-3">
                 <label>ZIP</label>
-                <input type="text" class="form-control" placeholder="Zip">
+                <input ng-model="agreement.zip" type="text" class="form-control" placeholder="Zip">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Telephone</label>
-                <input type="text" class="form-control" placeholder="Telephone">
+                <input ng-model="agreement.phone" type="text" class="form-control" placeholder="Telephone">
             </div>
             <div class="col-sm-6">
                 <label>Email</label>
-                <input type="text" class="form-control" placeholder="Email">
+                <input ng-model="agreement.email" type="text" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Breeder</label>
-                <input type="text" class="form-control" placeholder="Breeder">
+                <input ng-model="agreement.breeder" type="text" class="form-control" placeholder="Breeder">
             </div>
             <div class="col-sm-6">
                 <label>Signed Date</label>
-                <input type="date" class="form-control" placeholder="Date">
+                <input ng-model="agreement.breederDate" type="date" class="form-control" placeholder="Date">
             </div>
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <button ng-if="new" ng-click="saveAgreement()" class="btn btn-primary">Submit</button>
+        <button ng-if="edit" ng-click="updateAgreement()" class="btn btn-primary">Update</button>
     </form>
 </div>
