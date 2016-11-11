@@ -3,7 +3,7 @@ var goldenApp;
 //=================
 // Home Controllers
 //=================
-goldenApp.controller('homeController', ['$scope', '$stateParams', function($scope, $stateParams){
+goldenApp.controller('homeController', ['$scope', function($scope){
    
 }]);
 
@@ -11,9 +11,7 @@ goldenApp.controller('homeController', ['$scope', '$stateParams', function($scop
 // About Controllers
 //==================
 goldenApp.controller('aboutController', ['$scope', 'Sapphire', function($scope, Sapphire){
-
-    $scope.sapphires = Sapphire.query();
-       
+    $scope.sapphires = Sapphire.query();  
 }]);
 
 
@@ -24,11 +22,49 @@ goldenApp.controller('contactController', ['$scope', '$state', function($scope, 
    $state.go('agreement');
 }]);
 
+//======================
+// Agreement Controllers
+//======================
 goldenApp.controller('agreementController', ['$scope', function($scope){
     
 }]);
 
+goldenApp.controller('agreementIndexController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('agreementNewController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('agreementEditController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('agreementShowController', ['$scope', function($scope){
+    
+}]);
+
+//========================
+// Application Controllers
+//========================
 goldenApp.controller('applicationController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('applicationIndexController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('applicationNewController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('applicationEditController', ['$scope', function($scope){
+    
+}]);
+
+goldenApp.controller('applicationShowController', ['$scope', function($scope){
     
 }]);
 
@@ -39,23 +75,19 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     $state.go('goldensIndex');
 }]);
 
-goldenApp.controller('goldenFemaleController', ['$scope', function($scope){
-   $scope.type ="Females";
-}]);
-
-goldenApp.controller('goldenMaleController', ['$scope', function($scope){
-   $scope.type ="Males";
-}]);
-
-goldenApp.controller('goldenLitterController', ['$scope', function($scope){
-   $scope.type ="Litters";
+goldenApp.controller('goldenIndexController', ['$scope', function($scope){
+   
 }]);
 
 goldenApp.controller('goldenNewController', ['$scope', function($scope){
    
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', function($scope){
+goldenApp.controller('goldenEditController', ['$scope', function($scope){
+   
+}]);
+
+goldenApp.controller('goldenShowController', ['$scope', function($scope){
    
 }]);
 
@@ -63,6 +95,22 @@ goldenApp.controller('goldenIndexController', ['$scope', function($scope){
 //====================
 // Gallery Controllers
 //====================
-goldenApp.controller('galleryIndexController', ['$scope', 'Image', function($scope, Image){
+goldenApp.controller('galleryController', ['$scope', '$state', function($scope, $state){
+   $state.go('galleryIndex');
+}]);
+
+goldenApp.controller('galleryIndexController', ['$scope', '$state', 'Image', function($scope, $state, Image){
    $scope.images = Image.query();
+}]);
+
+goldenApp.controller('galleryNewController', ['$scope', '$state', 'Image', function($scope, $state, Image){
+
+}]);
+
+goldenApp.controller('galleryEditController', ['$scope', '$state', 'Image', function($scope, $state, Image){
+
+}]);
+
+goldenApp.controller('galleryShowController', ['$scope', '$state', 'Image', function($scope, $state, Image){
+
 }]);
