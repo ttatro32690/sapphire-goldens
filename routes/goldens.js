@@ -15,11 +15,11 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
     Goldens.create(req.body, function(err, golden){
-       if(err){
-           console.log(err);
-       } else {
+      if(err){
+          console.log(err);
+      } else {
             res.send(golden);
-       } 
+      } 
     });
 });
 

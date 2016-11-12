@@ -35,7 +35,7 @@ goldenApp.controller('agreementIndexController', ['$scope', 'Agreement', functio
     
 }]);
 
-goldenApp.controller('agreementNewController', ['$scope', '$state', '$stateParams', 'Agreement', function($scope, $state, $stateParams, Agreement){
+goldenApp.controller('agreementNewController', ['$scope', '$state', 'Agreement', function($scope, $state, Agreement){
     
     $scope.new = true;
     
@@ -82,11 +82,11 @@ goldenApp.controller('applicationController', ['$scope', function($scope){
     
 }]);
 
-goldenApp.controller('applicationIndexController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
+goldenApp.controller('applicationIndexController', ['$scope', '$state', 'Application', function($scope, $state, Application){
     $scope.applications = Application.query();    
 }]);
 
-goldenApp.controller('applicationNewController', ['$scope', '$state', '$stateParams', 'Application', function($scope, $state, $stateParams, Application){
+goldenApp.controller('applicationNewController', ['$scope', '$state', 'Application', function($scope, $state, Application){
     $scope.new = true;
     
     $scope.application = new Application();
@@ -132,11 +132,11 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+goldenApp.controller('goldenIndexController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
    $scope.goldens = Golden.query();
 }]);
 
-goldenApp.controller('goldenNewController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
     $scope.new = true;
     
     $scope.golden = new Golden();
@@ -182,17 +182,44 @@ goldenApp.controller('galleryController', ['$scope', '$state', function($scope, 
 }]);
 
 goldenApp.controller('galleryIndexController', ['$scope', '$state', 'Image', function($scope, $state, Image){
+    
    $scope.images = Image.query();
+   
 }]);
 
 goldenApp.controller('galleryNewController', ['$scope', '$state', 'Image', function($scope, $state, Image){
-
+    $scope.new = true;
+    
+    $scope.image = new Image();
+    
+    $scope.saveImage = function(){
+        $scope.image.$save(function(){
+            
+        }).then(function(res){
+            $state.go('galleryShow', {id: res._id});
+        });
+    };
 }]);
 
-goldenApp.controller('galleryEditController', ['$scope', '$state', 'Image', function($scope, $state, Image){
-
+goldenApp.controller('galleryEditController', ['$scope', '$state', '$stateParams', 'Image', function($scope, $state, $stateParams, Image){
+    $scope.edit = true;
+    
+    $scope.image = Image.get({id: $stateParams.id});
+    
+    $scope.updateImage = function(){
+        $scope.image.$update(function(){
+           $state.go('galleryShow', {id: $stateParams.id});
+        });
+    };
 }]);
 
-goldenApp.controller('galleryShowController', ['$scope', '$state', 'Image', function($scope, $state, Image){
-
+goldenApp.controller('galleryShowController', ['$scope', '$state', '$stateParams', 'Image', function($scope, $state, $stateParams, Image){
+    
+    $scope.image = Image.get({id: $stateParams.id});
+    
+    $scope.deleteImage = function(){
+        $scope.image.$remove(function(){
+            $state.go('galleryIndex');
+        });
+    };
 }]);

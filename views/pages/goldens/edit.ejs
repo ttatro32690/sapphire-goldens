@@ -26,6 +26,11 @@
         <label>Whelped</label>
         <input ng-model="golden.whelpedDate" type="date" class="form-control">
     </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input ng-model="golden.imageFile" type="file" class="form-control">
+        {{golden.imageFile}}
+    </div>
     <div>
         <button ng-if="new" ng-click="saveGolden()" class="btn btn-primary">Submit</button>
         <button ng-if="edit" ng-click="updateGolden()" class="btn btn-primary">Update</button>
