@@ -1,16 +1,5 @@
-<div class="container panel panel-body">
-    <div class="row">
-        <div class="col-md-4">
-            <h3>Females</h3>
-            <a ui-sref="goldensFemale"><img class="img img-responsive thumbnail pull-left" ng-src="public/images/sapphire19.png"></a>
-        </div>
-        <div class="col-md-4">
-            <h3>Males</h3>
-            <a ui-sref="goldensMale"><img class="img img-responsive thumbnail pull-left" ng-src="public/images/sapphire26.png"></a>
-        </div>
-        <div class="col-md-4">
-            <h3>Litters</h3>
-            <a ui-sref="goldensLitter"><img class="img img-responsive thumbnail pull-left" ng-src="public/images/sapphire14.png"></a>
-        </div>
-    </div>
-</div>
+<ul class="list-group">
+    <a ui-sref="goldensShow({id: golden._id})" class="list-group-item" ng-repeat="golden in goldens">
+        {{golden.name}}
+    </a>
+</ul>

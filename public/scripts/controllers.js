@@ -132,22 +132,45 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', function($scope){
-   
+goldenApp.controller('goldenIndexController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+   $scope.goldens = Golden.query();
 }]);
 
-goldenApp.controller('goldenNewController', ['$scope', function($scope){
-   
+goldenApp.controller('goldenNewController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+    $scope.new = true;
+    
+    $scope.golden = new Golden();
+    
+    $scope.saveGolden = function(){
+        $scope.golden.$save(function(){
+            
+        }).then(function(res){
+            $state.go('goldensShow', {id: res._id});
+        });
+    };
 }]);
 
-goldenApp.controller('goldenEditController', ['$scope', function($scope){
-   
+goldenApp.controller('goldenEditController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+    $scope.edit = true;
+    
+    $scope.golden = Golden.get({id: $stateParams.id});
+    
+    $scope.updateGolden = function(){
+        $scope.golden.$update(function(){
+            $state.go('goldensShow', {id: $stateParams.id});
+        });
+    };
 }]);
 
-goldenApp.controller('goldenShowController', ['$scope', function($scope){
+goldenApp.controller('goldenShowController', ['$scope', '$state', '$stateParams', 'Golden', function($scope, $state, $stateParams, Golden){
+   $scope.golden = Golden.get({id: $stateParams.id});
    
+   $scope.deleteGolden = function(){
+       $scope.golden.$remove(function(){
+           $state.go('goldensIndex');
+       });
+   };
 }]);
-
 
 //====================
 // Gallery Controllers

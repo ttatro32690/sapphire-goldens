@@ -5,8 +5,7 @@ var GoldenSchema = mongoose.Schema({
     description: String,
     birthdate: Date,
     whelpedDate: Date,
-    male: Boolean,
-    female: Boolean,
+    gender: String
 });
 
 module.exports = mongoose.model('Goldens', GoldenSchema);

@@ -1,9 +1,14 @@
 <div class="container">
     <div class="container panel panel-body">
         <h1>Our Goldens</h1>
-        <a ui-sref="goldensIndex" class="btn btn-primary">Goldens</a>
-        <a ui-sref="goldensNew" class="btn btn-primary">Add Golden</a>
     </div>
     
-    <ui-view></ui-view>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a ui-sref="goldensIndex">Goldens</a></li>
+        <li class="breadcrumb-item"><a ui-sref="goldensNew">New Golden</a></li>
+    </ol>
+    
+    <div class="panel panel-body">
+        <ui-view></ui-view>
+    </div>    
 </div>

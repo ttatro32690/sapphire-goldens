@@ -12,7 +12,7 @@ goldenApp.factory('Image', ['$resource', function($resource){
 }]);
 
 goldenApp.factory('Golden', ['$resource', function($resource){
-   return $resource('/golden/:id', {id: '@_id'},
+   return $resource('/goldens/:id', {id: '@_id'},
    {
       'update': {method: 'PUT'}
    });
