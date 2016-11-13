@@ -106,8 +106,8 @@
                     <input ng-model="application.gender" type="radio" name="gender"> Female
                 </label>
             </div>
-            <button ng-if="new" ng-click="saveApplication()" class="btn btn-primary">Submit</button>
-            <button ng-if="edit" ng-click="updateApplication()" class="btn btn-primary">Update</button>
+            <button ng-if="new" ng-submit="saveApplication()" class="btn btn-primary">Submit</button>
+            <button ng-if="edit" ng-submit="updateApplication()" class="btn btn-primary">Update</button>
         </ol>
         </div>
     </div>
