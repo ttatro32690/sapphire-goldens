@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+var middleware = require('../middleware/app');
 var User = require('../models/users');
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
@@ -21,7 +21,7 @@ router.get('/logout', function(req, res){
     res.send("Successfully Logged Out");
 });
 
-router.post('/register', function(req, res){
+router.post('/register', middleware.isLoggedIn, function(req, res){
     var newUser = {
         username: req.body.username
     };

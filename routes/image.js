@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var middleware = require('../middleware/app');
 var Image = require('../models/image');
 
 // INDEX ROUTE

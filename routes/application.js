@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var middleware = require('../middleware/app');
 var Application = require('../models/application');
 
 router.get('/', function(req, res){
@@ -33,7 +33,7 @@ router.get('/:id', function(req, res){
     });
 });
 
-router.put('/:id', function(req, res){
+router.put('/:id', middleware.isLoggedIn, function(req, res){
     Application.findByIdAndUpdate(req.params.id, req.body, function(err, application){
        if(err){
            console.log(err);
@@ -43,7 +43,7 @@ router.put('/:id', function(req, res){
     });
 });
 
-router.delete('/:id', function(req, res){
+router.delete('/:id', middleware.isLoggedIn, function(req, res){
     Application.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.log(err);

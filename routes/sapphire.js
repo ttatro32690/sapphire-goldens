@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var middleware = require('../middleware/app');
 var Sapphire = require('../models/sapphire');
 
 router.get('/', function(req, res){
@@ -13,7 +13,7 @@ router.get('/', function(req, res){
     });
 });
 
-router.put('/:id', function(req, res){
+router.put('/:id', middleware.isLoggedIn, function(req, res){
     Sapphire.findByIdAndUpdate(req.params.id, req.body.sapphire, function(err, sapphire){
         if(err){
             res.send(err);

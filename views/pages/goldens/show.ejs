@@ -1,6 +1,6 @@
 <div class="col-md-8 col-md-offset-2">
     <h4>View Golden</h4>
-    <span class="pull-right">
+    <span ng-show="user" class="pull-right">
         <a ui-sref="goldensEdit({id: golden._id})" class="btn btn-primary btn-xs">Edit</a>
         <a ng-click="deleteGolden()" class="btn btn-primary btn-xs">Delete</a>
     </span>
