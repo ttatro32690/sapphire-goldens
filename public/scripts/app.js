@@ -15,12 +15,36 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       controller: 'homeController'
    })
    
+// Login/Register Routes
+
+   .state('login', {
+      url: '/login',
+      templateUrl: '/views/users/login.ejs',
+      controller: 'loginController'
+   })
+   
+   .state('register', {
+      url: '/register',
+      templateUrl: '/views/users/register.ejs',
+      controller: 'registerController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+   })
+   
 // About Routes
    
    .state('about', {
       url: '/about',
       templateUrl: 'views/pages/about/index.ejs',
-      controller: 'aboutController'
+      controller: 'aboutController',
+      resolve: {
+         sapphires: ['Sapphire', function(Sapphire){
+            return Sapphire.query();
+         }]
+      }
    })
    
 // Contact Routes
@@ -44,21 +68,46 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'agreement',
       url: '/index',
       templateUrl: '/views/pages/agreement/index.ejs',
-      controller: 'agreementIndexController'
+      controller: 'agreementIndexController',
+      resolve: {
+         agreements: ['Agreement', function(Agreement){
+            return Agreement.query();
+         }],
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
 
    .state('agreementNew', {
       parent: 'agreement',
       url: '/new',
       templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementNewController'
+      controller: 'agreementNewController',
+      resolve: {
+         agreement: ['Agreement', function(Agreement){
+             var agreement = new Agreement();
+             
+             agreement.dateWhelped = new Date();
+             agreement.buyerDate = new Date();
+             agreement.breederDate = new Date();
+             
+             return agreement;
+         }]
+      }
    })
    
    .state('agreementEdit', {
       parent: 'agreement',
       url: '/:id/edit',
       templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementEditController'
+      controller: 'agreementEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+      
    })
    
    .state('agreementShow', {
@@ -81,7 +130,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'application',
       url: '/index',
       templateUrl: '/views/pages/application/index.ejs',
-      controller: 'applicationIndexController'
+      controller: 'applicationIndexController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('applicationNew', {
@@ -95,14 +149,19 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'application',
       url: '/:id/edit',
       templateUrl: '/views/pages/application/edit.ejs',
-      controller: 'applicationEditController'
+      controller: 'applicationEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('applicationShow', {
       parent: 'application',
       url: '/:id/show',
       templateUrl: '/views/pages/application/show.ejs',
-      controller: 'applicationShowController'
+      controller: 'applicationShowController',
    })
 
 // Goldens Routes  
@@ -124,14 +183,24 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'goldens',
       url: '/new',
       templateUrl: '/views/pages/goldens/edit.ejs',
-      controller: 'goldenNewController'
+      controller: 'goldenNewController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('goldensEdit',{
       parent: 'goldens',
       url: '/:id/edit',
       templateUrl: '/views/pages/goldens/edit.ejs',
-      controller: 'goldenEditController'
+      controller: 'goldenEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('goldensShow',{
@@ -160,21 +229,31 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'gallery',
       url: '/new',
       templateUrl: '/views/pages/gallery/edit.ejs',
-      controller: 'galleryNewController'
+      controller: 'galleryNewController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('galleryEdit', {
       parent: 'gallery',
       url: '/:id/edit',
       templateUrl: '/views/pages/gallery/edit.ejs',
-      controller: 'galleryEditController'
+      controller: 'galleryEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('galleryShow', {
       parent: 'gallery',
       url: '/:id/show',
       templateUrl: '/views/pages/gallery/show.ejs',
-      controller: 'galleryShowController'
+      controller: 'galleryShowController',
    });
    
 }]);

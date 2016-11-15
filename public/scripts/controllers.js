@@ -1,17 +1,63 @@
 var goldenApp;
 
+//================
+// Root Controller
+//================
+
+goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', 'User', function($scope, $rootScope, $http, $state, User){
+    $rootScope.$on('$stateChangeError', 
+    function(event, toState, toParams, fromState, fromParams, error){ 
+        
+    });
+    
+    $rootScope.$watch('user', function(newValue, oldValue){
+        
+    });
+    
+    $rootScope.$on('$stateChangeError', function(event, toParams, fromState, fromParams, error){
+        $state.go('landing');
+    });
+    
+    $scope.logout = User.logout;
+    
+}]);
+
 //=================
 // Home Controllers
 //=================
 goldenApp.controller('homeController', ['$scope', function($scope){
-   
+    
+}]);
+
+//===========================
+// Login/Register Controllers
+//===========================
+goldenApp.controller('loginController', ['$scope', '$http', '$rootScope', '$state', 'User', function($scope, $http, $rootScope, $state, User){
+    
+    $scope.user = {
+        username: "Travis",
+        password: "Travis"
+    };
+    
+    $scope.login = User.login;
+    
+}]);
+
+goldenApp.controller('registerController', ['$scope', '$http', 'User', function($scope, $http, User){
+    $scope.user = {
+        username: "Travis",
+        password: "Travis"
+    };
+        
+    
+    $scope.register = User.register;
 }]);
 
 //==================
 // About Controllers
 //==================
-goldenApp.controller('aboutController', ['$scope', 'Sapphire', function($scope, Sapphire){
-    $scope.sapphires = Sapphire.query();  
+goldenApp.controller('aboutController', ['$scope', 'sapphires', function($scope, sapphires){
+    $scope.sapphires = sapphires;
 }]);
 
 
@@ -29,21 +75,17 @@ goldenApp.controller('agreementController', ['$scope', function($scope){
     
 }]);
 
-goldenApp.controller('agreementIndexController', ['$scope', 'Agreement', function($scope, Agreement){
+goldenApp.controller('agreementIndexController', ['$scope', 'agreements', function($scope, agreements){
     
-    $scope.agreements = Agreement.query(); 
+    $scope.agreements = agreements; 
     
 }]);
 
-goldenApp.controller('agreementNewController', ['$scope', '$state', 'Agreement', function($scope, $state, Agreement){
+goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement', function($scope, $state, agreement){
     
     $scope.new = true;
     
-    $scope.agreement = new Agreement();
-    
-    $scope.agreement.dateWhelped = new Date();
-    $scope.agreement.buyerDate = new Date();
-    $scope.agreement.breederDate = new Date();
+    $scope.agreement = agreement;
     
     $scope.saveAgreement = function(){
         $scope.agreement.$save().then(function(res){

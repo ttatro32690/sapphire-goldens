@@ -79,7 +79,7 @@
                 <input ng-model="agreement.breederDate" type="date" class="form-control" placeholder="Date">
             </div>
         </div>
-        <button ng-if="new" ng-submit="saveAgreement()" class="btn btn-primary">Submit</button>
-        <button ng-if="edit" ng-submit="updateAgreement()" class="btn btn-primary">Update</button>
+        <button ng-if="new" ng-click="saveAgreement()" class="btn btn-primary">Submit</button>
+        <button ng-if="edit" ng-click="updateAgreement()" class="btn btn-primary">Update</button>
     </form>
 </div>

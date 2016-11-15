@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local'),
               app = express();
 
 var db = process.env.DATABASEURL || 'mongodb://localhost/sapphire';
+mongoose.Promise = global.Promise;
 mongoose.connect(db);
 
 app.set('view engine', 'ejs');
@@ -43,13 +44,15 @@ var applicationRoutes = require('./routes/application'),
       agreementRoutes = require('./routes/agreement'),
        sapphireRoutes = require('./routes/sapphire'),
          goldenRoutes = require('./routes/goldens'),
-          imageRoutes = require('./routes/image');
+          imageRoutes = require('./routes/image'),
+          loginRoutes = require('./routes/users');
 
 app.use('/application', applicationRoutes);
 app.use('/agreement', agreementRoutes);
 app.use('/sapphire', sapphireRoutes);
 app.use('/goldens', goldenRoutes);
 app.use('/image', imageRoutes);
+app.use(loginRoutes);
 
 app.get('*', function(req, res){
     if(req.url === '/'){
