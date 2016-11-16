@@ -222,7 +222,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'gallery',
       url: '/index',
       templateUrl: '/views/pages/gallery/index.ejs',
-      controller: 'galleryIndexController'
+      controller: 'galleryIndexController',
+      resolve: {
+         images: ['Image', function(Image){
+            return Image.query();
+         }]
+      }
    })
    
    .state('galleryNew', {
