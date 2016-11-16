@@ -15,7 +15,8 @@ var ApplicationSchema = mongoose.Schema({
     otherPets: String,
     prepared: String,
     daycare: String,
-    gender: String
+    gender: String,
+    dateCreated: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Application', ApplicationSchema);

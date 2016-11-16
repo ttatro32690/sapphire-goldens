@@ -17,7 +17,8 @@ var AgreementSchema = mongoose.Schema({
     phone: String,
     email: String,
     breeder: String,
-    breederDate: Date
+    breederDate: Date,
+    dateCreated: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Agreement', AgreementSchema);
