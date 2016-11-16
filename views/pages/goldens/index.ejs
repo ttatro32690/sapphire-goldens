@@ -1,5 +1,14 @@
 <ul class="list-group">
-    <a ui-sref="goldensShow({id: golden._id})" class="list-group-item" ng-repeat="golden in goldens">
-        {{golden.name}}
-    </a>
+    
+    <div class="row">
+        <div class="col-md-4" ng-repeat="golden in goldens">
+            <div class="panel">
+                <div class="panel-header"></div>
+                <div class="panel-body">
+                    {{golden.name}}
+                    <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{golden.url}}></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </ul>

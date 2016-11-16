@@ -1,34 +1,16 @@
 <div class="col-md-8 col-md-offset-2">
-    <h4>View Golden</h4>
+    <h4>
+        {{golden.name}}
+        <span class="pull-right">
+            <a ui-sref="goldensIndex">Back to Goldens</a>
+        </span>
+    </h4>
+    <img class="img img-responsive" ng-src="{{golden.url}}">
+    <h5>Description: {{golden.description}}</h5>
+    <h5>Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</h5>
+    <h5>Whelped: {{golden.whelpedDate | date:'MM-dd-yyyy'}}</h5>
     <span ng-show="user" class="pull-right">
         <a ui-sref="goldensEdit({id: golden._id})" class="btn btn-primary btn-xs">Edit</a>
         <a ng-click="deleteGolden()" class="btn btn-primary btn-xs">Delete</a>
     </span>
-
-    <div class="form-group">
-        <label>Name</label>
-        <input ng-model="golden.name" type="text" class="form-control" readonly>
-    </div>
-    <fieldset disabled>
-        <div class="form-group">
-            Golden Type
-            <select class="form-control" readonly>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Litter</option>
-            </select>
-        </div>
-    </fieldset>
-    <div class="form-group">
-        <label>Description</label>
-        <input ng-model="golden.description" type="text" class="form-control" readonly
-    </div>
-    <div class="form-group">
-        <label>Birthdate</label>
-        <input ng-model="golden.birthdate" type="date" class="form-control" readonly>
-    </div>
-    <div class="form-group">
-        <label>Whelped</label>
-        <input ng-model="golden.whelpedDate" type="date" class="form-control" readonly>
-    </div>
 </div>
