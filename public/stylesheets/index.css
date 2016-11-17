@@ -1,7 +1,6 @@
 body {
-    font-family: 'Lato', serif;
+    font-family: 'Open Sans', serif;
     letter-spacing: .2rem;
-    font-weight: 600;
     background: url("https://hd.unsplash.com/photo-1422565096762-bdb997a56a84");
     background-repeat: no-repeat;
     background-size: cover;
@@ -54,7 +53,6 @@ p {
 }
 
 .image{
-    /*padding: .25rem;*/
     width: 100%;
     display: inline-block;
     box-sizing:  border-box;
@@ -95,19 +93,6 @@ p {
 
 #about{
     text-align: center;
-}
-
-#contact{
-    font-weight: 500;
-}
-
-#footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin-top: 60px;
-    background: rgba(256, 256, 256, 0.50);
-    border-top: 2px solid blue;
 }
 
 #main-content{
