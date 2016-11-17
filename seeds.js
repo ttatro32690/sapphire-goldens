@@ -1,5 +1,6 @@
 var Sapphire = require('./models/sapphire');
 var Image = require('./models/image');
+var Goldens = require('./models/goldens');
 
 var sapphireData = {
     mainTitle: "Welcome to Sapphire Goldens",
@@ -89,6 +90,14 @@ function seedDB() {
             });
         }
     });
+    
+    // Goldens.remove({},function(err){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         console.log("Removed Goldens");
+    //     }
+    // });
 }
 
 module.exports = seedDB;
