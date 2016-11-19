@@ -2,8 +2,11 @@ var mongoose = require('mongoose');
 
 var SapphireSchema = mongoose.Schema({
     mainTitle: String,
-    imgs: [String],
     motto: String,
+    akc: String,
+    grca: String,
+    ygrc: String,
+    about: String,
     story: [String]
 });
 

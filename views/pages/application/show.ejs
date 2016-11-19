@@ -48,67 +48,34 @@
         <div class="col-md-8 col-md-offset-2">
         <h3>Questionnaire</h3>
         <ol>
-            <div class="form-group">
-            <label><li>Have you been lucky enough to have a golden retrieve in the past?</li></label>
-                <div class="form-group">
-                    <label class="radio-inline">
-                        <input ng-model="application.prevOwner" type ="radio" name="past" readonly> Yes 
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="application.prevOwner" type="radio" name="past" readonly> No
-                    </label>
+        <div class="form-group">
+                    <label for="q1"><li>Have you been lucky enough to have a golden retrieve in the past?</li></label>
+                    <textarea ng-model="application.prevOwner" id="q1" class="form-control" rows="3" readonly></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label><li>Do you have a fenced in yard?</li></label>
                 <div class="form-group">
-                    <label class="radio-inline">
-                        <input ng-model="application.yardFenced" type ="radio" name="fence" readonly> Yes 
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="application.yardFenced" type="radio" name="fence" readonly> No
-                    </label>
+                    <label for="q2"><li>Do you have a fenced in yard?</li></label>
+                    <textarea ng-model="application.yardFenced" id="q2" class="form-control" rows="3" readonly></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="q3"><li>Do you have children in the home under 8 years old?</li></label>
                 <div class="form-group">
-                    <label class="radio-inline">
-                        <input ng-model="application.children" type ="radio" name="child" readonly> Yes 
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="application.children" type="radio" name="child" readonly> No
-                    </label>
+                    <label for="q3"><li>Do you have children in the home under 8 years old?</li></label>
+                    <textarea ng-model="application.children" id="q3" class="form-control" rows="3" readonly></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label><li>Do you have other pets?</li></label>
                 <div class="form-group">
-                    <label class="radio-inline">
-                        <input ng-model="application.otherPets" type ="radio" name="pets" readonly> Yes 
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="application.otherPets" type="radio" name="pets" readonly> No
-                    </label>
+                    <label for="q4"><li>Do you have other pets?</li></label>
+                    <textarea ng-model="application.otherPets" id="q4" class="form-control" rows="3" readonly></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="q5"><li>Are you prepared to care for a puppy physically, emotionally, and financially?</li></label>
-                <textarea ng-model="application.prepared" id="q5" class="form-control" rows="3" readonly></textarea>
-            </div>
-            <div class="form-group">
-                <label for="q6"><li>What will you do with your new puppy dog while you are at work?</li></label>
-                <textarea ng-model="application.daycare" id="q6" class="form-control" rows="3" readonly></textarea>
-            </div>
-            <div class="form-group">
-                <label><li>Would you prefer a male or female puppy?</li>
-                <label class="radio-inline">
-                    <input ng-model="application.gender" type ="radio" name="gender" readonly> Male 
-                </label>
-                <label class="radio-inline">
-                    <input ng-model="application.gender" type="radio" name="gender" readonly> Female
-                </label>
-            </div>
+                <div class="form-group">
+                    <label for="q5"><li>Are you prepared to care for a puppy physically, emotionally, and financially?</li></label>
+                    <textarea ng-model="application.prepared" id="q5" class="form-control" rows="3" readonly></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="q6"><li>What will you do with your new puppy dog while you are at work?</li></label>
+                    <textarea ng-model="application.daycare" id="q6" class="form-control" rows="3" readonly></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="q7"><li>Would you prefer a male or female puppy?</li></label>
+                    <textarea ng-model="application.gender" id="q7" class="form-control" rows="3" readonly></textarea>
+                </div>
         </ol>
         </div>
     </div>

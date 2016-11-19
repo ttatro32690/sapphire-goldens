@@ -12,7 +12,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('landing', {
       url: '/',
       templateUrl: '/views/pages/home/index.ejs',
-      controller: 'homeController'
+      controller: 'homeController',
+      resolve: {
+         images: ['Image', function(Image){
+            return Image.query();
+         }]
+      }
    })
    
 // Login/Register Routes

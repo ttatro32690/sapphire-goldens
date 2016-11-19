@@ -26,7 +26,7 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
 // Home Controllers
 //=================
 goldenApp.controller('homeController', ['$scope', function($scope){
-    
+
 }]);
 
 //===========================
@@ -88,6 +88,9 @@ goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement',
     $scope.agreement = agreement;
     
     $scope.saveAgreement = function(){
+        
+        console.log($scope.agreement.buyerDate);
+        
         $scope.agreement.$save().then(function(res){
             $state.go('agreementShow', {id: res._id});
         });
@@ -102,9 +105,9 @@ goldenApp.controller('agreementEditController', ['$scope', '$state', '$statePara
     Agreement.get({id: $stateParams.id}, function(res){
         $scope.agreement = res;
         
-        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped).format("YYYY-MM-DD"));
-        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate).format("YYYY-MM-DD"));
-        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate).format("YYYY-MM-DD"));
+        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped));
+        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
+        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
         
     });
     
@@ -121,9 +124,9 @@ goldenApp.controller('agreementShowController', ['$scope', '$state', '$statePara
     Agreement.get({id: $stateParams.id}, function(res){
         $scope.agreement = res;
         
-        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped).format("YYYY-MM-DD"));
-        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate).format("YYYY-MM-DD"));
-        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate).format("YYYY-MM-DD"));
+        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped));
+        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
+        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
         
     });
     
@@ -168,7 +171,7 @@ goldenApp.controller('applicationEditController', ['$scope', '$state', '$statePa
     Application.get({id: $stateParams.id}, function(res){
         $scope.application = res;
         
-        $scope.application.date = new Date($moment($scope.application.date).format("YYYY-MM-DD"));
+        $scope.application.date = new Date($moment($scope.application.date));
     });
     
     $scope.updateApplication = function(){
@@ -183,7 +186,7 @@ goldenApp.controller('applicationShowController', ['$scope', '$state', '$statePa
     Application.get({id: $stateParams.id}, function(res){
         $scope.application = res;
         
-        $scope.application.date = new Date($moment($scope.application.date).format("YYYY-MM-DD"));
+        $scope.application.date = new Date($moment($scope.application.date));
     });
     
     $scope.deleteApplication = function(){
@@ -230,8 +233,8 @@ goldenApp.controller('goldenEditController', ['$scope', '$state', '$stateParams'
     
         $scope.golden = res;
         
-        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate).format("YYYY-MM-DD"));
-        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate).format("YYYY-MM-DD"));
+        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
+        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate));
     
     });
     
@@ -246,8 +249,8 @@ goldenApp.controller('goldenShowController', ['$scope', '$state', '$stateParams'
    Golden.get({id: $stateParams.id}, function(res){
        $scope.golden = res;
        
-        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate).format("YYYY-MM-DD"));
-        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate).format("YYYY-MM-DD"));
+        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
+        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate));
    });
    
    $scope.deleteGolden = function(){

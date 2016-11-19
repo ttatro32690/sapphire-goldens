@@ -10,32 +10,35 @@
         </div>
     </div>
     <div class="container panel panel-body" id="main-content">
-        <div class="row">
-            <div class="col-md-12">
-                <p>{{ sapphire.motto }}</p>
-                <div class="row">
-                    <div class="col-md-3 col-md-offset-3">
-                        <a href="https://www.grca.org/"><img class="club thumbnail img-responsive" ng-src="{{ sapphire.imgs[0] }}"></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="http://yankeegrc.azurewebsites.net/"><img class="club thumbnail img-responsive" ng-src="{{ sapphire.imgs[1] }}"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container panel panel-body">
+        
         <h1>Our Story</h1>
         <hr>
         <div class="col-md-7">
             <p ng-repeat="story in sapphire.story">{{story}}</p>
         </div>
         <div class="col-md-5" id="about-img">
-            <img class="thumbnail img-responsive" ng-src="{{ sapphire.imgs[2] }}">
+            <img class="thumbnail img-responsive" ng-src="{{ sapphire.about }}">
             <div class="col-xs-8 col-xs-offset-2">
                 <p>Our Golden Life is dedicated to Shadow who passed away July 30, 2007 at almost 14 yrs old.</p>
             </div>
         </div>
+    
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{ sapphire.motto }}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="https://www.grca.org/"><img class="club img img-responsive" ng-src="{{ sapphire.grca }}"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="http://yankeegrc.azurewebsites.net/"><img class="club img img-responsive" ng-src="{{ sapphire.ygrc }}"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="http://www.akc.org/"><img class="club img img-responsive" ng-src="{{ sapphire.akc }}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
