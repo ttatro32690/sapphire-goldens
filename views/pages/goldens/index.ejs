@@ -1,5 +1,19 @@
+<label>Text Search: 
+    <input ng-model="search.$" class="form-control"></input>
+</label>
+<label>Category Search
+        <select ng-model="search.type" class="form-control">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Litter</option>
+            <option>Bragging Rights</option>
+            <option>Retired</option>
+            <option></option>
+        </select>
+</label>
+<a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
 <div class="row">
-    <div class="col-md-4" ng-repeat="golden in goldens">
+    <div class="col-md-4" ng-repeat="golden in goldens | filter:search:strict">
         <div class="panel">
             <div class="panel-header"></div>
             <div class="panel-body">

@@ -204,8 +204,13 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
 }]);
 
 goldenApp.controller('goldenIndexController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
+   $scope.search = {};
+   
    $scope.goldens = Golden.query();
-   console.log($scope.goldens);
+   
+   $scope.clearData = function(){
+       $scope.search = {};
+   };
 }]);
 
 goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
