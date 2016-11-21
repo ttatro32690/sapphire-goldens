@@ -12,9 +12,9 @@ body {
    height:100%;
 }
 
-p {
-    text-indent: 35px;
-}
+/*p {*/
+/*    text-indent: 35px;*/
+/*}*/
 
 .club{
     max-width: 200px;
@@ -33,7 +33,7 @@ p {
 }
 
 .fa:hover{
-    color: #010080;
+    color: white;
 }
 
 .grid-image{
