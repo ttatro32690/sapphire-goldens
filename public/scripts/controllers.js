@@ -219,7 +219,6 @@ goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', funct
     $scope.golden = new Golden();
     
     $scope.golden.birthdate = new Date();
-    $scope.golden.whelpedDate = new Date();
     
     $scope.saveGolden = function(){
         
@@ -239,7 +238,6 @@ goldenApp.controller('goldenEditController', ['$scope', '$state', '$stateParams'
         $scope.golden = res;
         
         $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
-        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate));
     
     });
     
