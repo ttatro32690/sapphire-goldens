@@ -7,14 +7,15 @@ body {
 
 html,
 body {
-   margin:0;
+   margin:40px 0 0;
    padding:0;
-   height:100%;
+   min-height:100%;
+   color: #eac75b;
 }
 
-/*p {*/
-/*    text-indent: 35px;*/
-/*}*/
+.white {
+    background: white;
+}
 
 .club{
     max-width: 200px;
@@ -24,8 +25,9 @@ body {
 }
 
 .content{
+    min-height: 100%;
     margin-top: 25px;
-    padding-bottom: 60px;
+    /*padding-bottom: 60px;*/
 }
 
 .fa {
@@ -86,7 +88,7 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a,
-.navbar-default .navbar-brand{
+.navbar-default .navbar-brand, a{
     color: #eac75b;
 }
 
@@ -97,18 +99,17 @@ body {
     padding-bottom: 13px;
 }
 
+a:hover {
+    color: white;
+}
+
 .navbar-default .navbar-text{
     color: #eac75b;
 }
 
 .panel{
     background: #010080;
-}
-
-.view{
-    color: #eac75b;
-    min-height: 100%;
-    position: relative;
+    padding: 0;
 }
 
 #about{
@@ -121,7 +122,7 @@ body {
 
 #footer{
     position: absolute;
-    bottom: 0;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 10px;
+    background: #010080;
 }
