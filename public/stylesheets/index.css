@@ -120,7 +120,7 @@ a:hover {
     text-align: center;
 }
 
-#footer{
+.footer{
     position: absolute;
     width: 100%;
     margin-top: 10px;
