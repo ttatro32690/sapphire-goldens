@@ -18,10 +18,8 @@ body {
 }
 
 .club{
-    max-width: 200px;
-    margin: auto;
-    padding: 0;
-    margin-top: 10px;
+    float: right;
+    max-width: 250px
 }
 
 .content{
@@ -109,18 +107,15 @@ a:hover {
 
 .panel{
     background: #010080;
+    border: 0;
     padding: 0;
 }
 
-#about{
-    text-align: center;
+.story{
+    text-indent: 30px;
 }
 
-#main-content{
-    text-align: center;
-}
-
-.footer{
+#footer{
     position: absolute;
     width: 100%;
     margin-top: 10px;
