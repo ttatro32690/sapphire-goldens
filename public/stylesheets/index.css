@@ -97,6 +97,50 @@ body {
     padding-bottom: 13px;
 }
 
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:focus, 
+.navbar-default .navbar-nav>.open>a:hover{
+    color: #eac75b;
+    background: #010080;
+}
+
+.dropdown-menu>li>a:focus, 
+.dropdown-menu>li>a:hover{
+    color: white;
+    background: #010080;
+}
+
+.navbar-nav>li>.dropdown-menu{
+    background: #eac75b;
+}
+
+.dropdown-menu>li>a{
+    color: #eac75b;
+    background: #010080;
+}
+
+.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle:hover {
+    background-color: #010080;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #eac75b;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #eac75b;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, 
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #eac75b;
+}
+
 a:hover {
     color: white;
 }
