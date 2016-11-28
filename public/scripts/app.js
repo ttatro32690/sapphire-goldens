@@ -213,57 +213,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/:id/show',
       templateUrl: '/views/pages/goldens/show.ejs',
       controller: 'goldenShowController'
-   })
-   
-// Gallery Routes
-
-   .state('gallery', {
-      url:'/gallery',
-      templateUrl: '/views/pages/gallery/gallery.ejs',
-      controller: 'galleryController'
-   })
-
-   .state('galleryIndex', {
-      parent: 'gallery',
-      url: '/index',
-      templateUrl: '/views/pages/gallery/index.ejs',
-      controller: 'galleryIndexController',
-      resolve: {
-         images: ['Image', function(Image){
-            return Image.query();
-         }]
-      }
-   })
-   
-   .state('galleryNew', {
-      parent: 'gallery',
-      url: '/new',
-      templateUrl: '/views/pages/gallery/edit.ejs',
-      controller: 'galleryNewController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }]
-      }
-   })
-   
-   .state('galleryEdit', {
-      parent: 'gallery',
-      url: '/:id/edit',
-      templateUrl: '/views/pages/gallery/edit.ejs',
-      controller: 'galleryEditController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }]
-      }
-   })
-   
-   .state('galleryShow', {
-      parent: 'gallery',
-      url: '/:id/show',
-      templateUrl: '/views/pages/gallery/show.ejs',
-      controller: 'galleryShowController',
    });
    
 }]);

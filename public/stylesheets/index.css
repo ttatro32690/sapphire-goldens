@@ -36,20 +36,6 @@ body {
     color: white;
 }
 
-.grid-image{
-    width: 100% !important;
-    height: auto !important;
-    position: relative;
-    display: block;
-}
-
-.image-row {
-    -moz-column-width: 18em;
-    -webkit-column-width: 18em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap:1em; 
-}
-
 .breadcrumb{
     background: #010080;
     color: #eac75b;
@@ -57,12 +43,6 @@ body {
 
 .breadcrumb a{
     color: #eac75b
-}
-
-.image{
-    width: 100%;
-    display: inline-block;
-    box-sizing: border-box;
 }
 
 .img-responsive{

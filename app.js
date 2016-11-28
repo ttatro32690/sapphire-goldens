@@ -14,8 +14,8 @@ mongoose.connect(db);
 
 app.set('view engine', 'ejs');
 
-//  var seeds = require('./seeds');
-//  seeds();
+// var seeds = require('./seeds');
+// seeds();
 
 var User = require('./models/users');
 
@@ -44,14 +44,12 @@ var applicationRoutes = require('./routes/application'),
       agreementRoutes = require('./routes/agreement'),
        sapphireRoutes = require('./routes/sapphire'),
          goldenRoutes = require('./routes/goldens'),
-          imageRoutes = require('./routes/image'),
           loginRoutes = require('./routes/users');
 
 app.use('/application', applicationRoutes);
 app.use('/agreement', agreementRoutes);
 app.use('/sapphire', sapphireRoutes);
 app.use('/goldens', goldenRoutes);
-app.use('/image', imageRoutes);
 app.use(loginRoutes);
 
 app.get('*', function(req, res){
