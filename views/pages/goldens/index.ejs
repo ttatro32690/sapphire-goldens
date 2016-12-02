@@ -12,12 +12,12 @@
         </select>
 </label>
 <a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
-<div class="row">
-    <div class="col-md-4" ng-repeat="golden in goldens | filter:search:strict">
+<div ng-repeat="golden in goldens | filter:search:strict">
+    <div class="col-xs-4">
         <div class="panel">
-            <div class="panel-header"></div>
+            <div class="panel-header">{{golden.name}}</div>
             <div class="panel-body">
-                {{golden.name}}
+                
                 <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{golden.url}}></a>
             </div>
         </div>
