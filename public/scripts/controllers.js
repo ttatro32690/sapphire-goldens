@@ -84,16 +84,20 @@ goldenApp.controller('agreementIndexController', ['$scope', 'agreements', functi
 goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement', function($scope, $state, agreement){
     
     $scope.new = true;
-    
     $scope.agreement = agreement;
     
     $scope.saveAgreement = function(){
         
-        console.log($scope.agreement.buyerDate);
-        
-        $scope.agreement.$save().then(function(res){
-            $state.go('agreementShow', {id: res._id});
-        });
+        if($scope.agree.$error.required == null){
+            console.log($scope.agreement.buyerDate);
+            
+            $scope.agreement.$save().then(function(res){
+                $state.go('agreementShow', {id: res._id});
+            });
+        } else {
+            
+        }
+
     };
     
 }]);

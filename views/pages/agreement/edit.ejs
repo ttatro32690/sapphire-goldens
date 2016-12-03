@@ -1,7 +1,7 @@
 <div class="col-md-8 col-md-offset-2">
     <h3 ng-if="new">New Agreement Form</h3>
     <h3 ng-if="edit">Update Agreement Form</h3>
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="agree">
         <div class="form-group container-fluid">
             <label>Special Provisions for This Sale</label>
             <input ng-model="agreement.specialProvision" type="text" class="form-control" placeholder="Special Provisions">
@@ -34,7 +34,7 @@
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Buyer</label>
-                <input ng-model="agreement.buyer" type="text" class="form-control" placeholder="Buyer">
+                <input ng-model="agreement.buyer" name="buyer" ng-required="true" type="text" class="form-control" placeholder="Buyer">
             </div>
             <div class="col-sm-6">
                 <label>Signed Date</label>
@@ -44,29 +44,29 @@
         <div class="form-group">
             <div class="col-sm-3">
                 <label>Address</label>
-                <input ng-model="agreement.address" type="text" class="form-control" placeholder="Address">    
+                <input ng-model="agreement.address" name="address" ng-required="true" type="text" class="form-control" placeholder="Address">    
             </div>
             <div class="col-sm-3">
                 <label>City</label>
-                <input ng-model="agreement.poBox" type="text" class="form-control" placeholder="City">
+                <input ng-model="agreement.city" name="city" ng-required="true" type="text" class="form-control" placeholder="City">
             </div>
             <div class="col-sm-3">
                 <label>State</label>
-                <input ng-model="agreement.state" type="text" class="form-control" placeholder="State">
+                <input ng-model="agreement.state" name="state" ng-required="true" type="text" class="form-control" placeholder="State">
             </div>
             <div class="col-sm-3">
                 <label>ZIP</label>
-                <input ng-model="agreement.zip" type="text" class="form-control" placeholder="Zip">
+                <input ng-model="agreement.zip" name="zip" ng-required="true" type="text" class="form-control" placeholder="Zip">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
                 <label>Telephone</label>
-                <input ng-model="agreement.phone" type="text" class="form-control" placeholder="Telephone">
+                <input ng-model="agreement.phone" name="phone" ng-required="true" type="text" class="form-control" placeholder="Telephone">
             </div>
             <div class="col-sm-6">
                 <label>Email</label>
-                <input ng-model="agreement.email" type="text" class="form-control" placeholder="Email">
+                <input ng-model="agreement.email" name="email" ng-required="true" type="text" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="form-group">
@@ -79,7 +79,16 @@
                 <input ng-model="agreement.breederDate" type="date" class="form-control" placeholder="Date">
             </div>
         </div>
-        <button ng-if="new" ng-click="saveAgreement()" class="btn btn-primary">Submit</button>
-        <button ng-if="edit" ng-click="updateAgreement()" class="btn btn-primary">Update</button>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="terms" name="terms" ng-required="true"> I agree to the terms and conditions documented here.
+            </label>
+        </div>
+        <div ng-if="new" class="form-group">
+            <input type="submit"  ng-click="saveAgreement()" class="btn btn-primary">
+        </div>
+        <div ng-if="edit" class="form-group">
+            <input type="submit" ng-click="updateAgreement()" class="btn btn-primary">
+        </div>
     </form>
 </div>
