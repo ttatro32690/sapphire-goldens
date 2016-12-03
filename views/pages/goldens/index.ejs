@@ -1,25 +1,56 @@
-<label>Text Search: 
-    <input ng-model="search.$" class="form-control"></input>
-</label>
-<label>Category Search
-        <select ng-model="search.type" class="form-control">
-            <option>Mother</option>
-            <option>Father</option>
-            <option>Litter</option>
-            <option>Bragging Rights</option>
-            <option>Retired</option>
-            <option></option>
-        </select>
-</label>
-<a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
-<div ng-repeat="golden in goldens | filter:search:strict">
-    <div class="col-xs-4">
-        <div class="panel">
-            <div class="panel-header">{{golden.name}}</div>
-            <div class="panel-body">
-                
-                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{golden.url}}></a>
+<div>
+    <label>Text Search: 
+        <input ng-model="search.$" class="form-control"></input>
+    </label>
+    <label>Category Search
+            <select ng-model="search.type" class="form-control">
+                <option>Mother</option>
+                <option>Father</option>
+                <option>Litter</option>
+                <option>Bragging Rights</option>
+                <option>Retired</option>
+                <option></option>
+            </select>
+    </label>
+
+    <a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
+</div>
+
+<div class="container-fluid">
+    <div ng-repeat="golden in goldens | filter:search:strict">
+        <div class="row" ng-if="$index % 3 == 0">
+            <div class="col-md-4">
+                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index].name}}</a>
+                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index].url}}></a>
+            </div>
+            <div class="col-md-4">
+                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index+1].name}}</a>
+                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index+1].url}}></a>
+            </div>
+            <div class="col-md-4">
+                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index+2].name}}</a>
+                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index+2].url}}></a>
             </div>
         </div>
     </div>
 </div>
+
+
+<!--<div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--        <div class="col-xs-4" ng-repeat="golden in goldens | filter:search:strict">-->
+<!--            <div class="clearfix" ng-if="$index % 3 == 0"></div>-->
+<!--                <div class="panel">-->
+<!--                    <div class="panel-header">-->
+<!--                        <div class="container-fluid">-->
+                            
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="panel-body">-->
+<!--                        <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{golden.url}}></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

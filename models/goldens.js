@@ -6,6 +6,9 @@ var GoldenSchema = mongoose.Schema({
     type: String,
     description: String,
     birthdate: Date,
+    k9data: String,
+    pedigree: String,
+    clearances: String,
     dateCreated: {type: Date, default: Date.now}
     
 });
