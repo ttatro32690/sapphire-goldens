@@ -20,37 +20,17 @@
     <div ng-repeat="golden in goldens | filter:search:strict">
         <div class="row" ng-if="$index % 3 == 0">
             <div class="col-md-4">
-                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index].name}}</a>
-                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index]._id})">{{goldens[$index].name}}</a>
+                <a ui-sref="goldensShow({id: goldens[$index]._id})" ><img class="img img-responsive" ng-src={{goldens[$index].url}}></a>
             </div>
             <div class="col-md-4">
-                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index+1].name}}</a>
-                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index+1].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index+1]._id})">{{goldens[$index+1].name}}</a>
+                <a ui-sref="goldensShow({id: goldens[$index+1]._id})" ><img class="img img-responsive" ng-src={{goldens[$index+1].url}}></a>
             </div>
             <div class="col-md-4">
-                <a ui-sref="goldensShow({id: golden._id})">{{goldens[$index+2].name}}</a>
-                <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{goldens[$index+2].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index+2]._id})">{{goldens[$index+2].name}}</a>
+                <a ui-sref="goldensShow({id: goldens[$index+2]._id})" ><img class="img img-responsive" ng-src={{goldens[$index+2].url}}></a>
             </div>
         </div>
     </div>
 </div>
-
-
-<!--<div class="container-fluid">-->
-<!--    <div class="row">-->
-<!--        <div class="col-xs-4" ng-repeat="golden in goldens | filter:search:strict">-->
-<!--            <div class="clearfix" ng-if="$index % 3 == 0"></div>-->
-<!--                <div class="panel">-->
-<!--                    <div class="panel-header">-->
-<!--                        <div class="container-fluid">-->
-                            
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="panel-body">-->
-<!--                        <a ui-sref="goldensShow({id: golden._id})" ><img class="img img-responsive" ng-src={{golden.url}}></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
