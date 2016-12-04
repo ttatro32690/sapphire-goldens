@@ -14,9 +14,6 @@ mongoose.connect(db);
 
 app.set('view engine', 'ejs');
 
-var seeds = require('./seeds');
-seeds();
-
 var User = require('./models/users');
 
 app.use(bodyParser.urlencoded({ extended: false }));
