@@ -13,11 +13,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/',
       templateUrl: '/views/pages/home/index.ejs',
       controller: 'homeController',
-      resolve: {
-         images: ['Image', function(Image){
-            return Image.query();
-         }]
-      }
    })
    
 // Login/Register Routes
@@ -93,7 +88,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
          agreement: ['Agreement', function(Agreement){
              var agreement = new Agreement();
              
-             agreement.dateWhelped = new Date();
              agreement.buyerDate = new Date();
              agreement.breederDate = new Date();
              

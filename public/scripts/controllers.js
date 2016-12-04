@@ -5,10 +5,6 @@ var goldenApp;
 //================
 
 goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', 'User', function($scope, $rootScope, $http, $state, User){
-    $rootScope.$on('$stateChangeError', 
-    function(event, toState, toParams, fromState, fromParams, error){ 
-        
-    });
     
     $rootScope.$watch('user', function(newValue, oldValue){
         
