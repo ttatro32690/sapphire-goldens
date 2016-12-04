@@ -1,7 +1,7 @@
     <h2 ng-if="new">New Application</h2>
     <h2 ng-if="edit">Edit Application</h2>
     <hr>
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="appl">
         <div class="col-md-12">
             <p>If an application is accepted, a deposit is necessay to put you on the list for a puppy!</p>
             <p>Please answer the following questions the best you can, so we can better understand your family.</p>
@@ -11,34 +11,34 @@
                 <div class="form-group">
                     <div class="col-sm-6">
                         <label>Name</label>
-                        <input ng-model="application.name" type="text" class="form-control" placeholder="Name">
+                        <input ng-model="application.name" type="text" ng-required="true" class="form-control" placeholder="Name">
                     </div>
                     <div class="col-sm-6">
                         <label>Date</label>
-                        <input ng-model="application.date" type="date" class="form-control" placeholder="Date">
+                        <input ng-model="application.date" type="date" ng-required="true" class="form-control" placeholder="Date">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3">
                         <label>Address</label>
-                        <input ng-model="application.address" type="text" class="form-control" placeholder="Address">    
+                        <input ng-model="application.address" type="text" ng-required="true" class="form-control" placeholder="Address">    
                     </div>
                     <div class="col-sm-3">
                         <label>City</label>
-                        <input ng-model="application.city" type="text" class="form-control" placeholder="City">
+                        <input ng-model="application.city" type="text" ng-required="true" class="form-control" placeholder="City">
                     </div>
                     <div class="col-sm-3">
                         <label>State</label>
-                        <input ng-model="application.state" type="text" class="form-control" placeholder="State">
+                        <input ng-model="application.state" type="text" ng-required="true" class="form-control" placeholder="State">
                     </div>
                     <div class="col-sm-3">
                         <label>ZIP</label>
-                        <input ng-model="application.zip" type="text" class="form-control" placeholder="Zip">
+                        <input ng-model="application.zip" type="text" ng-required="true" class="form-control" placeholder="Zip">
                     </div>
                 </div>
                     <div class="form-group container-fluid">
                         <label for="tel">Telephone</label>
-                        <input ng-model="application.telephone" type="tel" id="tel" class="form-control" placeholder="Telephone Number"></type>
+                        <input ng-model="application.telephone" type="tel" id="tel" ng-required="true" class="form-control" placeholder="Telephone Number"></type>
                     </div>
             </div>
             <div class="col-md-8 col-md-offset-2">
@@ -46,31 +46,31 @@
             <ol>
                 <div class="form-group">
                     <label for="q1"><li>Have you been lucky enough to have a golden retrieve in the past?</li></label>
-                    <textarea ng-model="application.prevOwner" id="q1" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.prevOwner" id="q1" ng-required="true" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q2"><li>Do you have a fenced in yard?</li></label>
-                    <textarea ng-model="application.yardFenced" id="q2" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.yardFenced" ng-required="true" id="q2" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q3"><li>Do you have children in the home under 8 years old?</li></label>
-                    <textarea ng-model="application.children" id="q3" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.children" ng-required="true" id="q3" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q4"><li>Do you have other pets?</li></label>
-                    <textarea ng-model="application.otherPets" id="q4" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.otherPets" ng-required="true" id="q4" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q5"><li>Are you prepared to care for a puppy physically, emotionally, and financially?</li></label>
-                    <textarea ng-model="application.prepared" id="q5" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.prepared" ng-required="true" id="q5" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q6"><li>What will you do with your new puppy dog while you are at work?</li></label>
-                    <textarea ng-model="application.daycare" id="q6" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.daycare" ng-required="true" id="q6" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="q7"><li>Would you prefer a male or female puppy?</li></label>
-                    <textarea ng-model="application.gender" id="q7" class="form-control" rows="3"></textarea>
+                    <textarea ng-model="application.gender" ng-required="true" id="q7" class="form-control" rows="2"></textarea>
                 </div>
                 <button ng-if="new" ng-click="saveApplication()" class="btn btn-primary">Submit</button>
                 <button ng-if="edit" ng-click="updateApplication()" class="btn btn-primary">Update</button>

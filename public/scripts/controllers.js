@@ -94,8 +94,6 @@ goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement',
             $scope.agreement.$save().then(function(res){
                 $state.go('agreementShow', {id: res._id});
             });
-        } else {
-            
         }
 
     };
@@ -109,17 +107,18 @@ goldenApp.controller('agreementEditController', ['$scope', '$state', '$statePara
     Agreement.get({id: $stateParams.id}, function(res){
         $scope.agreement = res;
         
-        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped));
         $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
         $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
         
     });
     
-    $scope.updateAgreement = function(){
-        $scope.agreement.$update(function(){
-            $state.go('agreementShow', {id: $stateParams.id});
-        });
-    };
+        $scope.updateAgreement = function(){
+            if($scope.agree.$error.required == null){
+                $scope.agreement.$update(function(){
+                    $state.go('agreementShow', {id: $stateParams.id});
+                });   
+            }
+        };
     
 }]);
 
@@ -128,7 +127,6 @@ goldenApp.controller('agreementShowController', ['$scope', '$state', '$statePara
     Agreement.get({id: $stateParams.id}, function(res){
         $scope.agreement = res;
         
-        $scope.agreement.dateWhelped = new Date($moment($scope.agreement.dateWhelped));
         $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
         $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
         
@@ -155,18 +153,19 @@ goldenApp.controller('applicationIndexController', ['$scope', '$state', 'Applica
 
 goldenApp.controller('applicationNewController', ['$scope', '$state', 'Application', function($scope, $state, Application){
     $scope.new = true;
-    
     $scope.application = new Application();
-    
     $scope.application.date = new Date();
     
-    $scope.saveApplication = function(){
-        $scope.application.$save(function(){
-            
-        }).then(function(res){
-            $state.go('applicationShow', {id: res._id});
-        });
-    };
+    
+        $scope.saveApplication = function(){
+            if($scope.appl.$error.required == null){
+                $scope.application.$save(function(){
+                    
+                }).then(function(res){
+                    $state.go('applicationShow', {id: res._id});
+                });
+            }
+        };   
 }]);
 
 goldenApp.controller('applicationEditController', ['$scope', '$state', '$stateParams', '$moment', 'Application', function($scope, $state, $stateParams, $moment, Application){
@@ -178,11 +177,14 @@ goldenApp.controller('applicationEditController', ['$scope', '$state', '$statePa
         $scope.application.date = new Date($moment($scope.application.date));
     });
     
-    $scope.updateApplication = function(){
-        $scope.application.$update(function(){
-            $state.go('applicationShow', {id: $stateParams.id});
-        });
-    };
+        $scope.updateApplication = function(){
+            if($scope.appl.$error.required == null){
+                $scope.application.$update(function(){
+                    $state.go('applicationShow', {id: $stateParams.id});
+                });
+            }
+        };   
+
 }]);
 
 goldenApp.controller('applicationShowController', ['$scope', '$state', '$stateParams', '$moment', 'Application', function($scope, $state, $stateParams, $moment, Application){
