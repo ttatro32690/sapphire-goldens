@@ -21,12 +21,10 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            // console.log("Removed Sapphire Goldens Data");
             Sapphire.create(sapphireData, function(err, sapphire){
                if(err){
                    console.log(err);
                } else {
-                //   console.log("Sapphire Data Initialized");
                }
             });
         }
