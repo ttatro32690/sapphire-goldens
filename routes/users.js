@@ -21,10 +21,14 @@ router.get('/logout', function(req, res){
     res.send("Successfully Logged Out");
 });
 
-router.post('/register', middleware.isLoggedIn, function(req, res){
+// router.post('/register', middleware.isLoggedIn, function(req, res){
+router.post('/register', function(req, res){
     var newUser = {
         username: req.body.username
     };
+    
+    console.log(req.body);
+    
     User.register(newUser, req.body.password, function(err, registeredUser){
         if(err){
             res.sendStatus(401);

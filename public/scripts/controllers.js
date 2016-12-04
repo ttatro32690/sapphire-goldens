@@ -29,23 +29,11 @@ goldenApp.controller('homeController', ['$scope', function($scope){
 // Login/Register Controllers
 //===========================
 goldenApp.controller('loginController', ['$scope', '$http', '$rootScope', '$state', 'User', function($scope, $http, $rootScope, $state, User){
-    
-    $scope.user = {
-        username: "Travis",
-        password: "Travis"
-    };
-    
     $scope.login = User.login;
     
 }]);
 
 goldenApp.controller('registerController', ['$scope', '$http', 'User', function($scope, $http, User){
-    $scope.user = {
-        username: "Travis",
-        password: "Travis"
-    };
-        
-    
     $scope.register = User.register;
 }]);
 

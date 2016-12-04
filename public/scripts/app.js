@@ -27,11 +27,11 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/register',
       templateUrl: '/views/users/register.ejs',
       controller: 'registerController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }]
-      }
+      // resolve: {
+      //    authorized: ['User', function(User){
+      //       return User.isLoggedIn();
+      //    }]
+      // }
    })
    
 // About Routes
