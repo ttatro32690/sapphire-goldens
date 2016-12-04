@@ -129,6 +129,10 @@ a:hover {
     color: #eac75b;
 }
 
+.goldens-container{
+    text-align: center;
+}
+
 .panel{
     background: #010080;
     border: 0;

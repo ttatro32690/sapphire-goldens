@@ -2,13 +2,13 @@
     <div class="container">
         <div class="panel panel-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-7 col-md-6">
                     <div class="col-md-6 col-md-offset-3">
                         <h3>{{sapphire.mainTitle}}</h3>
                         <p>Founded in 1994 and proudly serving South Eastern Massachusetts</p>
                     </div>
                 </div>
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-xs-5 col-md-5 col-md-offset-1">
                     <img class="img img-responsive pull-right" ng-src="/public/images/sapphire_logo.png">
                 </div>
             </div>
@@ -22,9 +22,11 @@
                     <img class="img img-responsive" ng-src="/public/images/sapphire_main2.jpg">
                 </div>
                 <div class="col-md-8">
-                    <h3>Our Story</h3>
-                    <hr>
-                    <p class="story" ng-repeat="story in sapphire.story">{{story}}</p>
+                    <div class="container-fluid">
+                        <h3>Our Story</h3>
+                        <hr>
+                        <p class="story" ng-repeat="story in sapphire.story">{{story}}</p>
+                    </div>
                 </div>
             </div>
         </div>

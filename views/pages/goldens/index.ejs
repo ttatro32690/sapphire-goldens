@@ -2,7 +2,7 @@
     <label>Text Search: 
         <input ng-model="search.$" class="form-control"></input>
     </label>
-    <label>Category Search
+    <label>Category Search:
             <select ng-model="search.type" class="form-control">
                 <option>Mother</option>
                 <option>Father</option>
@@ -16,7 +16,7 @@
     <a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid goldens-container">
     <div ng-repeat="golden in goldens | filter:search:strict">
         <div class="row" ng-if="$index % 3 == 0">
             <div class="col-md-4">
