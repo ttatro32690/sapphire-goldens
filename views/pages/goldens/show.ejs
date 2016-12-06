@@ -1,16 +1,37 @@
-<div class="col-md-8 col-md-offset-2">
-    <h4>
-        {{golden.name}}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <span ng-show="user" class="pull-left">
+            <a ui-sref="goldensEdit({id: golden._id})" class="btn btn-primary btn-xs">Edit</a>
+            <a ng-click="deleteGolden()" class="btn btn-primary btn-xs">Delete</a>
+        </span>
         <span class="pull-right">
             <a ui-sref="goldensIndex">Back to Goldens</a>
         </span>
-    </h4>
-    <img class="img img-responsive" ng-src="{{golden.url}}">
-    <h5>Description: {{golden.description}}</h5>
-    <h5>Type: {{golden.type}}</h5>
-    <h5>Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</h5>
-    <span ng-show="user" class="pull-right">
-        <a ui-sref="goldensEdit({id: golden._id})" class="btn btn-primary btn-xs">Edit</a>
-        <a ng-click="deleteGolden()" class="btn btn-primary btn-xs">Delete</a>
-    </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{golden.name}}
+            </div>
+            <div class="panel-body">
+                <img class="img img-responsive" ng-src="{{golden.url}}">
+                <div class="container">
+                    <h5>Description: {{golden.description}}</h5>
+                    <h5>Type: {{golden.type}}</h5>
+                    <h5>Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</h5>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3"><a href="{{golden.k9data}}"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
+                        <div class="col-sm-3"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
+                        <div class="col-sm-3"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

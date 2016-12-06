@@ -21,15 +21,15 @@
         <div class="row" ng-if="$index % 3 == 0">
             <div class="col-md-4">
                 <a ui-sref="goldensShow({id: goldens[$index]._id})">{{goldens[$index].name}}</a>
-                <a ui-sref="goldensShow({id: goldens[$index]._id})" ><img class="img img-responsive" ng-src={{goldens[$index].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index]._id})" ><img class="golden-image img img-responsive" ng-src={{goldens[$index].url}}></a>
             </div>
             <div class="col-md-4">
                 <a ui-sref="goldensShow({id: goldens[$index+1]._id})">{{goldens[$index+1].name}}</a>
-                <a ui-sref="goldensShow({id: goldens[$index+1]._id})" ><img class="img img-responsive" ng-src={{goldens[$index+1].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index+1]._id})" ><img class="golden-image img img-responsive" ng-src={{goldens[$index+1].url}}></a>
             </div>
             <div class="col-md-4">
                 <a ui-sref="goldensShow({id: goldens[$index+2]._id})">{{goldens[$index+2].name}}</a>
-                <a ui-sref="goldensShow({id: goldens[$index+2]._id})" ><img class="img img-responsive" ng-src={{goldens[$index+2].url}}></a>
+                <a ui-sref="goldensShow({id: goldens[$index+2]._id})" ><img class="golden-image img img-responsive" ng-src={{goldens[$index+2].url}}></a>
             </div>
         </div>
     </div>
