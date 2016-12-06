@@ -18,17 +18,17 @@
             <div class="panel-body">
                 <img class="img img-responsive" ng-src="{{golden.url}}">
                 <div class="container">
-                    <h5>Description: {{golden.description}}</h5>
-                    <h5>Type: {{golden.type}}</h5>
-                    <h5>Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</h5>
+                    <h5 ng-show="golden.description">Description: {{golden.description}}</h5>
+                    <h5 ng-show="golden.type" >Type: {{golden.type}}</h5>
+                    <h5 ng-show="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</h5>
                 </div>
             </div>
             <div class="panel-footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-3"><a href="{{golden.k9data}}"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
-                        <div class="col-sm-3"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
-                        <div class="col-sm-3"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
+                        <div ng-show="golden.k9data" class="col-sm-3"><a href="{{golden.k9data}}"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
+                        <div ng-show="golden.pedigree" class="col-sm-3"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
+                        <div ng-show="golden.clearances" class="col-sm-3"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
                     </div>
                 </div>
             </div>

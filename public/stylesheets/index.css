@@ -169,3 +169,19 @@ a:hover {
     background-color: #010080;
     padding: 0;
 }
+
+.btn-primary{
+    background-color: #010080;
+    color: #eac75b;
+    border: 1px solid #eac75b;
+}
+
+.btn-primary:hover{
+    background-color: #eac75b;
+    color: #010080;
+    border: 1px solid #010080;
+}
+
+#search{
+    margin-top: 10px;
+}

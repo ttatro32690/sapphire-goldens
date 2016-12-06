@@ -1,19 +1,23 @@
-<div>
-    <label>Text Search: 
-        <input ng-model="search.$" class="form-control"></input>
-    </label>
-    <label>Category Search:
+<div class="container">
+    <a class="btn btn-primary" role="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="collapse" id="search">
+    <div class="form-inline">
+        <div class="form-group">
+            <input ng-model="search.$" class="form-control" placeholder="Free Text Search"></input>
             <select ng-model="search.type" class="form-control">
                 <option>Mother</option>
                 <option>Father</option>
                 <option>Litter</option>
                 <option>Bragging Rights</option>
                 <option>Retired</option>
-                <option></option>
             </select>
-    </label>
-
-    <a href="" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <button class="btn btn-primary" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid goldens-container">
