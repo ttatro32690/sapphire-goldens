@@ -6,7 +6,7 @@ var goldenApp;
 
 goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', 'User', function($scope, $rootScope, $http, $state, User){
     
-    $rootScope.$watch('user', function(newValue, oldValue){
+    $rootScope.$1watch('user', function(newValue, oldValue){
         
     });
     
@@ -243,7 +243,6 @@ goldenApp.controller('goldenShowController', ['$scope', '$state', '$stateParams'
        $scope.golden = res;
        
         $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
-        $scope.golden.whelpedDate = new Date($moment($scope.golden.whelpedDate));
    });
    
    $scope.deleteGolden = function(){

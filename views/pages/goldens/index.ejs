@@ -1,21 +1,29 @@
-<div class="container">
-    <a class="btn btn-primary" role="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
-        <i class="fa fa-search" aria-hidden="true"></i>
-    </a>
-</div>
+<div class="row search-bar">
+    <div class="col-md-1">
+        <div class="container-fluid">
+            <div class="form-inline">
+                <button class="btn btn-primary btn-lg" role="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>  
+            </div>
+        </div>
+    </div>
 
-<div class="collapse" id="search">
-    <div class="form-inline">
-        <div class="form-group">
-            <input ng-model="search.$" class="form-control" placeholder="Free Text Search"></input>
-            <select ng-model="search.type" class="form-control">
-                <option>Mother</option>
-                <option>Father</option>
-                <option>Litter</option>
-                <option>Bragging Rights</option>
-                <option>Retired</option>
-            </select>
-            <button class="btn btn-primary" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></button>
+    <div class="col-md-11">
+        <div class="collapse" id="search">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input ng-model="search.$" class="form-control" placeholder="Free Text Search"></input>
+                    <select ng-model="search.type" class="form-control">
+                        <option>Mother</option>
+                        <option>Father</option>
+                        <option>Litter</option>
+                        <option>Bragging Rights</option>
+                        <option>Retired</option>
+                    </select>
+                    <button class="btn btn-primary" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
