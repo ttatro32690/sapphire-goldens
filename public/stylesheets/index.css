@@ -166,6 +166,11 @@ a:hover {
     border-top: 2px solid #eac75b;
 }
 
+.golden-row{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .panel-footer{
     background-color: #010080;
     padding: 0;

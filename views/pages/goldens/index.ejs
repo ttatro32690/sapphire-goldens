@@ -30,7 +30,8 @@
 
 <div class="container-fluid goldens-container">
     <div ng-repeat="golden in goldens | filter:search:strict">
-        <div class="row" ng-if="$index % 3 == 0">
+        <hr class="hidden-xs hidden-sm" ng-if="$index % 3 == 0">
+        <div class="row golden-row" ng-if="$index % 3 == 0">
             <div class="col-md-4">
                 <a ui-sref="goldensShow({id: goldens[$index]._id})">{{goldens[$index].name}}</a>
                 <a ui-sref="goldensShow({id: goldens[$index]._id})" ><img class="golden-image img img-responsive" ng-src={{goldens[$index].url}}></a>
