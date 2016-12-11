@@ -10,9 +10,14 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
         $state.go('landing');
     });
     
+    $rootScope.$on('$stateChangeSuccess', function(event, toParams, fromState, fromParams, error){
+        var body = $('body');
+        body.hide().fadeIn({
+    		duration: 1000,
+    	});
+    });
+    
     $scope.logout = User.logout;
-    
-    
     
 }]);
 
@@ -191,10 +196,11 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     $state.go('goldensIndex');
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
-   $scope.search = {};
+goldenApp.controller('goldenIndexController', ['$scope', '$state', 'goldens', function($scope, $state, goldens){
    
-   $scope.goldens = Golden.query();
+   $scope.goldens = goldens;
+   
+   $scope.search = {};
    
    $scope.clearData = function(){
        $scope.search = {};

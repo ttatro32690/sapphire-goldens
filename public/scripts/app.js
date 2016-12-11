@@ -175,7 +175,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'goldens',
       url: '/index',
       templateUrl: '/views/pages/goldens/index.ejs',
-      controller: 'goldenIndexController'
+      controller: 'goldenIndexController',
+      resolve: {
+         goldens: ['Golden', function(Golden){
+            return Golden.query();
+         }]
+      }
    })
    
    .state('goldensNew',{
