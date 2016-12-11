@@ -12,6 +12,8 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
     
     $scope.logout = User.logout;
     
+    
+    
 }]);
 
 //=================
