@@ -10,13 +10,6 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
         $state.go('landing');
     });
     
-    $rootScope.$on('$stateChangeSuccess', function(event, toParams, fromState, fromParams, error){
-        var body = $('body');
-        body.hide().fadeIn({
-    		duration: 1000,
-    	});
-    });
-    
     $scope.logout = User.logout;
     
 }]);
