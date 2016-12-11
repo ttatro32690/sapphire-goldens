@@ -147,7 +147,12 @@ a:hover {
 }
 
 .golden-image{
-    max-height: 200px;
+    height: 200px;
+}
+
+.golden-block{
+    margin-top:25px;
+    margin-bottom: 25px;
 }
 
 .panel-default>.panel-heading {
@@ -163,11 +168,6 @@ a:hover {
 
 .golden-data {
     border-top: 2px solid #eac75b;
-}
-
-.golden-row{
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
 .panel-footer{
