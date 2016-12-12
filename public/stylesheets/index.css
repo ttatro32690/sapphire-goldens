@@ -148,6 +148,11 @@ a:hover {
 
 .golden-image{
     height: 200px;
+    width: auto;
+}
+
+.golden-show-image{
+    min-height: 250px;
 }
 
 .golden-block{

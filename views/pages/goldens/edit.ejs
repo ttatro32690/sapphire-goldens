@@ -1,55 +1,80 @@
-<div class="col-md-8 col-md-offset-2">
-    <form name="goldenForm">
-        <h2 ng-if="new">New Golden</h2>
-        <h2 ng-if="edit">Edit Golden</h2>
-    
-        <div class="form-group">
-            <label>Name</label>
-            <input ng-model="golden.name" type="text" class="form-control" placeholder="Name">
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form name="goldenForm">
+            <h2 ng-if="new">New Golden</h2>
+            <h2 ng-if="edit">Edit Golden</h2>
+        
+            <div class="form-group">
+                <label>Name</label>
+                <input ng-model="golden.name" type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label>Image Url</label>
+                <input ng-model="golden.url" type="text" class="form-control" placeholder="Url">
+            </div>
+            <div class="form-group">
+                Golden Type
+                <select ng-model="golden.type" class="form-control">
+                    <option>Mother</option>
+                    <option>Father</option>
+                    <option>Litter</option>
+                    <option>Bragging Rights</option>
+                    <option>Retired</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input ng-model="golden.description" type="text" class="form-control" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label>Birthdate</label>
+                <input ng-model="golden.birthdate" type="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>K9 Data Link</label>
+                <input ng-model="golden.k9data" type="text" class="form-control" placeholder="K9 Data">
+            </div>
+            <div class="form-group">
+                <label>Pedigree</label>
+                <input ng-model="golden.pedigree" type="text" class="form-control" placeholder="Pedigree">
+            </div>
+            <div class="form-group">
+                <label>Clearances</label>
+                <input ng-model="golden.clearances" type="text" class="form-control" placeholder="Clearances">
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input ng-model="golden.imageFile" type="file" class="form-control">
+            </div>
+            <div ng-if="new" class="form-group">
+                <input type="submit" value="Submit" ng-click="saveGolden()" class="btn btn-primary">
+            </div>
+            <div ng-if="edit" class="form-group">
+                <input type="submit" value="Update" ng-click="updateGolden()" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <h3>Preview</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{golden.name}}
+            </div>
+            <div class="panel-body">
+                <img class="golden-show-image img img-responsive" ng-src="{{golden.url}}">
+                <div class="col-md-12">
+                    <p ng-show="golden.description">Description: {{golden.description}}</p>
+                    <p ng-show="golden.type" >Type: {{golden.type}}</p>
+                    <p ng-show="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div ng-show="golden.k9data" class="col-sm-3"><a href="{{golden.k9data}}"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
+                    <div ng-show="golden.pedigree" class="col-sm-3"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
+                    <div ng-show="golden.clearances" class="col-sm-3"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Image Url</label>
-            <input ng-model="golden.url" type="text" class="form-control" placeholder="Url">
-        </div>
-        <div class="form-group">
-            Golden Type
-            <select ng-model="golden.type" class="form-control">
-                <option>Mother</option>
-                <option>Father</option>
-                <option>Litter</option>
-                <option>Bragging Rights</option>
-                <option>Retired</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input ng-model="golden.description" type="text" class="form-control" placeholder="Description">
-        </div>
-        <div class="form-group">
-            <label>Birthdate</label>
-            <input ng-model="golden.birthdate" type="date" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>K9 Data Link</label>
-            <input ng-model="golden.k9data" type="text" class="form-control" placeholder="K9 Data">
-        </div>
-        <div class="form-group">
-            <label>Pedigree</label>
-            <input ng-model="golden.pedigree" type="text" class="form-control" placeholder="Pedigree">
-        </div>
-        <div class="form-group">
-            <label>Clearances</label>
-            <input ng-model="golden.clearances" type="text" class="form-control" placeholder="Clearances">
-        </div>
-        <div class="form-group">
-            <label>Image</label>
-            <input ng-model="golden.imageFile" type="file" class="form-control">
-        </div>
-        <div ng-if="new" class="form-group">
-            <input type="submit" value="Submit" ng-click="saveGolden()" class="btn btn-primary">
-        </div>
-        <div ng-if="edit" class="form-group">
-            <input type="submit" value="Update" ng-click="updateGolden()" class="btn btn-primary">
-        </div>
-    </form>
+    </div>
 </div>
