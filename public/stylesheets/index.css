@@ -171,6 +171,10 @@ a:hover {
     background-color: #010080;
 }
 
+.panel-body p{
+    word-break:break-all;
+}
+
 .golden-data {
     border-top: 2px solid #eac75b;
 }
