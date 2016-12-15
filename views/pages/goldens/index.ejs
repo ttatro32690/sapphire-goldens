@@ -30,7 +30,7 @@
 
 <div class="container-fluid goldens-container">
     <div class="row">
-        <div ng-repeat="golden in goldens | filter:search:strict">
+        <div ng-repeat="golden in goldens | filter:search:strict | orderBy:'dateCreated'">
             <div class="col-md-4 golden-block">
                 <a ui-sref="goldensShow({id: golden._id})">{{golden.name}}</a>
                 <a ui-sref="goldensShow({id: golden._id})" ><img class="golden-image img img-responsive" ng-src={{golden.url}}></a>
