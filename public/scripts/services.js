@@ -29,13 +29,17 @@ goldenApp.service('User', ['$http', '$q', '$rootScope', '$state', function($http
    var User = {};
    
    User.login = function(user){
-        $http.post('/login', user)
+       
+       var defer = $q.defer();
+       
+       $http.post('/login', user)
         .then(function successCallback(response){
-            $rootScope.user = response.data;
-            $state.go('landing');
+            defer.resolve(response);
         }, function errorCallback(response){
-            console.log(response);
+            defer.reject(response);
         });
+        
+        return defer.promise;
     };
    
    User.isLoggedIn = function(){
@@ -52,22 +56,24 @@ goldenApp.service('User', ['$http', '$q', '$rootScope', '$state', function($http
     };
     
     User.logout = function(){
-        $http.get('/logout')
+        return $http.get('/logout')
         .then(function successCallback(){
-            $rootScope.user = null;
-            $state.go('landing');
+                
         });
     };
     
     User.register = function(user){
-        console.log('clicked');
+        
+        var defer = $q.defer();
         
         $http.post('/register', user)
-        .then(function successCallback(){
-            
+        .then(function successCallback(response){
+            defer.resolve('Authorized');
         }, function errorCallback(response){
-            
+            defer.reject('Not Authorized');
         });
+        
+        return defer.promise;
     };
    
    return User;

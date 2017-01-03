@@ -4,19 +4,32 @@ var goldenApp;
 // Root Controller
 //================
 
-goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', 'User', function($scope, $rootScope, $http, $state, User){
+goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', '$timeout', 'User', function($scope, $rootScope, $http, $state, $timeout, User){
     
     $rootScope.$on('$stateChangeError', function(event, toParams, fromState, fromParams, error){
         $state.go('landing');
     });
     
-    $scope.logout = User.logout;
+    $scope.userLogout = function(){
+        var promise = User.logout();
+        
+        promise.then(function(message){
+            $scope.message = "Successfully Logged Out";
+            
+            $timeout(function(){
+                $rootScope.user = null;
+                $scope.message = null;
+                $state.go('landing');
+            }, 1500);  
+        });
+    };
+
     
 }]);
 
 //=================
 // Home Controllers
-//=================
+//=================         
 goldenApp.controller('homeController', ['$scope', function($scope){
 
 }]);
@@ -24,13 +37,58 @@ goldenApp.controller('homeController', ['$scope', function($scope){
 //===========================
 // Login/Register Controllers
 //===========================
-goldenApp.controller('loginController', ['$scope', '$http', '$rootScope', '$state', 'User', function($scope, $http, $rootScope, $state, User){
-    $scope.login = User.login;
-    
+goldenApp.controller('loginController', ['$scope', '$http', '$rootScope', '$state', '$timeout', 'User', function($scope, $http, $rootScope, $state, $timeout, User){
+
+    $scope.userLogin = function(user){
+        
+        if($scope.login.$error.required == null){
+            $scope.message = null;
+            $scope.warning = null;
+            
+            var promise = User.login(user);
+            
+            promise.then(function(message){
+                if(message.status == 200){
+                    $scope.message = "Successfully Logged In As: " + message.data;
+                    $timeout(function(){
+                        $rootScope.user = message.data;
+                        $state.go('landing');
+                    }, 1500);
+                }
+            }, function(warning){
+                if(warning.status == 401){
+                    $scope.warning = "Invalid Username and/or Password, Please Try Again!";
+                }
+            });
+        }
+    };
+
 }]);
 
-goldenApp.controller('registerController', ['$scope', '$http', 'User', function($scope, $http, User){
-    $scope.register = User.register;
+goldenApp.controller('registerController', ['$scope', '$http', '$rootScope', '$state', '$timeout', 'User', function($scope, $http, $rootScope, $state, $timeout, User){
+    
+    $scope.registerUser = function(user){
+        if($scope.register.$error.required == null){
+            $scope.message = null;
+            $scope.warning = null;
+            
+            var promise = User.register(user);
+            
+            promise.then(function(message){
+                if(message.status == 200){
+                    $scope.message = "Successfully Registered As: " + message.data;
+                    $timeout(function(){
+                        $state.go('landing');
+                    }, 1500);
+                }
+            }, function(warning){
+                if(warning.status == 401){
+                    $scope.warning = "Could Not Register User";
+                }
+            });
+        }   
+    };
+    
 }]);
 
 //==================

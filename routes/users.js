@@ -26,8 +26,6 @@ router.post('/register', middleware.isLoggedIn, function(req, res){
         username: req.body.username
     };
     
-    console.log(req.body);
-    
     User.register(newUser, req.body.password, function(err, registeredUser){
         if(err){
             res.sendStatus(401);

@@ -14,3 +14,9 @@ goldenApp.directive('footer', function(){
    };
 });
 
+goldenApp.directive('message', function(){
+   return{
+      templateUrl: '/views/templates/message.ejs',
+      replace: true
+   };
+});
