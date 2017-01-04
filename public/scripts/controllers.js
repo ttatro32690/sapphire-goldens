@@ -298,6 +298,8 @@ goldenApp.controller('goldenShowController', ['$scope', '$state', '$stateParams'
        $scope.golden = res;
        
         $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
+        
+        $scope.goldens = Golden.query({name: $scope.golden.name}); 
    });
    
    $scope.deleteGolden = function(){

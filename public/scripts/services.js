@@ -5,9 +5,9 @@ goldenApp.factory('Sapphire', ['$resource', function($resource){
 }]);
 
 goldenApp.factory('Golden', ['$resource', function($resource){
-   return $resource('/goldens/:id', {id: '@_id'},
+   return $resource('/goldens/:id', {id: '@_id', name: '@name'},
    {
-      'update': {method: 'PUT'}
+        'update': {method: 'PUT'}
    });
 }]);
 

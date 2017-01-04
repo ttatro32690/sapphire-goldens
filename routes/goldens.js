@@ -4,7 +4,8 @@ var middleware = require('../middleware/app');
 var Goldens = require('../models/goldens');
 
 router.get('/', function(req, res){
-    Goldens.find({}, function(err, goldens){
+    
+    Goldens.find(req.query, function(err, goldens){
        if(err){
            console.log(err);
        } else {
