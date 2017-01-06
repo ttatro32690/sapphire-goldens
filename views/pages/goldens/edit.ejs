@@ -13,14 +13,18 @@
                 <input ng-model="golden.url" type="text" class="form-control" placeholder="Url">
             </div>
             <div class="form-group">
-                Golden Type
-                <select ng-model="golden.type" class="form-control">
-                    <option>Mother</option>
-                    <option>Father</option>
-                    <option>Litter</option>
-                    <option>Bragging Rights</option>
-                    <option>Retired</option>
-                </select>
+                <label>Type</label>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <input ng-if="existing == false" ng-model="golden.type" type="text" class="form-control form-horizontal" placeholder="Type">
+                        <select ng-if="existing == true" ng-model="golden.type" ng-options="type for type in types" class="form-control"></select>
+                        <option value="" ng-if="false"></option>
+                    </div>
+                    <div class="col-xs-4">
+                        <button ng-click="changeTypeInput()" ng-if="existing == true" class="btn btn-sm btn-primary">New Entry</button>
+                        <button ng-click="changeTypeInput()" ng-if="existing == false" class="btn btn-sm btn-primary">Existing Entry</button>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>Description</label>

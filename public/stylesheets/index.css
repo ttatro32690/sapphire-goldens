@@ -11,6 +11,10 @@ body {
    padding:0;
    min-height:100%;
    color: #eac75b;
+   background: url('/images/background.jpg');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   background-attachment: fixed;
 }
 
 .white {

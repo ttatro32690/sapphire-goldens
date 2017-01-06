@@ -247,11 +247,22 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     $state.go('goldensIndex');
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', '$state', 'goldens', function($scope, $state, goldens){
-   
-   $scope.goldens = goldens;
+goldenApp.controller('goldenIndexController', ['$scope', 'Golden', function($scope, Golden){
    
    $scope.search = {};
+   $scope.types = [];
+   
+   Golden.query(function(goldens){
+       $scope.goldens = goldens;
+
+        goldens.forEach(function(golden, index){
+            if(golden.type != null){
+               if($scope.types.includes(golden.type) == false){
+                   $scope.types.push(golden.type);
+               }
+            }
+        });
+    });
    
    $scope.clearData = function(){
        $scope.search = {};
@@ -259,11 +270,26 @@ goldenApp.controller('goldenIndexController', ['$scope', '$state', 'goldens', fu
 }]);
 
 goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
+    
     $scope.new = true;
-    
+    $scope.types = [];
+    $scope.existing = true;
     $scope.golden = new Golden();
-    
     $scope.golden.birthdate = new Date();
+    
+    Golden.query(function(goldens){
+        goldens.forEach(function(golden, index){
+            if(golden.type != null){
+               if($scope.types.includes(golden.type) == false){
+                   $scope.types.push(golden.type);
+               }
+            }
+        });
+    });
+    
+    $scope.changeTypeInput = function(){
+        $scope.existing = !$scope.existing;
+    };
     
     $scope.saveGolden = function(){
         
@@ -277,14 +303,27 @@ goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', funct
 
 goldenApp.controller('goldenEditController', ['$scope', '$state', '$stateParams', '$moment', 'Golden', function($scope, $state, $stateParams, $moment, Golden){
     $scope.edit = true;
+    $scope.existing = true;
+    $scope.types = [];
     
     Golden.get({id: $stateParams.id}, function(res){
-    
         $scope.golden = res;
-        
         $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
-    
     });
+    
+    Golden.query(function(goldens){
+        goldens.forEach(function(golden, index){
+            if(golden.type != null){
+               if($scope.types.includes(golden.type) == false){
+                   $scope.types.push(golden.type);
+               }
+            }
+        });
+    });
+    
+    $scope.changeTypeInput = function(){
+        $scope.existing = !$scope.existing;
+    };
     
     $scope.updateGolden = function(){
         $scope.golden.$update(function(){

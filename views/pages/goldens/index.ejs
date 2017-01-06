@@ -14,12 +14,7 @@
             <div class="form-inline">
                 <div class="form-group">
                     <input ng-model="search.$" class="form-control" placeholder="Free Text Search"></input>
-                    <select ng-model="search.type" class="form-control">
-                        <option>Mother</option>
-                        <option>Father</option>
-                        <option>Litter</option>
-                        <option>Bragging Rights</option>
-                        <option>Retired</option>
+                    <select ng-model="search.type" ng-options="type for type in types" class="form-control">
                     </select>
                     <button class="btn btn-primary" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
