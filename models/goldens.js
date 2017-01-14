@@ -9,6 +9,7 @@ var GoldenSchema = mongoose.Schema({
     k9data: String,
     pedigree: String,
     clearances: String,
+    imageFile: String,
     dateCreated: {type: Date, default: Date.now}
     
 });

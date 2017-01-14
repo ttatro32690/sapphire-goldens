@@ -48,13 +48,13 @@
             </div>
             <div class="form-group">
                 <label>Image</label>
-                <input ng-model="golden.imageFile" type="file" class="form-control">
+                <input onchange="angular.element(this).scope().fileChanged(this)" type="file" class="form-control">
             </div>
             <div ng-if="new" class="form-group">
-                <input type="submit" value="Submit" ng-click="saveGolden()" class="btn btn-primary">
+                <input type="submit" value="Submit" ng-click="saveGolden(golden)" class="btn btn-primary">
             </div>
             <div ng-if="edit" class="form-group">
-                <input type="submit" value="Update" ng-click="updateGolden()" class="btn btn-primary">
+                <input type="submit" value="Update" ng-click="updateGolden(golden)" class="btn btn-primary">
             </div>
         </form>
     </div>

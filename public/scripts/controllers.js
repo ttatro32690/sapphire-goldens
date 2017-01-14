@@ -127,8 +127,7 @@ goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement',
     $scope.saveAgreement = function(){
         
         if($scope.agree.$error.required == null){
-            console.log($scope.agreement.buyerDate);
-            
+
             $scope.agreement.$save().then(function(res){
                 $state.go('agreementShow', {id: res._id});
             });
@@ -247,103 +246,57 @@ goldenApp.controller('goldenController', ['$scope', '$state', function($scope, $
     $state.go('goldensIndex');
 }]);
 
-goldenApp.controller('goldenIndexController', ['$scope', 'Golden', function($scope, Golden){
+goldenApp.controller('goldenIndexController', ['$scope', 'GoldenFunctions', function($scope, GoldenFunctions){
    
    $scope.search = {};
-   $scope.types = [];
-   
-   Golden.query(function(goldens){
-       $scope.goldens = goldens;
-
-        goldens.forEach(function(golden, index){
-            if(golden.type != null){
-               if($scope.types.includes(golden.type) == false){
-                   $scope.types.push(golden.type);
-               }
-            }
-        });
-    });
+   $scope.types = GoldenFunctions.typeChoices();
+   $scope.goldens = GoldenFunctions.getAllGoldens();
    
    $scope.clearData = function(){
        $scope.search = {};
    };
 }]);
 
-goldenApp.controller('goldenNewController', ['$scope', '$state', 'Golden', function($scope, $state, Golden){
+goldenApp.controller('goldenNewController', ['$scope', 'GoldenFunctions', function($scope, GoldenFunctions){
     
+    $scope.golden = GoldenFunctions.newGolden();
     $scope.new = true;
-    $scope.types = [];
+    $scope.types = GoldenFunctions.typeChoices();
     $scope.existing = true;
-    $scope.golden = new Golden();
-    $scope.golden.birthdate = new Date();
     
-    Golden.query(function(goldens){
-        goldens.forEach(function(golden, index){
-            if(golden.type != null){
-               if($scope.types.includes(golden.type) == false){
-                   $scope.types.push(golden.type);
-               }
-            }
-        });
-    });
+    $scope.saveGolden = GoldenFunctions.saveGolden;
     
     $scope.changeTypeInput = function(){
         $scope.existing = !$scope.existing;
     };
     
-    $scope.saveGolden = function(){
-        
-        $scope.golden.$save(function(){
-            
-        }).then(function(res){
-            $state.go('goldensShow', {id: res._id});
-        });
-    };
 }]);
 
-goldenApp.controller('goldenEditController', ['$scope', '$state', '$stateParams', '$moment', 'Golden', function($scope, $state, $stateParams, $moment, Golden){
+goldenApp.controller('goldenEditController', ['$scope', '$stateParams', 'GoldenFunctions', function($scope, $stateParams, GoldenFunctions){
     $scope.edit = true;
     $scope.existing = true;
-    $scope.types = [];
+    $scope.types = GoldenFunctions.typeChoices();
     
-    Golden.get({id: $stateParams.id}, function(res){
-        $scope.golden = res;
-        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
-    });
+    $scope.golden = GoldenFunctions.getGolden($stateParams.id);
+    $scope.updateGolden = GoldenFunctions.updateGolden;
     
-    Golden.query(function(goldens){
-        goldens.forEach(function(golden, index){
-            if(golden.type != null){
-               if($scope.types.includes(golden.type) == false){
-                   $scope.types.push(golden.type);
-               }
-            }
-        });
-    });
+    //File Functions
+    $scope.fileChanged = function(element){
+        $scope.golden.imageFile = element.files;
+    };
     
     $scope.changeTypeInput = function(){
         $scope.existing = !$scope.existing;
     };
-    
-    $scope.updateGolden = function(){
-        $scope.golden.$update(function(){
-            $state.go('goldensShow', {id: $stateParams.id});
-        });
-    };
 }]);
 
-goldenApp.controller('goldenShowController', ['$scope', '$state', '$stateParams', '$moment', 'Golden', function($scope, $state, $stateParams, $moment, Golden){
-   Golden.get({id: $stateParams.id}, function(res){
-       $scope.golden = res;
-       
-        $scope.golden.birthdate = new Date($moment($scope.golden.birthdate));
-        
-        $scope.goldens = Golden.query({name: $scope.golden.name}); 
-   });
-   
-   $scope.deleteGolden = function(){
-       $scope.golden.$remove(function(){
-           $state.go('goldensIndex');
-       });
-   };
+goldenApp.controller('goldenShowController', ['$scope', '$stateParams', 'GoldenFunctions', function($scope, $stateParams, GoldenFunctions){
+
+    $scope.golden = GoldenFunctions.getGolden($stateParams.id);
+    
+    $scope.golden.$promise.then(function(golden){
+        $scope.goldens = GoldenFunctions.getSimilarGoldens($scope.golden.name);
+    });
+
+    $scope.deleteGolden = GoldenFunctions.deleteGolden;
 }]);
