@@ -144,10 +144,9 @@ a:hover {
 }
 
 #footer{
-    position: absolute;
+    background: #010080;
     width: 100%;
     margin-top: 10px;
-    background: #010080;
 }
 
 .golden-image{
