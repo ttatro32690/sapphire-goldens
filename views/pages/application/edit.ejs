@@ -1,3 +1,4 @@
+<div class="col-md-8 col-md-offset-2">
     <h2 ng-if="new">New Application</h2>
     <h2 ng-if="edit">Edit Application</h2>
     <hr>
@@ -5,7 +6,7 @@
         <div class="col-md-12">
             <p>If an application is accepted, a deposit is necessay to put you on the list for a puppy!</p>
             <p>Please answer the following questions the best you can, so we can better understand your family.</p>
-            <div class="col-md-8 col-md-offset-2">
+            <div>
                 <h3>Contact Information</h3>
                 
                 <div class="form-group">
@@ -41,7 +42,7 @@
                         <input ng-model="application.telephone" type="tel" id="tel" ng-required="true" class="form-control" placeholder="Telephone Number"></type>
                     </div>
             </div>
-            <div class="col-md-8 col-md-offset-2">
+            <div>
             <h3>Questionnaire</h3>
             <ol>
                 <div class="form-group">
@@ -72,9 +73,10 @@
                     <label for="q7"><li>Would you prefer a male or female puppy?</li></label>
                     <textarea ng-model="application.gender" ng-required="true" id="q7" class="form-control" rows="2"></textarea>
                 </div>
-                <button ng-if="new" ng-click="saveApplication()" class="btn btn-primary">Submit</button>
-                <button ng-if="edit" ng-click="updateApplication()" class="btn btn-primary">Update</button>
+                <button ng-if="new" ng-click="saveApplication(application)" class="btn btn-primary">Submit</button>
+                <button ng-if="edit" ng-click="updateApplication(application)" class="btn btn-primary">Update</button>
             </ol>
             </div>
         </div>
     </form>
+</div>

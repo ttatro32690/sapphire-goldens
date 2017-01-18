@@ -48,18 +48,17 @@ goldenApp.factory('AgreementFunctions', ['Agreement', '$state', function(Agreeme
     };
     
     agreementFunctions.saveAgreement = function(agreement){
-        var tempAgreement = agreementFunctions.extToInt(agreement);
-        return tempAgreement.$save();
+        return agreement.$save().then(function(newAgreement){
+            agreement = agreementFunctions.intToExt(newAgreement);
+            $state.go('agreementShow',{id: newAgreement._id});
+        });
     };
     
     agreementFunctions.updateAgreement = function(agreement){
         
-        agreement = agreementFunctions.extToInt(agreement);
-        
-        agreement.$update().then(function(agreement){
+        return agreement.$update().then(function(updatedAgreement){
+            agreement = agreementFunctions.intToExt(updatedAgreement);
             $state.go('agreementIndex');
-            
-            return agreementFunctions.intToExt(agreement);
         });
     };
     

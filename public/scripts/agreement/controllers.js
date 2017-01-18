@@ -22,23 +22,20 @@ goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement',
     
     $scope.saveAgreement = function(){
         if($scope.agree.$error.required == null){
-            $scope.agreement = AgreementFunctions.saveAgreement($scope.agreement);
-            $scope.agreement.then(function(tempAgreement){
-                return $state.go('agreementShow',{id: tempAgreement._id});
-            });
+            AgreementFunctions.saveAgreement($scope.agreement);
         }
     };
     
 }]);
 
-goldenApp.controller('agreementEditController', ['$scope', '$stateParams', '$moment', 'agreement', 'AgreementFunctions', function($scope, $stateParams, $moment, agreement, AgreementFunctions){
+goldenApp.controller('agreementEditController', ['$scope', '$state', 'agreement', 'AgreementFunctions', function($scope, $state, agreement, AgreementFunctions){
     
     $scope.edit = true;
     $scope.agreement = agreement;
     
     $scope.updateAgreement = function(){
         if($scope.agree.$error.required == null){
-            $scope.agreement = AgreementFunctions.updateAgreement($scope.agreement);
+            AgreementFunctions.updateAgreement($scope.agreement);
         }
     };
     

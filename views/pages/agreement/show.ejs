@@ -1,12 +1,13 @@
-<div>
-    <h3>Agreement Form</h3>
-    <span ng-show="user" class="pull-right">
-        <a ui-sref="agreementEdit({id: agreement._id})" class="btn btn-primary btn-xs">Edit</a>
-        <a ng-click="deleteAgreement(agreement)" class="btn btn-primary btn-xs">Delete</a>
-    </span>
-</div>
-
 <div class="col-md-8 col-md-offset-2">
+    <h3>
+        Agreement Form
+        <span ng-show="user" class="pull-right">
+            <a ui-sref="agreementEdit({id: agreement._id})" class="btn btn-primary btn-xs">Edit</a>
+            <a ng-click="deleteAgreement(agreement)" class="btn btn-primary btn-xs">Delete</a>
+        </span>    
+    </h3>
+
+    <hr>
     <form class="form-horizontal">
         <div class="form-group container-fluid">
             <label>Special Provisions for This Sale</label>

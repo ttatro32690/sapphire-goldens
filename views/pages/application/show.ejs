@@ -1,14 +1,16 @@
-<div class="content-panel">
-    <h4>View Application</h4>
-    <span ng-show="user" class="pull-right">
-        <a ui-sref="applicationEdit({id: application._id})" class="btn btn-primary btn-xs">Edit</a>
-        <a ng-click="deleteApplication()" class="btn btn-primary btn-xs">Delete</a>
-    </span>
-    <div class="col-md-12">
+<div class="col-md-8 col-md-offset-2">
+        <h4>
+            View Application
+            <span ng-show="user" class="pull-right">
+                <a ui-sref="applicationEdit({id: application._id})" class="btn btn-primary btn-xs">Edit</a>
+                <a ng-click="deleteApplication(application)" class="btn btn-primary btn-xs">Delete</a>
+            </span>
+        </h4>
+
+        <hr>
         <p>If an application is accepted, a deposit is necessay to put you on the list for a puppy!</p>
         <p>Please answer the following questions the best you can, so we can better understand your family.</p>
-        <hr>
-        <div class="col-md-8 col-md-offset-2">
+        <div>
             <h3>Contact Information</h3>
             <form class="form-horizontal">
             <div class="form-group">
@@ -45,7 +47,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <div>
         <h3>Questionnaire</h3>
         <ol>
         <div class="form-group">

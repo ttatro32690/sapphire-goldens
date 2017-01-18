@@ -160,6 +160,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
+         }],
+         applications: ['ApplicationFunctions', function(ApplicationFunctions){
+            return ApplicationFunctions.getAllApplications();
          }]
       }
    })
@@ -168,7 +171,13 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'application',
       url: '/new',
       templateUrl: '/views/pages/application/edit.ejs',
-      controller: 'applicationNewController'
+      controller: 'applicationNewController',
+      resolve: {
+         application: ['ApplicationFunctions', function(ApplicationFunctions){
+            var application = ApplicationFunctions.newApplication();
+            return application;
+         }]
+      }
    })
    
    .state('applicationEdit', {
@@ -179,6 +188,16 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
+         }],
+         application: ['$stateParams', 'ApplicationFunctions', function($stateParams, ApplicationFunctions){
+               var application = ApplicationFunctions.getApplication($stateParams.id);
+               application = ApplicationFunctions.intToExt(application);
+               
+               application.$promise.then(function(application){
+                  application = ApplicationFunctions.intToExt(application);
+               });
+               
+               return application;
          }]
       }
    })
@@ -188,6 +207,17 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/:id/show',
       templateUrl: '/views/pages/application/show.ejs',
       controller: 'applicationShowController',
+      resolve: {
+         application: ['$stateParams', 'ApplicationFunctions', function($stateParams, ApplicationFunctions){
+               var application = ApplicationFunctions.getApplication($stateParams.id);
+               
+               application.$promise.then(function(application){
+                  application = ApplicationFunctions.intToExt(application);
+               });
+               
+               return application;
+         }]
+      }
    })
 
 // Goldens Routes  
