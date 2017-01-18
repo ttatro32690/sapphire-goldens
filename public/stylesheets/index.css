@@ -22,8 +22,8 @@ body {
 }
 
 .club{
-    float: right;
-    max-width: 250px
+    min-height: 150px;
+    max-height: 150px;
 }
 
 .content{
