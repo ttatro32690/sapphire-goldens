@@ -73,7 +73,6 @@ goldenApp.factory('GoldenFunctions', ['$moment', '$state', 'Golden', function($m
     // Get a singular golden and instantiate specific fields for display
     goldenFunctions.getGolden = function(id, getSimilarGoldens){
         return Golden.get({id: id});
-        
     };
     
     // Get all like goldens for the show routine. This will query the database by name

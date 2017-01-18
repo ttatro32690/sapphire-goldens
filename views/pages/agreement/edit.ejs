@@ -76,19 +76,19 @@
             </div>
             <div class="col-sm-6">
                 <label>Signed Date</label>
-                <input ng-model="agreement.breederDate" type="date" class="form-control" placeholder="Date">
+                <input ng-model="agreement.breederDate"  type="date" class="form-control" placeholder="Date">
             </div>
         </div>
-        <div class="checkbox">
+        <div ng-if="new" class="checkbox">
             <label>
-                <input type="checkbox" ng-model="terms" name="terms" ng-required="true"> I agree to the terms and conditions documented here.
+                <input type="checkbox" ng-model="terms" name="terms" ng-required="new"> I agree to the terms and conditions documented here.
             </label>
         </div>
         <div ng-if="new" class="form-group">
-            <input type="submit"  ng-click="saveAgreement()" class="btn btn-primary">
+            <input type="submit"  ng-click="saveAgreement(agreement)" class="btn btn-primary">
         </div>
         <div ng-if="edit" class="form-group">
-            <input type="submit" ng-click="updateAgreement()" class="btn btn-primary">
+            <input type="submit" ng-click="updateAgreement(agreement)" class="btn btn-primary">
         </div>
     </form>
 </div>

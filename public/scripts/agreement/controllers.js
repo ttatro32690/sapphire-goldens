@@ -9,64 +9,51 @@ goldenApp.controller('agreementController', ['$scope', '$state', function($scope
 
 goldenApp.controller('agreementIndexController', ['$scope', 'agreements', function($scope, agreements){
     
-    $scope.agreements = agreements; 
+    $scope.agreements = agreements;
     
 }]);
 
-goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement', function($scope, $state, agreement){
+goldenApp.controller('agreementNewController', ['$scope', 'AgreementFunctions', function($scope,  AgreementFunctions){
     
     $scope.new = true;
-    $scope.agreement = agreement;
+    var agreement = AgreementFunctions.newAgreement();
+    $scope.agreement = AgreementFunctions.newDates(agreement);
     
     $scope.saveAgreement = function(){
-        
         if($scope.agree.$error.required == null){
-
-            $scope.agreement.$save().then(function(res){
-                $state.go('agreementShow', {id: res._id});
-            });
+            $scope.agreement = AgreementFunctions.saveAgreement($scope.agreement);
         }
-
     };
     
 }]);
 
-goldenApp.controller('agreementEditController', ['$scope', '$state', '$stateParams', '$moment', 'Agreement', function($scope, $state, $stateParams, $moment, Agreement){
+goldenApp.controller('agreementEditController', ['$scope', '$stateParams', '$moment', 'AgreementFunctions', function($scope, $stateParams, $moment, AgreementFunctions){
     
     $scope.edit = true;
+    var agreement = AgreementFunctions.getAgreement($stateParams.id);
     
-    Agreement.get({id: $stateParams.id}, function(res){
-        $scope.agreement = res;
-        
-        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
-        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
-        
+    agreement.$promise.then(function(agreement){
+        $scope.agreement = AgreementFunctions.intToExt(agreement);
+        agreement = null;
     });
     
-        $scope.updateAgreement = function(){
-            if($scope.agree.$error.required == null){
-                $scope.agreement.$update(function(){
-                    $state.go('agreementShow', {id: $stateParams.id});
-                });   
-            }
-        };
+    $scope.updateAgreement = function(){
+        if($scope.agree.$error.required == null){
+            $scope.agreement = AgreementFunctions.updateAgreement($scope.agreement);
+        }
+    };
     
 }]);
 
-goldenApp.controller('agreementShowController', ['$scope', '$state', '$stateParams', '$moment', 'Agreement', function($scope, $state, $stateParams, $moment, Agreement){
+goldenApp.controller('agreementShowController', ['$scope', '$stateParams', '$moment', 'AgreementFunctions', function($scope, $stateParams, $moment, AgreementFunctions){
     
-    Agreement.get({id: $stateParams.id}, function(res){
-        $scope.agreement = res;
-        
-        $scope.agreement.buyerDate = new Date($moment($scope.agreement.buyerDate));
-        $scope.agreement.breederDate = new Date($moment($scope.agreement.breederDate));
-        
+    var agreement = AgreementFunctions.getAgreement($stateParams.id);
+    
+    agreement.$promise.then(function(agreement){
+        $scope.agreement = AgreementFunctions.intToExt(agreement);
+        agreement = null;
     });
     
-    $scope.deleteAgreement = function(){
-        $scope.agreement.$remove(function(){
-            $state.go('agreementIndex');
-        });
-    };
+    $scope.deleteAgreement = AgreementFunctions.deleteAgreement;
     
 }]);

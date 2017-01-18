@@ -6,9 +6,9 @@ var AgreementSchema = mongoose.Schema({
     sireAkcNo: String,
     dam: String,
     damAkcNo: String,
-    dateWhelped: Date,
+    dateWhelped: {type: Date, default: Date.now},
     buyer: String,
-    buyerDate: Date,
+    buyerDate: {type: Date, default: Date.now},
     address: String,
     poBox: String,
     city: String,
@@ -17,7 +17,7 @@ var AgreementSchema = mongoose.Schema({
     phone: String,
     email: String,
     breeder: String,
-    breederDate: Date,
+    breederDate: {type: Date, default: Date.now},
     dateCreated: {type: Date, default: Date.now}
 });
 

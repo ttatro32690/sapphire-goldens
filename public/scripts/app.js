@@ -70,11 +70,19 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       templateUrl: '/views/pages/agreement/index.ejs',
       controller: 'agreementIndexController',
       resolve: {
-         agreements: ['Agreement', function(Agreement){
-            return Agreement.query();
-         }],
          authorized: ['User', function(User){
             return User.isLoggedIn();
+         }],
+         agreements: ['AgreementFunctions', function(AgreementFunctions){
+             var agreements = AgreementFunctions.getAllAgreements();
+             
+               agreements.$promise.then(function(agreements){
+                  agreements.forEach(function(agreement){
+                     agreement = AgreementFunctions.intToExt(agreement);
+                 });
+             });
+
+            return agreements;
          }]
       }
    })
@@ -84,16 +92,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/new',
       templateUrl: '/views/pages/agreement/edit.ejs',
       controller: 'agreementNewController',
-      resolve: {
-         agreement: ['Agreement', function(Agreement){
-             var agreement = new Agreement();
-             
-             agreement.buyerDate = new Date();
-             agreement.breederDate = new Date();
-             
-             return agreement;
-         }]
-      }
    })
    
    .state('agreementEdit', {
