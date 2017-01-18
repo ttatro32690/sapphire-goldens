@@ -63,6 +63,9 @@ app.get('*', function(req, res){
     }
 });
 
+var seeds = require('./seeds');
+seeds();
+
 // Server Listen Command
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log('Server is Listening'); 
