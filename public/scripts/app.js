@@ -92,6 +92,14 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/new',
       templateUrl: '/views/pages/agreement/edit.ejs',
       controller: 'agreementNewController',
+      resolve: {
+         agreement: ['AgreementFunctions', function(AgreementFunctions){
+               var agreement = AgreementFunctions.newAgreement();
+               agreement = AgreementFunctions.newDates(agreement);
+               
+               return agreement;
+         }]
+      }
    })
    
    .state('agreementEdit', {
@@ -102,6 +110,16 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
+         }],
+         agreement: ['$stateParams', 'AgreementFunctions', function($stateParams, AgreementFunctions){
+            
+            var tempAgreement = AgreementFunctions.getAgreement($stateParams.id);
+            
+            tempAgreement.$promise.then(function(agreement){
+               tempAgreement = AgreementFunctions.intToExt(agreement);
+            });
+            
+            return tempAgreement;
          }]
       }
       
@@ -111,7 +129,18 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       parent: 'agreement',
       url: '/:id/show',
       templateUrl: '/views/pages/agreement/show.ejs',
-      controller: 'agreementShowController'
+      controller: 'agreementShowController',
+      resolve: {
+         agreement: ['$stateParams','AgreementFunctions', function($stateParams, AgreementFunctions){
+            var agreement = AgreementFunctions.getAgreement($stateParams.id);
+            
+            agreement.$promise.then(function(agreement){
+               agreement = AgreementFunctions.intToExt(agreement);
+            });
+            
+            return agreement;
+         }]
+      }
    })
 
 // Application Routes

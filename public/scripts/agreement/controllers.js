@@ -3,8 +3,10 @@ var goldenApp;
 //======================
 // Agreement Controllers
 //======================
-goldenApp.controller('agreementController', ['$scope', '$state', function($scope, $state){
+goldenApp.controller('agreementController', ['$state', function($state){
+    
     $state.go('agreementNew');
+    
 }]);
 
 goldenApp.controller('agreementIndexController', ['$scope', 'agreements', function($scope, agreements){
@@ -13,29 +15,29 @@ goldenApp.controller('agreementIndexController', ['$scope', 'agreements', functi
     
 }]);
 
-goldenApp.controller('agreementNewController', ['$scope', 'AgreementFunctions', function($scope,  AgreementFunctions){
+goldenApp.controller('agreementNewController', ['$scope', '$state', 'agreement', 'AgreementFunctions', function($scope, $state, agreement, AgreementFunctions){
     
     $scope.new = true;
-    var agreement = AgreementFunctions.newAgreement();
-    $scope.agreement = AgreementFunctions.newDates(agreement);
+    $scope.agreement = agreement;
     
     $scope.saveAgreement = function(){
         if($scope.agree.$error.required == null){
+            
             $scope.agreement = AgreementFunctions.saveAgreement($scope.agreement);
+            $scope.agreement.then(function(tempAgreement){
+                return $state.go('agreementShow',{id: tempAgreement._id});
+            });
+            
         }
     };
     
 }]);
 
-goldenApp.controller('agreementEditController', ['$scope', '$stateParams', '$moment', 'AgreementFunctions', function($scope, $stateParams, $moment, AgreementFunctions){
+goldenApp.controller('agreementEditController', ['$scope', '$stateParams', '$moment', 'agreement', 'AgreementFunctions', function($scope, $stateParams, $moment, agreement, AgreementFunctions){
     
     $scope.edit = true;
-    var agreement = AgreementFunctions.getAgreement($stateParams.id);
     
-    agreement.$promise.then(function(agreement){
-        $scope.agreement = AgreementFunctions.intToExt(agreement);
-        agreement = null;
-    });
+    $scope.agreement = agreement;
     
     $scope.updateAgreement = function(){
         if($scope.agree.$error.required == null){
@@ -45,14 +47,9 @@ goldenApp.controller('agreementEditController', ['$scope', '$stateParams', '$mom
     
 }]);
 
-goldenApp.controller('agreementShowController', ['$scope', '$stateParams', '$moment', 'AgreementFunctions', function($scope, $stateParams, $moment, AgreementFunctions){
+goldenApp.controller('agreementShowController', ['$scope', '$stateParams', 'agreement', 'AgreementFunctions', function($scope, $stateParams, agreement, AgreementFunctions){
     
-    var agreement = AgreementFunctions.getAgreement($stateParams.id);
-    
-    agreement.$promise.then(function(agreement){
-        $scope.agreement = AgreementFunctions.intToExt(agreement);
-        agreement = null;
-    });
+    $scope.agreement = agreement;
     
     $scope.deleteAgreement = AgreementFunctions.deleteAgreement;
     

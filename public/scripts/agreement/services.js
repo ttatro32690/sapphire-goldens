@@ -48,12 +48,8 @@ goldenApp.factory('AgreementFunctions', ['Agreement', '$state', function(Agreeme
     };
     
     agreementFunctions.saveAgreement = function(agreement){
-        
-        agreement = agreementFunctions.extToInt(agreement);
-        
-        return agreement.$save(function(){
-            $state.go('agreementShow', {id: agreement._id});
-        });
+        var tempAgreement = agreementFunctions.extToInt(agreement);
+        return tempAgreement.$save();
     };
     
     agreementFunctions.updateAgreement = function(agreement){

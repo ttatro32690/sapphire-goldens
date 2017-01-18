@@ -10,6 +10,14 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
         $state.go('landing');
     });
     
+    // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){ 
+    //     console.log("Start: " + toState.name);
+    // });
+    
+    // $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){ 
+    //     console.log("Success: " + toState.name);
+    // });
+    
     $scope.userLogout = function(){
         var promise = User.logout();
         
