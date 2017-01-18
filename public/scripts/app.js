@@ -230,6 +230,19 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
+         }],
+         golden: ['$stateParams', 'GoldenFunctions', function($stateParams, GoldenFunctions){
+            var golden = GoldenFunctions.getGolden($stateParams.id);
+            
+            golden.$promise.then(function(golden){
+               if(golden.birthdate != null){
+                  golden = GoldenFunctions.intToExt(golden);
+               } else {
+                  golden = golden;
+               }
+            });
+            
+            return golden;
          }]
       }
    })

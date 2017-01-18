@@ -33,15 +33,15 @@ goldenApp.controller('goldenNewController', ['$scope', 'GoldenFunctions', functi
     
 }]);
 
-goldenApp.controller('goldenEditController', ['$scope', '$stateParams', 'GoldenFunctions', function($scope, $stateParams, GoldenFunctions){
+goldenApp.controller('goldenEditController', ['$scope', '$stateParams', 'golden', 'GoldenFunctions', function($scope, $stateParams, golden, GoldenFunctions){
     $scope.edit = true;
     $scope.existing = true;
     $scope.types = GoldenFunctions.typeChoices();
     
-    $scope.golden = GoldenFunctions.getGolden($stateParams.id);
+    $scope.golden = golden;
     $scope.updateGolden = GoldenFunctions.updateGolden;
     
-    //File Functions
+    //File Functions should be refactored into factory once implemented
     $scope.fileChanged = function(element){
         $scope.golden.imageFile = element.files;
     };

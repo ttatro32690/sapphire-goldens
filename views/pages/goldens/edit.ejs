@@ -69,7 +69,7 @@
                 <div class="col-md-12">
                     <p ng-show="golden.description">Description: {{golden.description}}</p>
                     <p ng-show="golden.type" >Type: {{golden.type}}</p>
-                    <p ng-show="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
+                    <p ng-if="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
                 </div>
             </div>
             <div class="panel-footer">

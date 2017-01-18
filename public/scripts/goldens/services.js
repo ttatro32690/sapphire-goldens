@@ -15,7 +15,7 @@ goldenApp.factory('Golden', ['$resource', function($resource){
    });
 }]);
 
-goldenApp.factory('GoldenFunctions', ['$moment', '$state', 'Golden', function($moment, $state, Golden){
+goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golden){
     
     var goldenFunctions = {};
     
@@ -35,6 +35,21 @@ goldenApp.factory('GoldenFunctions', ['$moment', '$state', 'Golden', function($m
         });
         
         return types;
+    };
+    
+    goldenFunctions.newDates = function(golden){
+        golden.birthdate = new Date();
+        return golden;
+    };
+    
+    goldenFunctions.intToExt = function(golden){
+        golden.birthdate = new Date(golden.birthdate);
+        return golden;
+    };
+    
+    goldenFunctions.extToInt = function(golden){
+        golden.birthdate = golden.birthdate.toISOString();
+        return golden;
     };
     
     // Instantiate a new instance of a golden object.
