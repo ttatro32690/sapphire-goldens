@@ -3,9 +3,11 @@ var goldenApp;
 //======================
 // Agreement Controllers
 //======================
-goldenApp.controller('agreementController', ['$state', function($state){
+goldenApp.controller('agreementController', ['$rootScope', '$state', function($rootScope, $state){
     
-    $state.go('agreementNew');
+    if($rootScope.user){
+        $state.go('agreementIndex');
+    }
     
 }]);
 

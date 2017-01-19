@@ -93,6 +93,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       templateUrl: '/views/pages/agreement/edit.ejs',
       controller: 'agreementNewController',
       resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
          agreement: ['AgreementFunctions', function(AgreementFunctions){
                var agreement = AgreementFunctions.newAgreement();
                agreement = AgreementFunctions.newDates(agreement);
@@ -131,6 +134,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       templateUrl: '/views/pages/agreement/show.ejs',
       controller: 'agreementShowController',
       resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
          agreement: ['$stateParams','AgreementFunctions', function($stateParams, AgreementFunctions){
             var agreement = AgreementFunctions.getAgreement($stateParams.id);
             

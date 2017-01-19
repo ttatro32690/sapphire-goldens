@@ -3,7 +3,7 @@ var router = express.Router();
 var middleware = require('../middleware/app');
 var Agreement = require('../models/agreement');
 
-router.get('/', function(req, res){
+router.get('/', middleware.isLoggedIn, function(req, res){
     Agreement.find({}, function(err, agreements){
         if(err){
             console.log(err);
@@ -13,7 +13,7 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/', function(req, res){
+router.post('/', middleware.isLoggedIn, function(req, res){
     Agreement.create(req.body, function(err, agreement){
        if(err){
            console.log(err);
@@ -23,7 +23,7 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/:id', function(req, res){
+router.get('/:id', middleware.isLoggedIn, function(req, res){
     Agreement.findById(req.params.id, function(err, agreement){
         if(err){
             console.log(err);

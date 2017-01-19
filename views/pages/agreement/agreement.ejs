@@ -22,7 +22,7 @@
     <li class="breadcrumb-item"><a ui-sref="agreementIndex">Index</a></li>
 </ol>
 
-<div class="content-panel">
+<div ng-if="user" class="content-panel">
     <div class="container-fluid">
         <ui-view></ui-view>
     </div>
