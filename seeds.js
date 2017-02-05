@@ -30,6 +30,10 @@ function seedDB() {
         }
     });
     
+    Goldens.remove({}, function(err){
+        
+    });
+    
     // Goldens.remove({}, function(err){
     //     if(err){
     //         console.log(err);

@@ -1,35 +1,53 @@
-<div class="row search-bar">
-    <div class="col-md-1">
-        <div class="container-fluid">
-            <div class="form-inline">
-                <button class="btn btn-primary btn-lg" role="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>  
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-11">
-        <div class="collapse" id="search">
-            <div class="form-inline">
-                <div class="form-group">
-                    <input ng-model="search.$" class="form-control" placeholder="Free Text Search"></input>
-                    <select ng-model="search.type" ng-options="type for type in types" class="form-control">
-                    </select>
-                    <button class="btn btn-primary" ng-click="clearData()"><i class="fa fa-times" aria-hidden="true"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid goldens-container">
-    <div class="row">
-        <div ng-repeat="golden in goldens | filter:search:strict | orderBy:'dateCreated'">
-            <div class="col-md-4 golden-block">
-                <a ui-sref="goldensShow({id: golden._id})">{{golden.name}}</a>
-                <a ui-sref="goldensShow({id: golden._id})" ><img class="golden-image img img-responsive" ng-src={{golden.url}}></a>
-            </div>
-        </div>
-    </div>
+<div class="col-md-3 golden-block" ng-repeat="type in types">
+	<!-- Button trigger modal -->
+	<a ng-click="getSimilarGoldens(type.type)" class="btn btn-lg" data-toggle="modal" data-target="#{{$index}}">
+	{{type.type}}
+	<img src="{{type.imageFiles[0]}}" class="img img-responsive img-rounded golden-image">
+	</a>
+	<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" ng-click="exitModal()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">{{type.type}}</h4>
+				</div>
+				<div class="modal-body panel-body">
+					<div class="row">
+						<div class="col-xs-1">
+							<a ng-click="prev()" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></a>
+						</div>
+						<div class="col-xs-10">
+							<h3>{{golden.name}}</h3>
+							<div class="row">
+								<div class="col-xs-6">
+									<p>{{golden.description}}</p>
+								</div>
+								<div class="col-xs-6">
+									<img src="{{mainImage}}" class="img img-responsive">
+								</div>
+							</div>
+							<div class="row golden-block">
+							  <div class="col-xs-1">
+							    <a ng-click="prevImage()" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></a>
+							  </div>
+							<div class="col-xs-4" ng-repeat="image in golden.imageFiles">
+							  <img src="{{image}}" class="img img-responsive golden-image">
+							</div>
+							  <div class="col-xs-1">
+							    <a ng-click="nextImage()" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a>
+							  </div>
+							</div>
+						</div>
+						<div class="col-xs-1">
+							<a ng-click="next()" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" ng-click="exitModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

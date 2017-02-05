@@ -1,5 +1,5 @@
-/*BLUE: #010080*/
-/*GOLD: #eac75b*/
+BLUE: #010080
+GOLD: #eac75b
 body {
     font-family: 'Open Sans', serif;
     letter-spacing: .2rem;
@@ -189,20 +189,12 @@ a:hover {
     padding: 0;
 }
 
-.btn-primary{
+.btn-primary, .btn-primary:focus{
     background-color: #010080;
     color: #eac75b;
     border: 1px solid #eac75b;
 }
 
-.btn-primary:hover{
+.btn-primary:hover, .btn-primary:active{
     background-color: #eac75b;
-}
-
-.search-bar{
-    padding-top:20px;
-}
-
-#search{
-    margin-top: 10px;
 }

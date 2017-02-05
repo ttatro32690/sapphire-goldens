@@ -16,8 +16,8 @@ app.set('view engine', 'ejs');
 
 var User = require('./models/users');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '16mb'}));
+app.use(bodyParser.urlencoded({limit: '16mb', extended: false}));
 
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
@@ -62,6 +62,9 @@ app.get('*', function(req, res){
             });   
     }
 });
+
+var seedDB = require('./seeds.js');
+seedDB();
 
 // Server Listen Command
 app.listen(process.env.PORT, process.env.IP, function(){

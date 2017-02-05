@@ -29,3 +29,13 @@ goldenApp.directive('message', function(){
       replace: true
    };
 });
+
+goldenApp.directive('modal', function(){
+   return{
+      templateUrl: '/views/templates/modal.ejs',
+      replace: true,
+      link: function(scope, element, attrs){
+         
+      }
+   };
+});

@@ -9,10 +9,6 @@
                 <input ng-model="golden.name" type="text" class="form-control" placeholder="Name">
             </div>
             <div class="form-group">
-                <label>Image Url</label>
-                <input ng-model="golden.url" type="text" class="form-control" placeholder="Url">
-            </div>
-            <div class="form-group">
                 <label>Type</label>
                 <div class="row">
                     <div class="col-xs-8">
@@ -48,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label>Image</label>
-                <input onchange="angular.element(this).scope().fileChanged(this)" type="file" class="form-control">
+                <input multiple onchange="angular.element(this).scope().fileChanged(this)" type="file" accept="image/*" class="form-control">
             </div>
             <div ng-if="new" class="form-group">
                 <input type="submit" value="Submit" ng-click="saveGolden(golden)" class="btn btn-primary">
@@ -65,11 +61,14 @@
                 {{golden.name}}
             </div>
             <div class="panel-body">
-                <img class="golden-show-image img img-responsive" ng-src="{{golden.url}}">
+                <img class="golden-show-image img img-responsive" ng-src="{{golden.imageFiles[0]}}">
                 <div class="col-md-12">
                     <p ng-show="golden.description">Description: {{golden.description}}</p>
                     <p ng-show="golden.type" >Type: {{golden.type}}</p>
                     <p ng-if="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
+                </div>
+                <div ng-repeat="image in golden.imageFiles" class="col-md-3">
+                    <img class="img img-responsive" src="{{image}}">
                 </div>
             </div>
             <div class="panel-footer">

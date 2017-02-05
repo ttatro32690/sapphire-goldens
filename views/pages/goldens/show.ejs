@@ -17,10 +17,13 @@
                 {{golden.name}}
             </div>
             <div class="panel-body">
-                <img class="golden-show-image img img-responsive" ng-src="{{golden.url}}">
+                <img class="golden-show-image img img-responsive" ng-src="{{golden.imageFiles[0]}}">
                 <p ng-show="golden.description">Description: {{golden.description}}</p>
                 <p ng-show="golden.type" >Type: {{golden.type}}</p>
                 <p ng-show="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
+            </div>
+            <div ng-repeat="image in golden.imageFiles" class="col-md-3">
+                <img class="img img-responsive" src="{{image}}">
             </div>
             <div class="panel-footer">
                 <div class="row text-center">

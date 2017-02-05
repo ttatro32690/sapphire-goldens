@@ -19,22 +19,24 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
     
     var goldenFunctions = {};
     
-    // Provide a list of unique choices based on the golden.types fields
+    // Provide a list of the first golden of it's type to the index screen.
     goldenFunctions.typeChoices = function(){
-        
+
         var types = [];
+        var goldenTypes = [];
         
         Golden.query(function(goldens){
             goldens.forEach(function(golden, index){
-                if(golden.type != null){
-                   if(types.includes(golden.type) == false){
-                       types.push(golden.type);
-                   }
-                }
+               
+            if(golden.type && !types.includes(golden.type)){
+                types.push(golden.type);
+                goldenTypes.push(golden);
+            }
+
             });
         });
         
-        return types;
+        return goldenTypes;
     };
     
     goldenFunctions.newDates = function(golden){
@@ -93,6 +95,10 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
     // Get all like goldens for the show routine. This will query the database by name
     goldenFunctions.getSimilarGoldens = function(name){
         return Golden.query({name: name});
+    };
+    
+    goldenFunctions.getSimilarTypeGoldens = function(type){
+        return Golden.query({type: type});
     };
     
     return goldenFunctions;
