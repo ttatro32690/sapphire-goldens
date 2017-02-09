@@ -32,17 +32,21 @@ goldenApp.factory('ApplicationFunctions', ['$state', 'Application', function($st
         return application;
     };
     
-    applicationFunctions.saveApplication = function(application){
+    applicationFunctions.saveApplication = function(application, stateParent){
         return application.$save().then(function(newApplication){
                 application = applicationFunctions.intToExt(newApplication);
-                $state.go('applicationShow', {id: newApplication._id});
+                if(stateParent == 'application'){
+                    $state.go('applicationShow', {id: newApplication._id});
+                } else {
+                    $state.go('applicationDashboardShow', {id: newApplication._id});
+                }
             });
     };
     
     applicationFunctions.updateApplication = function(application){
         return application.$update().then(function(updatedApplication){
             application = applicationFunctions.intToExt(updatedApplication);
-            $state.go('applicationIndex');
+            $state.go('applicationDashboardShow', {id: updatedApplication._id});
         });
     };
     

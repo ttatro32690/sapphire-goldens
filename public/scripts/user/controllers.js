@@ -18,7 +18,7 @@ goldenApp.controller('loginController', ['$scope', '$http', '$rootScope', '$stat
                     $scope.message = "Successfully Logged In As: " + message.data;
                     $timeout(function(){
                         $rootScope.user = message.data;
-                        $state.go('landing');
+                        $state.go('dashboard');
                     }, 1500);
                 }
             }, function(warning){

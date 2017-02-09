@@ -63,9 +63,6 @@ app.get('*', function(req, res){
     }
 });
 
-var seedDB = require('./seeds.js');
-seedDB();
-
 // Server Listen Command
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log('Server is Listening'); 

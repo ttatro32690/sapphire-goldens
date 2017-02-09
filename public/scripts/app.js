@@ -15,6 +15,236 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       controller: 'homeController',
    })
    
+   .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: '/views/pages/dashboard/index.ejs',
+      controller: 'dashboardController'
+   })
+   
+   .state('agreementDashboard', {
+      parent: 'dashboard',
+      url:'/agreement',
+      templateUrl: '/views/pages/agreement/agreementDashboard.ejs'
+   })
+   
+   .state('agreementIndex', {
+      parent: 'agreementDashboard',
+      url: '/index',
+      templateUrl: '/views/pages/agreement/index.ejs',
+      controller: 'agreementIndexController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         agreements: ['AgreementFunctions', function(AgreementFunctions){
+             var agreements = AgreementFunctions.getAllAgreements();
+             
+               agreements.$promise.then(function(agreements){
+                  agreements.forEach(function(agreement){
+                     agreement = AgreementFunctions.intToExt(agreement);
+                 });
+             });
+
+            return agreements;
+         }]
+      }
+   })
+
+   .state('agreementNew', {
+      parent: 'agreementDashboard',
+      url: '/new',
+      templateUrl: '/views/pages/agreement/edit.ejs',
+      controller: 'agreementNewController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         agreement: ['AgreementFunctions', function(AgreementFunctions){
+               var agreement = AgreementFunctions.newAgreement();
+               agreement = AgreementFunctions.newDates(agreement);
+               
+               return agreement;
+         }]
+      }
+   })
+   
+   .state('agreementEdit', {
+      parent: 'agreementDashboard',
+      url: '/:id/edit',
+      templateUrl: '/views/pages/agreement/edit.ejs',
+      controller: 'agreementEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         agreement: ['$stateParams', 'AgreementFunctions', function($stateParams, AgreementFunctions){
+            
+            var tempAgreement = AgreementFunctions.getAgreement($stateParams.id);
+            
+            tempAgreement.$promise.then(function(agreement){
+               tempAgreement = AgreementFunctions.intToExt(agreement);
+            });
+            
+            return tempAgreement;
+         }]
+      }
+      
+   })
+   
+   .state('agreementShow', {
+      parent: 'agreementDashboard',
+      url: '/:id/show',
+      templateUrl: '/views/pages/agreement/show.ejs',
+      controller: 'agreementShowController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         agreement: ['$stateParams','AgreementFunctions', function($stateParams, AgreementFunctions){
+            var agreement = AgreementFunctions.getAgreement($stateParams.id);
+            
+            agreement.$promise.then(function(agreement){
+               agreement = AgreementFunctions.intToExt(agreement);
+            });
+            
+            return agreement;
+         }]
+      }
+   })
+   
+   .state('applicationDashboard', {
+      parent: 'dashboard',
+      url:'/application',
+      templateUrl: '/views/pages/application/applicationDashboard.ejs'
+   })
+   
+   .state('applicationIndex', {
+      parent: 'applicationDashboard',
+      url: '/index',
+      templateUrl: '/views/pages/application/index.ejs',
+      controller: 'applicationIndexController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         applications: ['ApplicationFunctions', function(ApplicationFunctions){
+            return ApplicationFunctions.getAllApplications();
+         }]
+      }
+   })
+   
+   .state('applicationDashboardNew', {
+      parent: 'applicationDashboard',
+      url: '/new',
+      templateUrl: '/views/pages/application/edit.ejs',
+      controller: 'applicationNewController',
+      resolve: {
+         application: ['ApplicationFunctions', function(ApplicationFunctions){
+            var application = ApplicationFunctions.newApplication();
+            return application;
+         }]
+      }
+   })
+   
+
+   
+   .state('applicationDashboardShow', {
+      parent: 'applicationDashboard',
+      url: '/:id/show',
+      templateUrl: '/views/pages/application/show.ejs',
+      controller: 'applicationShowController',
+      resolve: {
+         application: ['$stateParams', 'ApplicationFunctions', function($stateParams, ApplicationFunctions){
+               var application = ApplicationFunctions.getApplication($stateParams.id);
+               
+               application.$promise.then(function(application){
+                  application = ApplicationFunctions.intToExt(application);
+               });
+               
+               return application;
+         }]
+      }
+   })
+   
+   .state('applicationEdit', {
+      parent: 'applicationDashboard',
+      url: '/:id/edit',
+      templateUrl: '/views/pages/application/edit.ejs',
+      controller: 'applicationEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         application: ['$stateParams', 'ApplicationFunctions', function($stateParams, ApplicationFunctions){
+               var application = ApplicationFunctions.getApplication($stateParams.id);
+               application = ApplicationFunctions.intToExt(application);
+               
+               application.$promise.then(function(application){
+                  application = ApplicationFunctions.intToExt(application);
+               });
+               
+               return application;
+         }]
+      }
+   })
+   
+   .state('goldensDashboard', {
+      parent: 'dashboard',
+      url: '/goldens',
+      templateUrl: '/views/pages/goldens/goldensDashboard.ejs'
+   })
+   
+   .state('goldensDashboardIndex', {
+      parent: 'goldensDashboard',
+      url: '/index',
+      templateUrl: '/views/pages/goldens/goldensDashboardIndex.ejs',
+      controller: 'goldensDashboardIndexController'
+   })
+   
+   .state('goldensNew',{
+      parent: 'goldensDashboard',
+      url: '/new',
+      templateUrl: '/views/pages/goldens/edit.ejs',
+      controller: 'goldenNewController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+   })
+   
+   .state('goldensEdit',{
+      parent: 'goldensDashboard',
+      url: '/:id/edit',
+      templateUrl: '/views/pages/goldens/edit.ejs',
+      controller: 'goldenEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }],
+         golden: ['$stateParams', 'GoldenFunctions', function($stateParams, GoldenFunctions){
+            var golden = GoldenFunctions.getGolden($stateParams.id);
+            
+            golden.$promise.then(function(golden){
+               if(golden.birthdate != null){
+                  golden = GoldenFunctions.intToExt(golden);
+               } else {
+                  golden = golden;
+               }
+            });
+            
+            return golden;
+         }]
+      }
+   })
+   
+   .state('goldensShow',{
+      parent: 'goldensDashboard',
+      url: '/:id/show',
+      templateUrl: '/views/pages/goldens/show.ejs',
+      controller: 'goldenShowController'
+   })
+   
 // Login/Register Routes
 
    .state('login', {
@@ -64,91 +294,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       controller: 'agreementController'
    })
 
-   .state('agreementIndex', {
-      parent: 'agreement',
-      url: '/index',
-      templateUrl: '/views/pages/agreement/index.ejs',
-      controller: 'agreementIndexController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreements: ['AgreementFunctions', function(AgreementFunctions){
-             var agreements = AgreementFunctions.getAllAgreements();
-             
-               agreements.$promise.then(function(agreements){
-                  agreements.forEach(function(agreement){
-                     agreement = AgreementFunctions.intToExt(agreement);
-                 });
-             });
-
-            return agreements;
-         }]
-      }
-   })
-
-   .state('agreementNew', {
-      parent: 'agreement',
-      url: '/new',
-      templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementNewController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['AgreementFunctions', function(AgreementFunctions){
-               var agreement = AgreementFunctions.newAgreement();
-               agreement = AgreementFunctions.newDates(agreement);
-               
-               return agreement;
-         }]
-      }
-   })
-   
-   .state('agreementEdit', {
-      parent: 'agreement',
-      url: '/:id/edit',
-      templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementEditController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['$stateParams', 'AgreementFunctions', function($stateParams, AgreementFunctions){
-            
-            var tempAgreement = AgreementFunctions.getAgreement($stateParams.id);
-            
-            tempAgreement.$promise.then(function(agreement){
-               tempAgreement = AgreementFunctions.intToExt(agreement);
-            });
-            
-            return tempAgreement;
-         }]
-      }
-      
-   })
-   
-   .state('agreementShow', {
-      parent: 'agreement',
-      url: '/:id/show',
-      templateUrl: '/views/pages/agreement/show.ejs',
-      controller: 'agreementShowController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['$stateParams','AgreementFunctions', function($stateParams, AgreementFunctions){
-            var agreement = AgreementFunctions.getAgreement($stateParams.id);
-            
-            agreement.$promise.then(function(agreement){
-               agreement = AgreementFunctions.intToExt(agreement);
-            });
-            
-            return agreement;
-         }]
-      }
-   })
-
 // Application Routes
    
    .state('application', {
@@ -156,21 +301,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/application',
       templateUrl: '/views/pages/application/application.ejs',
       controller: 'applicationController'
-   })
-   
-   .state('applicationIndex', {
-      parent: 'application',
-      url: '/index',
-      templateUrl: '/views/pages/application/index.ejs',
-      controller: 'applicationIndexController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         applications: ['ApplicationFunctions', function(ApplicationFunctions){
-            return ApplicationFunctions.getAllApplications();
-         }]
-      }
    })
    
    .state('applicationNew', {
@@ -182,28 +312,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
          application: ['ApplicationFunctions', function(ApplicationFunctions){
             var application = ApplicationFunctions.newApplication();
             return application;
-         }]
-      }
-   })
-   
-   .state('applicationEdit', {
-      parent: 'application',
-      url: '/:id/edit',
-      templateUrl: '/views/pages/application/edit.ejs',
-      controller: 'applicationEditController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         application: ['$stateParams', 'ApplicationFunctions', function($stateParams, ApplicationFunctions){
-               var application = ApplicationFunctions.getApplication($stateParams.id);
-               application = ApplicationFunctions.intToExt(application);
-               
-               application.$promise.then(function(application){
-                  application = ApplicationFunctions.intToExt(application);
-               });
-               
-               return application;
          }]
       }
    })
@@ -244,50 +352,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             return Golden.query();
          }]
       }
-   })
-   
-   .state('goldensNew',{
-      parent: 'goldens',
-      url: '/new',
-      templateUrl: '/views/pages/goldens/edit.ejs',
-      controller: 'goldenNewController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }]
-      }
-   })
-   
-   .state('goldensEdit',{
-      parent: 'goldens',
-      url: '/:id/edit',
-      templateUrl: '/views/pages/goldens/edit.ejs',
-      controller: 'goldenEditController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         golden: ['$stateParams', 'GoldenFunctions', function($stateParams, GoldenFunctions){
-            var golden = GoldenFunctions.getGolden($stateParams.id);
-            
-            golden.$promise.then(function(golden){
-               if(golden.birthdate != null){
-                  golden = GoldenFunctions.intToExt(golden);
-               } else {
-                  golden = golden;
-               }
-            });
-            
-            return golden;
-         }]
-      }
-   })
-   
-   .state('goldensShow',{
-      parent: 'goldens',
-      url: '/:id/show',
-      templateUrl: '/views/pages/goldens/show.ejs',
-      controller: 'goldenShowController'
    });
    
 }]);

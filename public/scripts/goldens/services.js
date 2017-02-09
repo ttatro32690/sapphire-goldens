@@ -36,7 +36,11 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
             });
         });
         
-        return goldenTypes;
+        if($state.current.controller == 'goldenEditController'){
+            return types;
+        } else {
+            return goldenTypes;
+        }
     };
     
     goldenFunctions.newDates = function(golden){

@@ -1,0 +1,13 @@
+<ul class="list-group">
+    <a ui-sref="goldensShow({id: golden._id})" class="list-group-item" ng-repeat="golden in goldens">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{golden.imageFiles[0]}}" class="img img-responsive img-rounded">
+            </div>
+            <div class="col-md-9">
+                <p>{{golden.name}}</p>
+                <p>{{golden.type}}</p>
+            </div>
+        </div>
+    </a>
+</ul>

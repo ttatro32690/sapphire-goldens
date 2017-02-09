@@ -14,8 +14,8 @@ goldenApp.controller('goldenIndexController', ['$scope', 'GoldenFunctions', func
    $scope.getSimilarGoldens = function(type){
        $scope.goldens = GoldenFunctions.getSimilarTypeGoldens(type);
        $scope.goldens.$promise.then(function(goldens){
-           $scope.golden = goldens[0];
-           $scope.mainImage = goldens[0].imageFiles[0] || goldens[0].url;
+            $scope.golden = goldens[0];
+            setupImages(0);
         });
    };
    
@@ -31,7 +31,7 @@ goldenApp.controller('goldenIndexController', ['$scope', 'GoldenFunctions', func
            pointer += 1;
        }
        $scope.golden = $scope.goldens[pointer];
-       $scope.mainImage = $scope.golden.imageFiles[0] || $scope.golden.url;
+       setupImages(pointer);
    };
    
    $scope.prev = function(){
@@ -42,7 +42,7 @@ goldenApp.controller('goldenIndexController', ['$scope', 'GoldenFunctions', func
            pointer -= 1;
        }
        $scope.golden = $scope.goldens[pointer];
-       $scope.mainImage = $scope.golden.imageFiles[0] || $scope.golden.url;
+       setupImages(pointer);
    };
    
    var imagePointer = 0;
@@ -53,26 +53,35 @@ goldenApp.controller('goldenIndexController', ['$scope', 'GoldenFunctions', func
        } else {
            imagePointer += 1;
        }
-       $scope.mainImage = $scope.golden.imageFiles[imagePointer] || $scope.golden.url;
+            setupImages(imagePointer);
    };
    
     $scope.prevImage = function(){
-       $scope.images = [];
        if((imagePointer - 1) < 0){
            imagePointer = $scope.golden.imageFiles.length - 1;
        } else {
            imagePointer -= 1;
        }
-       $scope.mainImage = $scope.golden.imageFiles[imagePointer] || $scope.golden.url;
+            setupImages(imagePointer);
     };
     
     $scope.exitModal = function(){
         $scope.golden = {};
         $scope.mainImage = null;
+        $scope.nextImg = null;
+        $scope.prevImg = null;
         imagePointer = null;
         pointer = null;
-        $scope.images = [];
     };
+   
+   var setupImages = function(pointer){
+        $scope.mainImage = $scope.golden.imageFiles[pointer] || $scope.golden.url;
+        $scope.prevImg = $scope.golden.imageFiles[pointer - 1] || $scope.golden.imageFiles[$scope.golden.imageFiles.length-1];
+        $scope.nextImg = $scope.golden.imageFiles[pointer + 1] || $scope.golden.imageFiles[0];
+        if($scope.nextImg == $scope.prevImg){
+            $scope.nextImg = null;
+        }
+   };
    
 }]);
 
@@ -102,10 +111,6 @@ goldenApp.controller('goldenNewController', ['$scope', 'GoldenFunctions', functi
                     $scope.$apply();
                 };
             }
-        
-        $scope.changeTypeInput = function(){
-            $scope.existing = !$scope.existing;
-        };
     };
     
     $scope.changeTypeInput = function(){
@@ -140,10 +145,11 @@ goldenApp.controller('goldenEditController', ['$scope', '$stateParams', 'golden'
                     $scope.$apply();
                 };
             }
-        
-        $scope.changeTypeInput = function(){
-            $scope.existing = !$scope.existing;
-        };
+    };
+    
+    
+    $scope.changeTypeInput = function(){
+        $scope.existing = !$scope.existing;
     };
     
 }]);
@@ -157,4 +163,9 @@ goldenApp.controller('goldenShowController', ['$scope', '$stateParams', 'GoldenF
     });
 
     $scope.deleteGolden = GoldenFunctions.deleteGolden;
+}]);
+
+goldenApp.controller('goldensDashboardIndexController', ['$scope', 'GoldenFunctions', function($scope, GoldenFunctions){
+    $scope.goldens = GoldenFunctions.getAllGoldens();
+
 }]);

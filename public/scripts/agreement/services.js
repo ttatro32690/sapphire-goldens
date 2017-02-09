@@ -58,7 +58,7 @@ goldenApp.factory('AgreementFunctions', ['Agreement', '$state', function(Agreeme
         
         return agreement.$update().then(function(updatedAgreement){
             agreement = agreementFunctions.intToExt(updatedAgreement);
-            $state.go('agreementIndex');
+            $state.go('agreementShow', {id: updatedAgreement._id});
         });
     };
     

@@ -15,9 +15,11 @@ goldenApp.controller('applicationNewController', ['$scope', '$state', 'applicati
     $scope.new = true;
     $scope.application = application;
     
+    console.log($state.current.parent);
+    
     $scope.saveApplication = function(){
         if($scope.appl.$error.required == null){
-            ApplicationFunctions.saveApplication($scope.application);       
+            ApplicationFunctions.saveApplication($scope.application, $state.current.parent);       
         }
     };
 }]);

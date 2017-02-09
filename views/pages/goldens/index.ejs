@@ -2,7 +2,7 @@
 	<!-- Button trigger modal -->
 	<a ng-click="getSimilarGoldens(type.type)" class="btn btn-lg" data-toggle="modal" data-target="#{{$index}}">
 	{{type.type}}
-	<img src="{{type.imageFiles[0]}}" class="img img-responsive img-rounded golden-image">
+	<img src="{{type.imageFiles[0]}}" class="img img-responsive img-rounded">
 	</a>
 	<!-- Modal -->
 	<div class="modal fade bs-example-modal-lg" id="{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -14,33 +14,40 @@
 				</div>
 				<div class="modal-body panel-body">
 					<div class="row">
-						<div class="col-xs-1">
-							<a ng-click="prev()" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></a>
+						<div class="col-xs-1 arrow">
+							<a ng-click="prev()"><i class="fa fa-chevron-left fa-32x" aria-hidden="true"></i></a>
 						</div>
 						<div class="col-xs-10">
 							<h3>{{golden.name}}</h3>
 							<div class="row">
 								<div class="col-xs-6">
+									<p>{{golden.birthdate | date:'MM-dd-yyyy'}}</p>
 									<p>{{golden.description}}</p>
 								</div>
 								<div class="col-xs-6">
-									<img src="{{mainImage}}" class="img img-responsive">
+									<img ng-src="{{mainImage}}" class="img img-responsive img-rounded">
 								</div>
 							</div>
 							<div class="row golden-block">
-							  <div class="col-xs-1">
-							    <a ng-click="prevImage()" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></a>
+							  <div class="col-xs-1 arrow">
+							    <a ng-click="prevImage()"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
 							  </div>
-							<div class="col-xs-4" ng-repeat="image in golden.imageFiles">
-							  <img src="{{image}}" class="img img-responsive golden-image">
+							  <div ng-if="!nextImg" class="col-xs-10">
+							  	<img ng-src="{{prevImg}}" class="img img-responsive img-rounded golden-image">
+							  </div>
+							<div ng-if="nextImg" class="col-xs-5">
+							  <img ng-src="{{prevImg}}" class="img img-responsive img-rounded golden-image">
 							</div>
-							  <div class="col-xs-1">
-							    <a ng-click="nextImage()" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a>
+							<div ng-if="nextImg" class="col-xs-5">
+							  <img ng-src="{{nextImg}}" class="img img-responsive img-rounded golden-image">
+							</div>
+							  <div class="col-xs-1 arrow">
+							    <a ng-click="nextImage()"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
 							  </div>
 							</div>
 						</div>
-						<div class="col-xs-1">
-							<a ng-click="next()" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a>
+						<div class="col-xs-1 arrow">
+							<a ng-click="next()"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				</div>
