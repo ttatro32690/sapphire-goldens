@@ -1,62 +1,60 @@
-<div ng-repeat="sapphire in sapphires" ng-model="sapphire">
-    <div class="container">
-        <div class="content-panel">
-            <div class="row">
-                <div class="col-xs-7 col-md-6">
-                    <div class="col-md-6 col-md-offset-3">
-                        <h3>{{sapphire.mainTitle}}</h3>
-                        <p>Founded in 1994 and proudly serving South Eastern Massachusetts</p>
-                    </div>
+<div class="container">
+    <div class="content-panel">
+        <div class="row">
+            <div class="col-xs-7 col-md-6">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3>{{sapphire.aboutGreeting}}</h3>
+                    <p>{{sapphire.aboutMessage}}</p>
                 </div>
-                <div class="col-xs-5 col-md-5 col-md-offset-1">
-                    <img class="img img-responsive pull-right" ng-src="/public/images/sapphire_logo.png">
+            </div>
+            <div class="col-xs-5 col-md-5 col-md-offset-1">
+                <img class="img img-responsive pull-right" ng-src="{{sapphire.aboutBrand}}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content-panel">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img img-responsive" ng-src="{{sapphire.aboutStoryPhoto}}">
+            </div>
+            <div class="col-md-7">
+                <div class="container-fluid">
+                    <h3>{{sapphire.aboutStoryTitle}}</h3>
+                    <hr>
+                    <p class="story" ng-repeat="story in sapphire.aboutStory">{{story}}</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="container">
-        <div class="content-panel">
-            <div class="row">
-                <div class="col-md-5">
-                    <img class="img img-responsive" ng-src="/public/images/sapphire_main4.jpg">
-                </div>
-                <div class="col-md-7">
-                    <div class="container-fluid">
-                        <h3>Our Story</h3>
-                        <hr>
-                        <p class="story" ng-repeat="story in sapphire.story">{{story}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
+
+<div class="container">
+    <div class="col-md-10 col-md-offset-1">
+        <h3>Golden Retriever Clubs</h3>
+        <hr>
     </div>
-    
-    <div class="container">
-        <div class="col-md-10 col-md-offset-1">
-            <h3>Golden Retriever Clubs</h3>
-            <hr>
-        </div>
-        <div class="content-panel">
-            <div class="row">
-                <div class="col-xs-4">
-                    <a href="https://www.grca.org/">
-                        <img class="img img-responsive club" ng-src="{{ sapphire.grca }}">
-                        <p class="text-center">Golden Retriever Club of America</p>
-                    </a>
-                </div>
-                <div class="col-xs-4">
-                    <a href="http://www.akc.org/">
-                        <img class="club img img-responsive" ng-src="{{ sapphire.akc }}">
-                        <p class="text-center">American Kennel Club</p>
-                    </a>
-                </div>
-                <div class="col-xs-4">
-                    <a href="http://yankeegrc.azurewebsites.net/">
-                        <img class="club img img-responsive" ng-src="{{ sapphire.ygrc }}">
-                        <p class="text-center">Yankee Golden Retriever Club</p>
-                    </a>
-                </div>
+    <div class="content-panel">
+        <div class="row">
+            <div class="col-xs-4">
+                <a href="https://www.grca.org/">
+                    <img class="img img-responsive club" ng-src="{{sapphire.grca}}">
+                    <p class="text-center">Golden Retriever Club of America</p>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="http://www.akc.org/">
+                    <img class="club img img-responsive" ng-src="{{sapphire.akc}}">
+                    <p class="text-center">American Kennel Club</p>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="http://yankeegrc.azurewebsites.net/">
+                    <img class="club img img-responsive" ng-src="{{sapphire.ygrc}}">
+                    <p class="text-center">Yankee Golden Retriever Club</p>
+                </a>
             </div>
         </div>
     </div>

@@ -6,5 +6,9 @@ var goldenApp;
     ======================================================= **/
 
 goldenApp.factory('Sapphire', ['$resource', function($resource){
-   return $resource('/sapphire/:id', {id: '@_id'});
+   return $resource('/sapphire/:id', {id: '@_id'},
+   {
+        'update': {method: 'PUT'},
+        'query': {method: 'GET', isArray: false}
+   });
 }]);

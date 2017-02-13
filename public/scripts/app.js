@@ -13,18 +13,69 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/',
       templateUrl: '/views/pages/home/index.ejs',
       controller: 'homeController',
+      resolve: {
+         sapphire: ['Sapphire', function(Sapphire){
+            return Sapphire.query();
+         }]
+      }
    })
    
    .state('dashboard', {
       url: '/dashboard',
       templateUrl: '/views/pages/dashboard/index.ejs',
-      controller: 'dashboardController'
+      controller: 'dashboardController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+   })
+   
+   .state('sapphireDashboard', {
+      parent: 'dashboard',
+      url: '/sapphire',
+      templateUrl: '/views/pages/sapphire/index.ejs',
+      controller: 'sapphireDashboardController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+   })
+   
+   .state('sapphireEdit', {
+      parent: 'sapphireDashboard',
+      url: '/:id/edit',
+      templateUrl: '/views/pages/sapphire/edit.ejs',
+      controller: 'sapphireEditController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
+   })
+   
+   .state('sapphireShow', {
+      parent: 'sapphireDashboard',
+      url: '/:id/show',
+      templateUrl: '/views/pages/sapphire/show.ejs',
+      controller: 'sapphireShowController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('agreementDashboard', {
       parent: 'dashboard',
       url:'/agreement',
-      templateUrl: '/views/pages/agreement/agreementDashboard.ejs'
+      templateUrl: '/views/pages/agreement/agreementDashboard.ejs',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('agreementIndex', {
@@ -115,7 +166,12 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('applicationDashboard', {
       parent: 'dashboard',
       url:'/application',
-      templateUrl: '/views/pages/application/applicationDashboard.ejs'
+      templateUrl: '/views/pages/application/applicationDashboard.ejs',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('applicationIndex', {
@@ -142,6 +198,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
          application: ['ApplicationFunctions', function(ApplicationFunctions){
             var application = ApplicationFunctions.newApplication();
             return application;
+         }],
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
          }]
       }
    })
@@ -162,6 +221,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
                });
                
                return application;
+         }],
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
          }]
       }
    })
@@ -191,14 +253,24 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('goldensDashboard', {
       parent: 'dashboard',
       url: '/goldens',
-      templateUrl: '/views/pages/goldens/goldensDashboard.ejs'
+      templateUrl: '/views/pages/goldens/goldensDashboard.ejs',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('goldensDashboardIndex', {
       parent: 'goldensDashboard',
       url: '/index',
       templateUrl: '/views/pages/goldens/goldensDashboardIndex.ejs',
-      controller: 'goldensDashboardIndexController'
+      controller: 'goldensDashboardIndexController',
+      resolve: {
+         authorized: ['User', function(User){
+            return User.isLoggedIn();
+         }]
+      }
    })
    
    .state('goldensNew',{
@@ -271,7 +343,7 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       templateUrl: 'views/pages/about/index.ejs',
       controller: 'aboutController',
       resolve: {
-         sapphires: ['Sapphire', function(Sapphire){
+         sapphire: ['Sapphire', function(Sapphire){
             return Sapphire.query();
          }]
       }

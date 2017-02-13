@@ -1,0 +1,58 @@
+<h1>Sapphire Edit</h1>
+
+<form class="form-horizontal col-md-6 col-md-offset-3" name="sapphire">
+
+    <div class="form-group">
+        <label>Landing Motto</label>
+        <input ng-model="sapphire.landingMotto" type="text" class="form-control" placeholder="Landing Motto">
+    </div>
+    <div class="form-group">
+        <label>Landing Brand</label>
+        <input ng-model="sapphire.landingBrand" type="text" class="form-control" placeholder="Landing Brand">
+    </div>
+    <div class="form-group">
+        <label>Landing Photo</label>
+        <input ng-model="sapphire.landingPhoto" type="text" class="form-control" placeholder="Landing Photo">
+    </div>
+    <div class="form-group">
+        <label>About Greeting</label>
+        <input ng-model="sapphire.aboutGreeting" type="text" class="form-control" placeholder="About Greeting">
+    </div>
+    <div class="form-group">
+        <label>About Message</label>
+        <input ng-model="sapphire.aboutMessage" type="text" class="form-control" placeholder="About Message">
+    </div>
+    <div class="form-group">
+        <label>About Brand</label>
+        <input ng-model="sapphire.aboutBrand" type="text" class="form-control" placeholder="About Brand">
+    </div>
+    <div class="form-group">
+        <label>About Story Title</label>
+        <input ng-model="sapphire.aboutStoryTitle" type="text" class="form-control" placeholder="About Story Title">
+    </div>
+    <div class="form-group">
+        <label for="aboutStory">Story</label>
+        <textarea ng-model="sapphire.aboutStory" ng-required="true" id="q3" class="form-control" rows="15"></textarea>
+    </div>
+    <div class="form-group">
+        <label>About Story Photo</label>
+        <input ng-model="sapphire.aboutStoryPhoto" type="text" class="form-control" placeholder="About Story Photo">
+    </div>
+    <div class="form-group">
+        <label>AKC Link</label>
+        <input ng-model="sapphire.akc" type="text" class="form-control" placeholder="akc">
+    </div>
+    <div class="form-group">
+        <label>GRCA Link</label>
+        <input ng-model="sapphire.grca" type="text" class="form-control" placeholder="grca">
+    </div>
+    <div class="form-group">
+        <label>YGRC Link</label>
+        <input ng-model="sapphire.ygrc" type="text" class="form-control" placeholder="ygrc">
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Update" ng-click="updateSapphire()" class="btn btn-primary">
+    </div>
+
+</form>

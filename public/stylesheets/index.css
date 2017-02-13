@@ -198,3 +198,8 @@ a:hover {
 .btn-primary:hover, .btn-primary:active{
     background-color: #eac75b;
 }
+
+.link-row{
+    text-align: center;
+    padding:10px 0px;
+}

@@ -30,15 +30,15 @@ goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$sta
 //=================
 // Home Controllers
 //=================         
-goldenApp.controller('homeController', ['$scope', function($scope){
-
+goldenApp.controller('homeController', ['$scope', 'sapphire', function($scope, sapphire){
+    $scope.sapphire = sapphire;
 }]);
 
 //==================
 // About Controllers
 //==================
-goldenApp.controller('aboutController', ['$scope', 'sapphires', function($scope, sapphires){
-    $scope.sapphires = sapphires;
+goldenApp.controller('aboutController', ['$scope', 'sapphire', function($scope, sapphire){
+    $scope.sapphire = sapphire;
 }]);
 
 

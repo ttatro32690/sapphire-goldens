@@ -2,18 +2,22 @@ var Sapphire = require('./models/sapphire');
 var Goldens = require('./models/goldens');
 
 var sapphireData = {
-    mainTitle: "Welcome to Sapphire Goldens",
-    motto: "A Proud Member of Yankee Golden Retriever Club & Golden Retriever Club of America",
-    akc: "/public/images/akc.png",
-    grca: "/public/images/grca.png",
-    ygrc: "/public/images/ygrclogo.png",
-    about: "/public/images/about.png",
-    story: ["We are the Kauranen family from Southeastern MA. Other than the love that we share for one another, we share a common passion for our Golden Retrievers.",
-        "Our 1st Golden put us under 'The Golden Spell'. Her name was Shadow and is 13 yrs. old in this picture. We spend much of our time and energy making sure the 8 Goldens that own us, are happy and healthy.",
-        "Our first litter of puppies was born in 1994 and historically Sapphire Goldens produce 4 litters per year. Our girls are from champion pedigrees and although we have always used Champions from local Show Kennels, we are hoping that we will have our own champions someday. All have hip, elbow, heart and eye clearances.",
-        "Our objective is to raise Golden Retrievers that are healthy, beautiful to the breed standard, and have that 'I want to be by your side' personality.",
-        "Linda, Steven & Kerri"
-    ]
+    landingMotto: 'Quality Golden Retrievers from our home to yours.',
+    landingBrand: '/public/images/sapphiremain.jpg',
+    landingPhoto: '/public/images/sapphire_main1.jpg',
+    aboutGreeting: 'Welcome to Sapphire Goldns!',
+    aboutMessage: 'Founded in 1994 and proudly serving South Eastern Massachusetts',
+    aboutBrand: '/public/images/sapphire_logo.png',
+    aboutStoryTitle: 'Our Story',
+    aboutStory: ["We are the Kauranen family from Southeastern MA. Other than the love that we share for one another, we share a common passion for our Golden Retrievers.",
+    "Our 1st Golden put us under 'The Golden Spell'. Her name was Shadow and is 13 yrs. old in this picture. We spend much of our time and energy making sure the 8 Goldens that own us, are happy and healthy.",
+    "Our first litter of puppies was born in 1994 and historically Sapphire Goldens produce 4 litters per year. Our girls are from champion pedigrees and although we have always used Champions from local Show Kennels, we are hoping that we will have our own champions someday. All have hip, elbow, heart and eye clearances.",
+    "Our objective is to raise Golden Retrievers that are healthy, beautiful to the breed standard, and have that 'I want to be by your side' personality.",
+    "Linda, Steven & Kerri"],
+    aboutStoryPhoto: '/public/images/sapphire_main4.jpg',
+    grca: '/public/images/grca.png',
+    akc: '/public/images/akc.png',
+    ygrc: '/public/images/ygrclogo.png'
 };
 
 function seedDB() {
@@ -28,10 +32,6 @@ function seedDB() {
                }
             });
         }
-    });
-    
-    Goldens.remove({}, function(err){
-        
     });
     
     // Goldens.remove({}, function(err){

@@ -36,7 +36,7 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
             });
         });
         
-        if($state.current.controller == 'goldenEditController'){
+        if($state.current.controller == 'goldenEditController' || $state.current.controller == 'goldenNewController'){
             return types;
         } else {
             return goldenTypes;

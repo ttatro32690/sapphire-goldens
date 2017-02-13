@@ -20,13 +20,18 @@
 						<div class="col-xs-10">
 							<h3>{{golden.name}}</h3>
 							<div class="row">
-								<div class="col-xs-6">
-									<p>{{golden.birthdate | date:'MM-dd-yyyy'}}</p>
+								<div class="col-xs-5">
+									<p><span ng-if="golden.birthdate">Birthdate: </span>{{golden.birthdate | date:'MM-dd-yyyy'}}</p>
 									<p>{{golden.description}}</p>
 								</div>
-								<div class="col-xs-6">
+								<div class="col-xs-7">
 									<img ng-src="{{mainImage}}" class="img img-responsive img-rounded">
 								</div>
+							</div>
+							<div class="row link-row">
+								<div ng-show="golden.k9data" class="col-xs-4"><a href="{{golden.k9data}}" target="_blank"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
+			                    <div ng-show="golden.pedigree" class="col-xs-4"><a href="{{golden.pedigree}}" target="_blank"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
+			                    <div ng-show="golden.clearances" class="col-xs-4"><a href="{{golden.clearances}}" target="_blank"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
 							</div>
 							<div class="row golden-block">
 							  <div class="col-xs-1 arrow">
