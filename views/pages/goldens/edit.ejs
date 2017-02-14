@@ -61,14 +61,15 @@
                 {{golden.name}}
             </div>
             <div class="panel-body">
-                <img class="golden-show-image img img-responsive" ng-src="{{golden.imageFiles[0]}}">
+                <img ng-repeat="image in golden.imageFiles" class="golden-show-image img img-responsive" ng-if="$first" ng-src="{{image}}">
                 <div class="col-md-12">
                     <p ng-show="golden.description">Description: {{golden.description}}</p>
                     <p ng-show="golden.type" >Type: {{golden.type}}</p>
                     <p ng-if="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
                 </div>
                 <div ng-repeat="image in golden.imageFiles" class="col-md-3">
-                    <img class="img img-responsive" src="{{image}}">
+                    <img class="img img-responsive golden-image" src="{{image}}">
+                    <a href="" class="overlay" ng-click="removeFile($index)">&times;</a>
                 </div>
             </div>
             <div class="panel-footer">

@@ -203,3 +203,8 @@ a:hover {
     text-align: center;
     padding:10px 0px;
 }
+
+.overlay{
+    float: right;
+    z-index: 99;
+}

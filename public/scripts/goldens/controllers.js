@@ -95,22 +95,34 @@ goldenApp.controller('goldenNewController', ['$scope', 'GoldenFunctions', functi
     $scope.saveGolden = GoldenFunctions.saveGolden;
     
     $scope.fileChanged = function(element){
-    		
-    		$scope.golden.imageFiles = [];
+    		if(!$scope.golden.imageFiles){
+    		    $scope.golden.imageFiles = [];
+    		}
     		
             for(var i = 0; i < element.files.length; i++){
-                var fileReader = new FileReader();
-                
-                fileReader.readAsDataURL(element.files[i]);
-                
-                fileReader.onload = function(event){
-                    $scope.golden.imageFiles.push(event.target.result);
-                };
-                
-                fileReader.onloadend = function(event){
-                    $scope.$apply();
-                };
+                if(element.files[i] instanceof Object){
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(element.files[i]);
+                    
+                    fileReader.onload = function(event){
+                        $scope.golden.imageFiles.push(event.target.result);
+                    };
+                    
+                    fileReader.onloadend = function(event){
+                        $scope.$apply();
+                    };
+                }
             }
+            
+        element.value = "";
+    };
+    
+    $scope.removeFile = function(indexPos){
+        $scope.golden.imageFiles = $scope.golden.imageFiles.splice(1);
+		if($scope.golden.imageFiles.length == 0){
+		    $scope.golden.imageFiles = [];
+		}
+        
     };
     
     $scope.changeTypeInput = function(){
@@ -129,24 +141,33 @@ goldenApp.controller('goldenEditController', ['$scope', '$stateParams', 'golden'
     $scope.updateGolden = GoldenFunctions.updateGolden;
     
     $scope.fileChanged = function(element){
-    		
-    		$scope.golden.imageFiles = [];
+    		if(!$scope.golden.imageFiles){
+    		    $scope.golden.imageFiles = [];
+    		}
     		
             for(var i = 0; i < element.files.length; i++){
-                var fileReader = new FileReader();
-                
-                fileReader.readAsDataURL(element.files[i]);
-                
-                fileReader.onload = function(event){
-                    $scope.golden.imageFiles.push(event.target.result);
-                };
-                
-                fileReader.onloadend = function(event){
-                    $scope.$apply();
-                };
+                if(element.files[i] instanceof Object){
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(element.files[i]);
+                    
+                    fileReader.onload = function(event){
+                        $scope.golden.imageFiles.push(event.target.result);
+                    };
+                    
+                    fileReader.onloadend = function(event){
+                        $scope.$apply();
+                    };
+                }
             }
     };
     
+    $scope.removeFile = function(indexPos){
+        $scope.golden.imageFiles = $scope.golden.imageFiles.splice(1);
+		if($scope.golden.imageFiles.length == 0){
+		    $scope.golden.imageFiles = [];
+		}
+        
+    };
     
     $scope.changeTypeInput = function(){
         $scope.existing = !$scope.existing;
