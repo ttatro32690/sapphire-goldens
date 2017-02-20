@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <h3>{{sapphire.aboutStoryTitle}}</h3>
                     <hr>
-                    <p class="story" ng-repeat="story in sapphire.aboutStory">{{story}}</p>
+                    <span ng-bind-html="sapphire.aboutStory">{{sapphire.aboutStory}}</span>
                 </div>
             </div>
         </div>

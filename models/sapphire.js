@@ -8,7 +8,7 @@ var SapphireSchema = mongoose.Schema({
     aboutMessage: String,
     aboutBrand: String,
     aboutStoryTitle: String,
-    aboutStory: [String],
+    aboutStory: String,
     aboutStoryPhoto: String,
     akc: String,
     grca: String,

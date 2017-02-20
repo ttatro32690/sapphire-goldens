@@ -26,7 +26,7 @@ goldenApp.service('User', ['$http', '$q', '$rootScope', '$state', function($http
    User.isLoggedIn = function(){
       var defer = $q.defer();
       
-      $http.get('/isLoggedIn', $rootScope.user)
+      $http.get('/isLoggedIn', {params: $rootScope.user})
          .then(function successCallback(response){
            defer.resolve('Authorized');
         }, function errorCallback(response){

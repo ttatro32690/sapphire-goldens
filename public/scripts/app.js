@@ -1,5 +1,5 @@
 var angular;
-var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource', 'angular-momentjs']);
+var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource', 'angular-momentjs', 'ngSanitize']);
 
 // ROUTES
 goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){

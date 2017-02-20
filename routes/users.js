@@ -9,6 +9,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   });
 
 router.get('/isLoggedIn', function(req, res){
+    console.log(req.params);
     if(req.isAuthenticated()){
         res.sendStatus(200);
     } else {
