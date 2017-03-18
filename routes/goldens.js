@@ -186,7 +186,6 @@ router.put('/:id', middleware.isLoggedIn, function(req, res){
             return Goldens.findById(updatedGolden._id).exec();
         })
         .then(function(updatedGolden){
-            console.log("send");
             res.send(updatedGolden);
         });
         

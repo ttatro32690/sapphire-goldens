@@ -16,7 +16,6 @@ goldenApp.controller('goldenModalController', ['$scope', 'GoldenFunctions', 'Ima
     modal.imagePointer = 0;
     
     modal.goldens = $scope.$parent.golden.typedGoldens;
-    // console.log(modal.goldens.length);
 
     modal.goldens.map(function(golden){
         return Images.get({id: golden.imageFiles[0]}).$promise.then(function(image){
