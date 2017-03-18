@@ -9,38 +9,41 @@ var goldenApp;
 goldenApp.factory('Golden', ['$resource', function($resource){
     
     // CRUD Resource for managing Golden Content
-   return $resource('/goldens/:id', {id: '@_id', name: '@name'},
+   return $resource('/goldens/:id', {id: '@_id'},
    {
         'update': {method: 'PUT'}
    });
 }]);
 
-goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golden){
+goldenApp.factory('Images', ['$resource', function($resource){
+    return $resource('/images/:id');
+}]);
+
+goldenApp.factory('Types', ['$resource', function($resource){
+    return $resource('/types/:id');
+}]);
+
+goldenApp.factory('GoldenFunctions', ['$state', '$q', 'Golden', 'Images', 'Types', function($state, $q, Golden, Images, Types){
     
     var goldenFunctions = {};
     
     // Provide a list of the first golden of it's type to the index screen.
-    goldenFunctions.typeChoices = function(){
-
-        var types = [];
-        var goldenTypes = [];
-        
-        Golden.query(function(goldens){
-            goldens.forEach(function(golden, index){
-               
-            if(golden.type && !types.includes(golden.type)){
-                types.push(golden.type);
-                goldenTypes.push(golden);
-            }
-
-            });
-        });
-        
-        if($state.current.controller == 'goldenEditController' || $state.current.controller == 'goldenNewController'){
-            return types;
+    goldenFunctions.typeChoices = function(defer){
+        if(defer){
+                return Types.query();
         } else {
-            return goldenTypes;
+            var typeArray = [];
+            var counter = 0;
+            
+            Types.query().$promise.then(function(types){
+                types.forEach(function(type){
+                    typeArray[counter] = type.type;
+                    counter += 1;
+                });
+            });
         }
+        
+        return typeArray;
     };
     
     goldenFunctions.newDates = function(golden){
@@ -74,6 +77,7 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
     
     // Update existing golden data
     goldenFunctions.updateGolden = function(golden){
+        
         golden.$update(function(){
             $state.go('goldensShow', {id: golden._id});
         });
@@ -94,11 +98,6 @@ goldenApp.factory('GoldenFunctions', ['$state', 'Golden', function($state, Golde
     // Get a singular golden and instantiate specific fields for display
     goldenFunctions.getGolden = function(id, getSimilarGoldens){
         return Golden.get({id: id});
-    };
-    
-    // Get all like goldens for the show routine. This will query the database by name
-    goldenFunctions.getSimilarGoldens = function(name){
-        return Golden.query({name: name});
     };
     
     goldenFunctions.getSimilarTypeGoldens = function(type){

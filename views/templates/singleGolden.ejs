@@ -1,0 +1,31 @@
+<div>
+    <div class="row">
+        <div class="col-xs-2">
+            <a ng-show="modal.golden.imageFiles.length > 1" ng-click="modal.prevImage()">Previous Image</a>
+        </div>
+        <div class="col-xs-8">
+            <p>{{modal.golden.name}}</p>
+            <img class="img img-responsive img-rounded" src="{{modal.golden.displayImage.rawImageData}}">
+        </div>
+        <div class="col-xs-2">
+            <a ng-show="modal.golden.imageFiles.length > 1" ng-click="modal.nextImage()">Next Image</a>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-if="modal.golden.k9data" class="col-xs-4 text-center">
+            <a href="{{modal.golden.k9data}}" target="_blank">K9 Data</p>
+        </div>
+        <div ng-if="modal.golden.pediogree" class="col-xs-4 text-center">
+            <a href="{{modal.golden.pedigree}}" target="_blank">Pedigree</p>
+        </div>
+        <div ng-if="modal.golden.clearances" class="col-xs-4 text-center">
+            <a href="{{modal.golden.clearances}}" target="_blank">Clearances</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <p ng-if="modal.golden.description">{{modal.golden.description}}</p>
+            <p ng-if="modal.golden.birthdate">Birthdate: {{modal.golden.birthdate | date:'MM/dd/yyyy'}}</p>
+        </div>
+    </div>
+</div>

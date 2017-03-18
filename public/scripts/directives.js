@@ -30,12 +30,33 @@ goldenApp.directive('message', function(){
    };
 });
 
-goldenApp.directive('modal', function(){
-   return{
-      templateUrl: '/views/templates/modal.ejs',
+goldenApp.directive('goldenModal', function(){
+   return {
+      templateUrl: '/views/templates/goldenModal.ejs',
       replace: true,
+      scope: {
+         type: '=',
+         typedGoldens: '@'
+      },
+      controller: 'goldenModalController',
+      controllerAs: 'modal',
+      bindToController: true,
       link: function(scope, element, attrs){
          
       }
+   };
+});
+
+goldenApp.directive('multipleGoldens', function(){
+   return{
+      templateUrl: '/views/templates/multipleGoldens.ejs',
+      replace: true
+   };
+});
+
+goldenApp.directive('singleGolden', function(){
+   return{
+      templateUrl: '/views/templates/singleGolden.ejs',
+      replace: true
    };
 });

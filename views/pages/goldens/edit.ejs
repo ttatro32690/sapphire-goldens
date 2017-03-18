@@ -6,15 +6,16 @@
         
             <div class="form-group">
                 <label>Name</label>
-                <input ng-model="golden.name" type="text" class="form-control" placeholder="Name">
+                <input ng-model="golden.name" ng-required="true" type="text" class="form-control" placeholder="Name">
             </div>
             <div class="form-group">
                 <label>Type</label>
                 <div class="row">
                     <div class="col-xs-8">
-                        <input ng-if="existing == false" ng-model="golden.type" type="text" class="form-control form-horizontal" placeholder="Type">
-                        <select ng-if="existing == true" ng-model="golden.type" ng-options="type for type in types" class="form-control"></select>
-                        <option value="" ng-if="false"></option>
+                        <input ng-if="existing == false" ng-required="true" ng-model="golden.type" type="text" class="form-control form-horizontal" placeholder="Type">
+                        <select ng-if="existing == true" ng-required="true" ng-model="golden.type" ng-options="type for type in types" class="form-control">
+                            <option value="">Select a Type</option>
+                        </select>
                     </div>
                     <div class="col-xs-4">
                         <button ng-click="changeTypeInput()" ng-if="existing == true" class="btn btn-sm btn-primary">New Entry</button>
@@ -61,15 +62,11 @@
                 {{golden.name}}
             </div>
             <div class="panel-body">
-                <img ng-repeat="image in golden.imageFiles" class="golden-show-image img img-responsive" ng-if="$first" ng-src="{{image}}">
+                <img ng-repeat="image in imageFiles" class="golden-show-image img img-responsive" ng-if="$first" ng-src="{{image.rawImageData}}">
                 <div class="col-md-12">
                     <p ng-show="golden.description">Description: {{golden.description}}</p>
                     <p ng-show="golden.type" >Type: {{golden.type}}</p>
                     <p ng-if="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
-                </div>
-                <div ng-repeat="image in golden.imageFiles" class="col-md-3">
-                    <img class="img img-responsive golden-image" src="{{image}}">
-                    <a href="" class="overlay" ng-click="removeFile($index)">&times;</a>
                 </div>
             </div>
             <div class="panel-footer">
@@ -78,6 +75,28 @@
                     <div ng-show="golden.pedigree" class="col-sm-3"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
                     <div ng-show="golden.clearances" class="col-sm-3"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 ng-if="imageFiles.length > 0">Existing Image Files</h3>
+            <div class="col-md-3" ng-repeat="imageFile in imageFiles">
+                <span ng-click="removeExistingFile($index)">&times;</span>
+                <img class="img img-responsive golden-image" src="{{imageFile.rawImageData}}">
+            </div>
+        </div>
+        
+        <div class="row">
+            <h3 ng-if="golden.newFiles.length > 0">Images to be Uploaded</h3>
+            <div class="col-md-3" ng-repeat="newFile in golden.newFiles">
+                <span ng-click="removeNewFile($index)">&times;</span>
+                <img class="img img-responsive golden-image" src="{{newFile}}">
+            </div>
+        </div>
+        
+        <div class="row">
+            <h3 ng-if="deletedFiles.length > 0">Images to be Deleted</h3>
+            <div class="col-md-3" ng-repeat="deletedFile in deletedFiles">
+                <img class="img img-responsive golden-image" src="{{deletedFile.rawImageData}}">
             </div>
         </div>
     </div>

@@ -41,12 +41,16 @@ var applicationRoutes = require('./routes/application'),
       agreementRoutes = require('./routes/agreement'),
        sapphireRoutes = require('./routes/sapphire'),
          goldenRoutes = require('./routes/goldens'),
-          loginRoutes = require('./routes/users');
+          loginRoutes = require('./routes/users'),
+          imageRoutes = require('./routes/images'),
+           typeRoutes = require('./routes/types');
 
 app.use('/application', applicationRoutes);
 app.use('/agreement', agreementRoutes);
 app.use('/sapphire', sapphireRoutes);
 app.use('/goldens', goldenRoutes);
+app.use('/images', imageRoutes);
+app.use('/types', typeRoutes);
 app.use(loginRoutes);
 
 app.get('*', function(req, res){

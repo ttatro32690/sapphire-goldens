@@ -120,6 +120,10 @@ a:hover {
     color: white;
 }
 
+.link:hover {
+    color: #010080;
+}
+
 .navbar-default .navbar-text{
     color: #eac75b;
 }

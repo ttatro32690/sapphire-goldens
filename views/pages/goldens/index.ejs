@@ -1,65 +1,11 @@
-<div class="col-md-3 golden-block" ng-repeat="type in types">
-	<!-- Button trigger modal -->
-	<a ng-click="getSimilarGoldens(type.type)" class="btn btn-lg" data-toggle="modal" data-target="#{{$index}}">
-	{{type.type}}
-	<img src="{{type.imageFiles[0]}}" class="img img-responsive img-rounded">
-	</a>
-	<!-- Modal -->
-	<div class="modal fade bs-example-modal-lg" id="{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" ng-click="exitModal()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">{{type.type}}</h4>
-				</div>
-				<div class="modal-body panel-body">
-					<div class="row">
-						<div class="col-xs-1 arrow">
-							<a ng-click="prev()"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
-						</div>
-						<div class="col-xs-10">
-							<h3>{{golden.name}}</h3>
-							<div class="row">
-								<div class="col-xs-5">
-									<p><span ng-if="golden.birthdate">Birthdate: </span>{{golden.birthdate | date:'MM-dd-yyyy'}}</p>
-									<p>{{golden.description}}</p>
-								</div>
-								<div class="col-xs-7">
-									<img ng-src="{{mainImage}}" class="img img-responsive img-rounded">
-								</div>
-							</div>
-							<div class="row link-row">
-								<div ng-show="golden.k9data" class="col-xs-4"><a href="{{golden.k9data}}" target="_blank"><span>K9 Data<i class="fa fa-file-text-o" aria-hidden="true"></i></span></a></div>
-			                    <div ng-show="golden.pedigree" class="col-xs-4"><a href="{{golden.pedigree}}" target="_blank"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
-			                    <div ng-show="golden.clearances" class="col-xs-4"><a href="{{golden.clearances}}" target="_blank"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
-							</div>
-							<div class="row golden-block">
-							  <div class="col-xs-1 arrow">
-							    <a ng-click="prevImage()"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
-							  </div>
-							  <div ng-if="!nextImg" class="col-xs-10">
-							  	<img ng-src="{{prevImg}}" class="img img-responsive img-rounded golden-image">
-							  </div>
-							<div ng-if="nextImg" class="col-xs-5">
-							  <img ng-src="{{prevImg}}" class="img img-responsive img-rounded golden-image">
-							</div>
-							<div ng-if="nextImg" class="col-xs-5">
-							  <img ng-src="{{nextImg}}" class="img img-responsive img-rounded golden-image">
-							</div>
-							  <div class="col-xs-1 arrow">
-							    <a ng-click="nextImage()"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
-							  </div>
-							</div>
-						</div>
-						<div class="col-xs-1 arrow">
-							<a ng-click="next()"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" ng-click="exitModal()" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
+<div class="row">
+	<div class="col-md-4" ng-repeat="golden in goldens">
+		<div class="panel-body">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{golden.type._id}}">
+				{{golden.type.type}}
+				<img class="img img-responsive img-rounded golden-image" ng-src="{{golden.displayImage.rawImageData}}">
+			</button>
+			<golden-modal type="golden.type" typedGoldens="golden.typedGoldens"></golden-modal>
 		</div>
 	</div>
 </div>

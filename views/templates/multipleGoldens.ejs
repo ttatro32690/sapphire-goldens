@@ -1,0 +1,11 @@
+<div>
+    <h1>Multiple</h1>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="golden in modal.goldens">
+            <a href="" ng-click="modal.switch(golden,$index)">
+                <p>{{golden.name}}</p>
+                <img class="img img-responsive img-rounded golden-image" src="{{golden.displayImage.rawImageData}}">
+            </a>
+        </div>
+    </div>
+</div>

@@ -17,12 +17,12 @@
                 {{golden.name}}
             </div>
             <div class="panel-body">
-                <img class="golden-show-image img img-responsive" ng-src="{{golden.imageFiles[0]}}">
+                <img ng-repeat="image in imageFiles" class="golden-show-image img img-responsive" ng-if="$first" ng-src="{{image.rawImageData}}">
                 <p ng-show="golden.description">Description: {{golden.description}}</p>
                 <p ng-show="golden.type" >Type: {{golden.type}}</p>
                 <p ng-show="golden.birthdate">Born: {{golden.birthdate | date:'MM-dd-yyyy'}}</p>
             </div>
-            <div ng-repeat="image in golden.imageFiles" class="col-md-3">
+            <div ng-repeat="image in golden.images" class="col-md-3">
                 <img class="img img-responsive" src="{{image}}">
             </div>
             <div class="panel-footer">
@@ -31,17 +31,6 @@
                     <div ng-show="golden.pedigree" class="col-sm-4 text-center"><a href="{{golden.pedigree}}"><span>Pedigree<i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a></div>
                     <div ng-show="golden.clearances" class="col-sm-4 text-center"><a href="{{golden.clearances}}"><span>Clearances<i class="fa fa-heart" aria-hidden="true"></i></span></a></div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid goldens-container">
-    <h4 ng-if="goldens.length > 1">Other Photos of {{golden.name}}</h4>
-    <div class="row">
-        <div ng-repeat="gold in goldens | filter: '!' + golden._id | orderBy:'dateCreated'">
-            <div class="col-md-4 golden-block">
-                <a ui-sref="goldensShow({id: gold._id})" ><img class="gold-image img img-responsive" ng-src={{gold.url}}></a>
             </div>
         </div>
     </div>

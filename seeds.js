@@ -1,5 +1,7 @@
 var Sapphire = require('./models/sapphire');
 var Goldens = require('./models/goldens');
+var Types = require('./models/types');
+var Images = require('./models/images');
 
 var sapphireData = {
     landingMotto: 'Quality Golden Retrievers from our home to yours.',
@@ -20,42 +22,73 @@ var sapphireData = {
     ygrc: '/public/images/ygrclogo.png'
 };
 
+var types = [
+        {
+            type: 'Fathers',
+        },
+        {
+            type: 'Retired',
+        },
+        {
+            type: 'Mothers'
+        }
+    ];
+
 function seedDB() {
-    Sapphire.remove({}, function(err){
+    Goldens.remove({}, function(err){
         if(err){
             console.log(err);
-        } else {
-            Sapphire.create(sapphireData, function(err, sapphire){
-               if(err){
-                   console.log(err);
-               } else {
-               }
-            });
         }
     });
     
-    // Goldens.remove({}, function(err){
-    //     if(err){
-    //         console.log(err);
-    //     } else {
-    //         console.log("Removed");
-    //         for(var i = 1; i < 39; i++){
-                
-    //             var newGolden = {
-    //                 name: "sapphire" + i,
-    //                 url: "/public/images/sapphire" + i + ".png"
-    //             };
-                
-    //             Goldens.create(newGolden, function(err, createdGolden){
-    //                 if(err){
-    //                     console.log(err);
-    //                 } else {
-    //                     console.log(createdGolden);
-    //                 }
-    //             });
-    //         }
-    //     }
-    // });
+    Images.remove({}, function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+    
+    Types.remove({}, function(err){
+        console.log(err);
+    });
+    
+//     // 1. Promise to create shell of a new golden
+//     // 2. Promise of golden after saving all image besides Images/Type
+//     // 3. Promise of found type
+//     // 4. Promise of new type
+//     // 5. Promise of created Images
+    
+//     var goldenPromise = Goldens.create(golden);
+//     var typePromise = Types.findOne({type: "Fathers"}).exec();
+    
+//     var existingOrNewTypePromise = typePromise.then(function(foundType){
+//         if(foundType){
+//             return foundType;
+//         } else {
+//             console.log("new");
+//             return Types.create({type: "Bacon"});
+//         }
+//     });
+    
+//     var imagePromises = [Images.create({rawImageData: "New Image"}),Images.create({rawImageData: "Second Image"})];
+
+// //This code works!!!    
+//     goldenPromise.then(function(createdGolden){
+//         existingOrNewTypePromise.then(function(foundType){
+//             createdGolden.type = foundType._id;
+//             return createdGolden.save();
+//         }).then(function(updatedGolden){            
+//             imagePromises.forEach(function(promise, index, array){
+//                 promise.then(function(image){
+//                     updatedGolden.imageFiles.push(image._id);
+//                     if(index+1 == array.length){
+//                         return updatedGolden.save();
+//                     }
+//                 });
+//             });
+//         });
+//     });
+
+
 }
 
 module.exports = seedDB;
