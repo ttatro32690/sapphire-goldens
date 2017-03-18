@@ -38,7 +38,9 @@ router.post('/', middleware.isLoggedIn, function(req, res){
     var updatedGoldenFields = function(createdGolden){
         createdGolden.name = req.body.name;
         createdGolden.description = req.body.description;
-        createdGolden.birthdate = req.body.birthdate;
+        if(req.body.birthdate){
+            createdGolden.birthdate = req.body.birthdate;
+        }
         createdGolden.k9data = req.body.k9data;
         createdGolden.pedigree = req.body.pedigree;
         createdGolden.clearances = req.body.clearances;        
@@ -118,7 +120,9 @@ router.put('/:id', middleware.isLoggedIn, function(req, res){
         editedGolden._id = req.body._id;
         editedGolden.name = req.body.name;
         editedGolden.description = req.body.description;
-        editedGolden.birthdate = req.body.birthdate;
+        if(req.body.birthdate){
+            editedGolden.birthdate = req.body.birthdate;
+        }
         editedGolden.k9data = req.body.k9data;
         editedGolden.pedigree = req.body.pedigree;
         editedGolden.clearances = req.body.clearances;

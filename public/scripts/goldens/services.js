@@ -52,7 +52,9 @@ goldenApp.factory('GoldenFunctions', ['$state', '$q', 'Golden', 'Images', 'Types
     };
     
     goldenFunctions.intToExt = function(golden){
-        golden.birthdate = new Date(golden.birthdate);
+        if(golden.birthdate){
+            golden.birthdate = new Date(golden.birthdate);
+        }
         return golden;
     };
     
