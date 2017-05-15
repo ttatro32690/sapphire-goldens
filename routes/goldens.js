@@ -164,7 +164,11 @@ router.put('/:id', middleware.isLoggedIn, function(req, res){
             if(updatedGolden.type != oldGolden.type){
                 Goldens.findOne({type: oldGolden.type}).then(function(foundGolden){
                     if(!foundGolden){
-                        Types.findByIdAndRemove(oldGolden.type);
+                        Types.findByIdAndRemove(oldGolden.type, function(err){
+                            if(err){
+                                console.log(err);
+                            }
+                        });
                     }
                 });
             } 
@@ -186,7 +190,7 @@ router.put('/:id', middleware.isLoggedIn, function(req, res){
 
         })
         .then(function(updatedGolden){
-            // Images need to be removed
+
             return Goldens.findById(updatedGolden._id).exec();
         })
         .then(function(updatedGolden){
