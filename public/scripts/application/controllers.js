@@ -11,13 +11,14 @@ goldenApp.controller('applicationIndexController', ['$scope', 'applications', fu
     $scope.applications = applications;    
 }]);
 
-goldenApp.controller('applicationNewController', ['$scope', '$state', 'application', 'ApplicationFunctions', function($scope, $state, application, ApplicationFunctions){
+goldenApp.controller('applicationNewController', ['$scope', '$state', '$window', 'application', 'ApplicationFunctions', function($scope, $state, $window, application, ApplicationFunctions){
     $scope.new = true;
     $scope.application = application;
     
     $scope.saveApplication = function(){
         if($scope.appl.$error.required == null){
-            ApplicationFunctions.saveApplication($scope.application, $state.current.parent);       
+            ApplicationFunctions.saveApplication($scope.application, $state.current.parent);
+            $window.alert('Application Successfully Entered!');
         }
     };
 }]);
