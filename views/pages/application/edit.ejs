@@ -14,13 +14,19 @@
                         <label>Name</label>
                         <input ng-model="application.name" type="text" ng-required="true" class="form-control" placeholder="Name">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <label>Date</label>
-                        <input ng-model="application.date" type="date" ng-required="true" class="form-control" placeholder="Date">
+                        <input ng-model="application.date" type="date" ng-required="true" class="form-control" placeholder="Date" readonly>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
+                        <label for="tel">Telephone</label>
+                        <input ng-model="application.telephone" type="tel" id="tel" ng-required="true" class="form-control" placeholder="Telephone Number"></type>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5">
                         <label>Address</label>
                         <input ng-model="application.address" type="text" ng-required="true" class="form-control" placeholder="Address">    
                     </div>
@@ -28,19 +34,18 @@
                         <label>City</label>
                         <input ng-model="application.city" type="text" ng-required="true" class="form-control" placeholder="City">
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <label>State</label>
-                        <input ng-model="application.state" type="text" ng-required="true" class="form-control" placeholder="State">
+                        <select ng-model="application.state" type="text" ng-required="true" class="form-control" placeholder="State">
+                            <option value="">State</option>
+                            <option ng-repeat="state in states">{{state}}</option>
+                        </select>
                     </div>
-                    <div class="col-sm-3">
-                        <label>ZIP</label>
+                    <div class="col-sm-2">
+                        <label>Postal Code</label>
                         <input ng-model="application.zip" type="text" ng-required="true" class="form-control" placeholder="Zip">
                     </div>
                 </div>
-                    <div class="form-group container-fluid">
-                        <label for="tel">Telephone</label>
-                        <input ng-model="application.telephone" type="tel" id="tel" ng-required="true" class="form-control" placeholder="Telephone Number"></type>
-                    </div>
             </div>
             <div>
             <h3>Questionnaire</h3>
