@@ -30,6 +30,7 @@ goldenApp.service('User', ['$http', '$q', '$rootScope', '$state', function($http
          .then(function successCallback(response){
            defer.resolve('Authorized');
         }, function errorCallback(response){
+            console.log(response);
            defer.reject('Not Authorized');
         });
         

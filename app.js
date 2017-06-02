@@ -3,14 +3,10 @@ var LocalStrategy = require('passport-local'),
          passport = require('passport'),
          mongoose = require('mongoose'),
           session = require('express-session'),
-       RedisStore = require('connect-redis')(session),
           express = require('express'),
           favicon = require('serve-favicon'),
                fs = require('fs'),
               app = express();
-              
-// process.env.ENV = 'production';
-// process.env.DATABASEURL = 'mongodb://travis:tet6649319@ds135577.mlab.com:35577/sapphire';
 
 var db = process.env.DATABASEURL || 'mongodb://localhost/sapphire';
 mongoose.Promise = global.Promise;
@@ -25,13 +21,12 @@ app.use(bodyParser.urlencoded({limit: '16mb', extended: false}));
 
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/images/favicon.ico')); 
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // Passport and Authentication
 app.use(session({
     secret: 'annie is the best dog',
     resave: 'false',
-    store: new RedisStore(),
     saveUninitialized: false
 }));
 

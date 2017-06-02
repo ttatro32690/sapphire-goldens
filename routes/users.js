@@ -6,7 +6,7 @@ var User = require('../models/users');
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
     res.send(req.body.username);
-  });
+});
 
 router.get('/isLoggedIn', function(req, res){
     if(req.isAuthenticated()){
