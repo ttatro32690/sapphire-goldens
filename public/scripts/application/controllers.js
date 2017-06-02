@@ -4,7 +4,7 @@ var goldenApp;
 // Application Controllers
 //========================
 goldenApp.controller('applicationController', ['$state', function($state){
-
+    $state.go('applicationNew');
 }]);
 
 goldenApp.controller('applicationIndexController', ['$scope', 'applications', function($scope, applications){
