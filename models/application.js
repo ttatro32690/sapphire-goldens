@@ -8,6 +8,7 @@ var ApplicationSchema = mongoose.Schema({
     city: String,
     state: String,
     zip: String,
+    email: String,
     telephone: String,
     prevOwner: String,
     yardFenced: String,
