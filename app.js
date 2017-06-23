@@ -19,9 +19,9 @@ var User = require('./models/users');
 app.use(bodyParser.json({limit: '16mb'}));
 app.use(bodyParser.urlencoded({limit: '16mb', extended: false}));
 
+app.use(favicon(__dirname + '/public/images/favicon.jpg'));
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/images/favicon.jpg'));
 
 // Passport and Authentication
 app.use(session({
