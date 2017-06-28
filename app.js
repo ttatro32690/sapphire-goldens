@@ -1,5 +1,6 @@
 var LocalStrategy = require('passport-local'),
        bodyParser = require('body-parser'),
+       nodemailer = require('nodemailer'),
          passport = require('passport'),
          mongoose = require('mongoose'),
           session = require('express-session'),
@@ -8,7 +9,11 @@ var LocalStrategy = require('passport-local'),
                fs = require('fs'),
               app = express();
 
-var db = process.env.DATABASEURL || 'mongodb://localhost/sapphire';
+var config = require('./config/config.js');
+
+// 
+
+var db = process.env.DATABASEURL || config.database.url;
 mongoose.Promise = global.Promise;
 mongoose.connect(db);
 
@@ -38,7 +43,6 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routes
 var applicationRoutes = require('./routes/application'),
-      agreementRoutes = require('./routes/agreement'),
        sapphireRoutes = require('./routes/sapphire'),
          goldenRoutes = require('./routes/goldens'),
           loginRoutes = require('./routes/users'),
@@ -46,11 +50,10 @@ var applicationRoutes = require('./routes/application'),
            typeRoutes = require('./routes/types');
 
 app.use('/application', applicationRoutes);
-app.use('/agreement', agreementRoutes);
-app.use('/sapphire', sapphireRoutes);
-app.use('/goldens', goldenRoutes);
-app.use('/images', imageRoutes);
-app.use('/types', typeRoutes);
+app.use('/sapphire',    sapphireRoutes);
+app.use('/goldens',     goldenRoutes);
+app.use('/images',      imageRoutes);
+app.use('/types',       typeRoutes);
 app.use(loginRoutes);
 
 app.get('*', function(req, res){

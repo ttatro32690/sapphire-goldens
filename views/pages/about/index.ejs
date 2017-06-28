@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-xs-7 col-md-6">
                 <div class="col-md-6 col-md-offset-3">
-                    <h3>{{sapphire.aboutGreeting}}</h3>
-                    <p>{{sapphire.aboutMessage}}</p>
+                    <h3>{{aboutVm.data.aboutGreeting}}</h3>
+                    <p>{{aboutVm.data.aboutMessage}}</p>
                 </div>
             </div>
             <div class="col-xs-5 col-md-5 col-md-offset-1">
-                <img class="img img-responsive pull-right" ng-src="{{sapphire.aboutBrand}}">
+                <img class="img img-responsive pull-right" ng-src="{{aboutVm.data.aboutBrand}}">
             </div>
         </div>
     </div>
@@ -18,13 +18,13 @@
     <div class="content-panel">
         <div class="row">
             <div class="col-md-5">
-                <img class="img img-responsive" ng-src="{{sapphire.aboutStoryPhoto}}">
+                <img class="img img-responsive" ng-src="{{aboutVm.data.aboutStoryPhoto}}">
             </div>
             <div class="col-md-7">
                 <div class="container-fluid">
-                    <h3>{{sapphire.aboutStoryTitle}}</h3>
+                    <h3>{{aboutVm.data.aboutStoryTitle}}</h3>
                     <hr>
-                    <span ng-bind-html="sapphire.aboutStory">{{sapphire.aboutStory}}</span>
+                    <span ng-bind-html="aboutVm.data.aboutStory">{{aboutVm.data.aboutStory}}</span>
                 </div>
             </div>
         </div>
@@ -40,19 +40,19 @@
         <div class="row">
             <div class="col-xs-4">
                 <a href="https://www.grca.org/">
-                    <img class="img img-responsive club" ng-src="{{sapphire.grca}}">
+                    <img class="img img-responsive club" ng-src="{{aboutVm.data.grca}}">
                     <p class="text-center">Golden Retriever Club of America</p>
                 </a>
             </div>
             <div class="col-xs-4">
                 <a href="http://www.akc.org/">
-                    <img class="club img img-responsive" ng-src="{{sapphire.akc}}">
+                    <img class="club img img-responsive" ng-src="{{aboutVm.data.akc}}">
                     <p class="text-center">American Kennel Club</p>
                 </a>
             </div>
             <div class="col-xs-4">
                 <a href="http://yankeegrc.azurewebsites.net/">
-                    <img class="club img img-responsive" ng-src="{{sapphire.ygrc}}">
+                    <img class="club img img-responsive" ng-src="{{aboutVm.data.ygrc}}">
                     <p class="text-center">Yankee Golden Retriever Club</p>
                 </a>
             </div>

@@ -21,5 +21,8 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "serve-favicon": "^2.3.0"
+  },
+  "engines": {
+    "node": "6.9.4"    // You can use any version
   }
 }

@@ -3,7 +3,7 @@ var goldenApp;
 //========================
 // Application Controllers
 //========================
-goldenApp.controller('applicationController', ['$state', function($state){
+goldenApp.controller('applicationController', ['$state', 'ngNotify', function($state, ngNotify){
     $state.go('applicationNew');
 }]);
 
@@ -11,7 +11,7 @@ goldenApp.controller('applicationIndexController', ['$scope', 'applications', fu
     $scope.applications = applications;    
 }]);
 
-goldenApp.controller('applicationNewController', ['$scope', '$state', '$window', 'application', 'ApplicationFunctions', function($scope, $state, $window, application, ApplicationFunctions){
+goldenApp.controller('applicationNewController', ['$scope', '$state', 'application', 'ApplicationFunctions', 'ngNotify', function($scope, $state, application, ApplicationFunctions, ngNotify){
     $scope.new = true;
     $scope.application = application;
     
@@ -25,7 +25,7 @@ goldenApp.controller('applicationNewController', ['$scope', '$state', '$window',
     $scope.saveApplication = function(){
         if($scope.appl.$error.required == null){
             ApplicationFunctions.saveApplication($scope.application, $state.current.parent);
-            $window.alert('Application Successfully Entered!');
+            ngNotify.set('Application Submitted!');
         }
     };
 }]);

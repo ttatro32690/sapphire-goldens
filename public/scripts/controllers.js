@@ -1,54 +1,34 @@
 var goldenApp;
 
-//================
-// Root Controller
-//================
-
-goldenApp.controller('GoldenController', ['$scope', '$rootScope', '$http', '$state', '$timeout', 'User', function($scope, $rootScope, $http, $state, $timeout, User){
+goldenApp.controller('appController', ['$rootScope', '$state', 'ngNotify', 'User', function($rootScope, $state, ngNotify, User){
     
-    $rootScope.$on('$stateChangeError', function(event, toParams, fromState, fromParams, error){
-        $state.go('landing');
-    });
+    var app = this;
     
-    $scope.userLogout = function(){
+    app.userLogout = function(){
         var promise = User.logout();
         
         promise.then(function(message){
-            $scope.message = "Successfully Logged Out";
-            
-            $timeout(function(){
-                $rootScope.user = null;
-                $scope.message = null;
-                $state.go('landing');
-            }, 1500);  
+            $rootScope.user = null;
+            ngNotify.set('Successfully Logged Out!');
+            $state.go('landing');
         });
     };
+    
+    //
+    
+    $rootScope.$on('$stateChangeError', function(){
+        $state.go('landing');
+    });
 
     
 }]);
 
-//=================
-// Home Controllers
-//=================         
-goldenApp.controller('homeController', ['$scope', 'sapphire', function($scope, sapphire){
-    $scope.sapphire = sapphire;
+goldenApp.controller('homeController', ['sapphire', function(sapphire){
+    var homeVm = this;
+    homeVm.data = sapphire;
 }]);
 
-//==================
-// About Controllers
-//==================
-goldenApp.controller('aboutController', ['$scope', 'sapphire', function($scope, sapphire){
-    $scope.sapphire = sapphire;
-}]);
-
-
-//====================
-// Contact Controllers
-//====================
-goldenApp.controller('contactController', ['$scope', '$state', function($scope, $state){
-   $state.go('agreement');
-}]);
-
-goldenApp.controller('dashboardController', ['$scope', function($scope){
-    
+goldenApp.controller('aboutController', ['sapphire', function(sapphire){
+    var aboutVm = this;
+    aboutVm.data = sapphire;
 }]);

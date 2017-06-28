@@ -1,8 +1,8 @@
 var angular;
-var goldenApp = angular.module('goldenApp', ['ui.router', 'ngResource', 'angular-momentjs', 'ngSanitize']);
+var goldenApp = angular.module('goldenApp', ['ui.router', 'ngAnimate', 'ngResource', 'ngNotify', 'angular-momentjs', 'ngSanitize']);
 
 // ROUTES
-goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+goldenApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
    
    $urlRouterProvider.otherwise('/');
 
@@ -13,6 +13,7 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/',
       templateUrl: '/views/pages/home/index.ejs',
       controller: 'homeController',
+      controllerAs: 'homeVm',
       resolve: {
          sapphire: ['Sapphire', function(Sapphire){
             return Sapphire.query();
@@ -23,7 +24,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
    .state('dashboard', {
       url: '/dashboard',
       templateUrl: '/views/pages/dashboard/index.ejs',
-      controller: 'dashboardController',
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
@@ -63,102 +63,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       resolve: {
          authorized: ['User', function(User){
             return User.isLoggedIn();
-         }]
-      }
-   })
-   
-   .state('agreementDashboard', {
-      parent: 'dashboard',
-      url:'/agreement',
-      templateUrl: '/views/pages/agreement/agreementDashboard.ejs',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }]
-      }
-   })
-   
-   .state('agreementIndex', {
-      parent: 'agreementDashboard',
-      url: '/index',
-      templateUrl: '/views/pages/agreement/index.ejs',
-      controller: 'agreementIndexController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreements: ['AgreementFunctions', function(AgreementFunctions){
-             var agreements = AgreementFunctions.getAllAgreements();
-             
-               agreements.$promise.then(function(agreements){
-                  agreements.forEach(function(agreement){
-                     agreement = AgreementFunctions.intToExt(agreement);
-                 });
-             });
-
-            return agreements;
-         }]
-      }
-   })
-
-   .state('agreementNew', {
-      parent: 'agreementDashboard',
-      url: '/new',
-      templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementNewController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['AgreementFunctions', function(AgreementFunctions){
-               var agreement = AgreementFunctions.newAgreement();
-               agreement = AgreementFunctions.newDates(agreement);
-               
-               return agreement;
-         }]
-      }
-   })
-   
-   .state('agreementEdit', {
-      parent: 'agreementDashboard',
-      url: '/:id/edit',
-      templateUrl: '/views/pages/agreement/edit.ejs',
-      controller: 'agreementEditController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['$stateParams', 'AgreementFunctions', function($stateParams, AgreementFunctions){
-            
-            var tempAgreement = AgreementFunctions.getAgreement($stateParams.id);
-            
-            tempAgreement.$promise.then(function(agreement){
-               tempAgreement = AgreementFunctions.intToExt(agreement);
-            });
-            
-            return tempAgreement;
-         }]
-      }
-      
-   })
-   
-   .state('agreementShow', {
-      parent: 'agreementDashboard',
-      url: '/:id/show',
-      templateUrl: '/views/pages/agreement/show.ejs',
-      controller: 'agreementShowController',
-      resolve: {
-         authorized: ['User', function(User){
-            return User.isLoggedIn();
-         }],
-         agreement: ['$stateParams','AgreementFunctions', function($stateParams, AgreementFunctions){
-            var agreement = AgreementFunctions.getAgreement($stateParams.id);
-            
-            agreement.$promise.then(function(agreement){
-               agreement = AgreementFunctions.intToExt(agreement);
-            });
-            
-            return agreement;
          }]
       }
    })
@@ -342,6 +246,7 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       url: '/about',
       templateUrl: 'views/pages/about/index.ejs',
       controller: 'aboutController',
+      controllerAs: 'aboutVm',
       resolve: {
          sapphire: ['Sapphire', function(Sapphire){
             return Sapphire.query();
@@ -349,18 +254,9 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       }
    })
    
-// Contact Routes
-   
-   .state('contact', {
-      url: '/contact',
-      templateUrl: '/views/pages/contact/index.ejs',
-      controller: 'contactController'
-   })
-   
 // Agreement Routes
    
    .state('agreement', {
-      parent: 'contact',
       url: '/agreement',
       templateUrl: '/views/pages/agreement/agreement.ejs',
       controller: 'agreementController'
@@ -369,7 +265,6 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
 // Application Routes
    
    .state('application', {
-      parent: 'contact',
       url: '/application',
       templateUrl: '/views/pages/application/application.ejs',
       controller: 'applicationController'
@@ -426,4 +321,14 @@ goldenApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       }
    });
    
+}])
+
+.run(['ngNotify', function(ngNotify){
+   ngNotify.config({
+      default: 'info',
+      duration: 4000,
+      position: 'bottom',
+      sticky: false,
+      theme: 'pure',
+   });
 }]);
