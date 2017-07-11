@@ -1,13 +1,16 @@
-<ul class="list-group">
-    <a ui-sref="goldensShow({id: golden._id})" class="list-group-item" ng-repeat="golden in goldens">
-        <div class="row">
-            <div class="col-md-1">
-                <img src="{{golden.indexImage}}" class="img img-responsive img-rounded">
-            </div>
-            <div class="col-md-9">
-                <p>{{golden.name}}</p>
-                <p>{{golden.indexType}}</p>
-            </div>
-        </div>
-    </a>
-</ul>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="golden in goldens" ui-sref="goldensShow({id: golden._id})">
+            <td>{{golden.name}}</td>
+            <td>{{golden.indexType}}</td>
+            <td>{{golden.dateCreated | date:'MM-dd-yyyy'}}</td>
+        </tr>
+    </table>
+</div>

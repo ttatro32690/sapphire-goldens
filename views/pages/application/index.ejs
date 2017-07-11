@@ -1,6 +1,18 @@
-<p>All Applications</p>
-<ul class="list-group">
-    <a ui-sref="applicationDashboardShow({id: application._id})" class="list-group-item" ng-repeat="application in applications">
-        {{application.name}}
-    </a>
-</ul>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date Entered</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="application in applications" ui-sref="applicationDashboardShow({id: application._id})">
+            <td>{{application.name}}</td>
+            <td>{{application.dateCreated | date:'MM-dd-yyyy'}}</td>
+            <td>{{application.telephone}}</td>
+            <td>{{application.email}}</td>
+        </tr>
+    </table>
+</div>

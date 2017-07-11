@@ -2,13 +2,14 @@
         <h4>
             View Application
             <span ng-show="user" class="pull-right">
-                <a ui-sref="applicationEdit({id: application._id})" class="btn btn-primary btn-xs">Edit</a>
-                <a ng-click="deleteApplication(application)" class="btn btn-primary btn-xs">Delete</a>
+                <a ui-sref="applicationEdit({id: application._id})" class="btn btn-primary">Edit</a>
+                <a ng-click="deleteApplication(application)" class="btn btn-primary">Delete</a>
+                <button class="btn btn-primary pull-right" ng-click="print()">Print</button>
             </span>
         </h4>
 
         <hr>
-        <p>If an application is accepted, a deposit is necessay to put you on the list for a puppy!</p>
+        <p>If an application is accepted, a deposit is necessary to put you on the list for a puppy!</p>
         <p>Please answer the following questions the best you can, so we can better understand your family.</p>
         <div>
             <h3>Contact Information</h3>
@@ -52,37 +53,37 @@
             </form>
         </div>
         <div>
-        <h3>Questionnaire</h3>
-        <ol>
-        <div class="form-group">
-                    <label for="q1"><li>Have you been lucky enough to have a golden retrieve in the past?</li></label>
-                    <textarea ng-model="application.prevOwner" id="q1" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q2"><li>Do you have a fenced in yard?</li></label>
-                    <textarea ng-model="application.yardFenced" id="q2" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q3"><li>Do you have children in the home under 8 years old?</li></label>
-                    <textarea ng-model="application.children" id="q3" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q4"><li>Do you have other pets?</li></label>
-                    <textarea ng-model="application.otherPets" id="q4" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q5"><li>Are you prepared to care for a puppy physically, emotionally, and financially?</li></label>
-                    <textarea ng-model="application.prepared" id="q5" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q6"><li>What will you do with your new puppy dog while you are at work?</li></label>
-                    <textarea ng-model="application.daycare" id="q6" class="form-control" rows="3" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="q7"><li>Would you prefer a male or female puppy?</li></label>
-                    <textarea ng-model="application.gender" id="q7" class="form-control" rows="3" readonly></textarea>
-                </div>
-        </ol>
+            <h3>Questionnaire</h3>
+            <div class="form-group">
+                <label for="q1">Have you been lucky enough to have a golden retrieve in the past?</label>
+                <textarea ng-model="application.prevOwner" id="q1" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q2">Do you have a fenced in yard?</label>
+                <textarea ng-model="application.yardFenced" id="q2" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q3">Do you have children in the home under 8 years old?</label>
+                <textarea ng-model="application.children" id="q3" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q4">Do you have other pets?</label>
+                <textarea ng-model="application.otherPets" id="q4" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q5">Are you prepared to care for a puppy physically, emotionally, and financially?</label>
+                <textarea ng-model="application.prepared" id="q5" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q6">What will you do with your new puppy dog while you are at work?</label>
+                <textarea ng-model="application.daycare" id="q6" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="q7">Would you prefer a male or female puppy?</label>
+                <textarea ng-model="application.gender" id="q7" class="form-control" rows="3" readonly></textarea>
+            </div>
         </div>
     </div>
+    
+    <app-printer></app-printer>
 </div>

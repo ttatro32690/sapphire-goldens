@@ -1,0 +1,81 @@
+<div class="container">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="printer.css" rel="stylesheet" media="all">
+
+        <div class="col-xs-8 col-xs-offset-2">
+            <h4>Print Application</h4>
+            <hr>
+            <p>If an application is accepted, a deposit is necessay to put you on the list for a puppy!</p>
+            <p>Please answer the following questions the best you can, so we can better understand your family.</p>
+            <div>
+                <h3>Contact Information</h3>
+                <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label>Name</label>
+                        <input ng-model="application.name" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Date</label>
+                        <input ng-model="application.date" type="date" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Address</label>
+                        <input ng-model="application.address" type="text" class="form-control" readonly>    
+                    </div>
+                    <div class="col-xs-3">
+                        <label>City</label>
+                        <input ng-model="application.city" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-3">
+                        <label>State</label>
+                        <input ng-model="application.state" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-3">
+                        <label>ZIP</label>
+                        <input ng-model="application.zip" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="email">Email</label>
+                        <input ng-model="application.email" type="email" id="email" ng-required="true" class="form-control" placeholder="test@test.com" readonly></type>
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="tel">Telephone</label>
+                        <input ng-model="application.telephone" type="tel" id="tel" ng-required="true" class="form-control" placeholder="Telephone Number" readonly></type>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div>
+                <h3>Questionnaire</h3>
+                <div class="form-group">
+                    <label for="q1">Have you been lucky enough to have a golden retriever in the past?</label>
+                    <p class="response">{{application.prevOwner}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q2">Do you have a fenced in yard?</label>
+                    <p class="response">{{application.yardFenced}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q3">Do you have children in the home under 8 years old?</label>
+                    <p class="response">{{application.children}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q4">Do you have other pets?</label>
+                    <p class="response">{{application.otherPets}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q5">Are you prepared to care for a puppy physically, emotionally, and financially?</label>
+                    <p class="response">{{application.prepared}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q6">What will you do with your new puppy dog while you are at work?</label>
+                    <p class="response">{{application.daycare}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="q7">Would you prefer a male or female puppy?</label>
+                    <p class="response">{{application.gender}}</p>
+                </div>
+            </div>
+        </div>
+    </div>

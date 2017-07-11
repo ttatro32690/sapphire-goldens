@@ -1,5 +1,5 @@
-BLUE: #010080
-GOLD: #eac75b
+/*BLUE: #010080*/
+/*GOLD: #eac75b*/
 body {
     font-family: 'Open Sans', serif;
     letter-spacing: .2rem;
@@ -211,6 +211,11 @@ a:hover {
 .overlay{
     float: right;
     z-index: 99;
+}
+
+.pager li>a, .pager li>span {
+    color: #010080;
+    background: #eac75b;
 }
 
 /*Animation Example*/

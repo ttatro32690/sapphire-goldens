@@ -5,11 +5,9 @@
         
         <!-- Scripts -->
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/bower_components/moment/min/moment.min.js"></script>
         <script src="/bower_components/angular/angular.min.js"></script>
         <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
         <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="/bower_components/angular-momentjs/angular-momentjs.min.js"></script>
         <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
         <script src="/bower_components/ng-notify/dist/ng-notify.min.js"></script>
         <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
@@ -17,19 +15,30 @@
         
         
         <!--Individual Scripts for Each Module-->
-        <script src="/scripts/app.js"></script>
-        <script src="/scripts/controllers.js"></script>
-        <script src="/scripts/directives.js"></script>
-        <script src="/scripts/agreement/services.js"></script>
-        <script src="/scripts/agreement/controllers.js"></script>
-        <script src="/scripts/application/services.js"></script>
-        <script src="/scripts/application/controllers.js"></script>
-        <script src="/scripts/goldens/services.js"></script>
-        <script src="/scripts/goldens/controllers.js"></script>
-        <script src="/scripts/sapphire/services.js"></script>
-        <script src="/scripts/sapphire/controllers.js"></script>
-        <script src="/scripts/user/services.js"></script>
-        <script src="/scripts/user/controllers.js"></script>
+        
+        <!--Shell Layout Scripts-->
+        <script src="/scripts/app.module.js"></script>
+        <script src="/scripts/layout/controllers.js"></script>
+        <script src="/scripts/layout/directives.js"></script>
+        
+        <!--Agreement Scripts-->
+        <script src="/scripts/agreement/agreement.controllers.js"></script>
+        
+        <!--Application Scripts-->
+        <script src="/scripts/application/application.controllers.js"></script>
+        <script src="/scripts/application/application.services.js"></script>
+
+        <!--Golden Scripts-->
+        <script src="/scripts/goldens/goldens.controllers.js"></script>
+        <script src="/scripts/goldens/goldens.services.js"></script>
+        
+        <!--Sapphire Scripts-->
+        <script src="/scripts/sapphire/sapphire.controllers.js"></script>
+        <script src="/scripts/sapphire/sapphire.services.js"></script>
+        
+        <!--User Scripts-->
+        <script src="/scripts/user/user.controllers.js"></script>
+        <script src="/scripts/user/user.services.js"></script>
         
         <!-- StyleSheets -->
         <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,26 +49,15 @@
         <!--Favicon-->
         <link rel="shortcut icon" href="/public/images/favicon.jpg" />
         
-        <meta name="keywords" content="goldens, 
-        retrievers, 
-        golden retrievers, 
-        puppies, 
-        puppy, 
-        for sale, 
-        breeder, 
-        Boston, MA, 
-        Massachusetts, 
-        Eastern,
-        Southern,
-        South Eastern, 
-        Cape Cod">
+        <meta name="keywords" content="goldens, retrievers, golden retrievers, puppies, puppy, for sale, breeder, Boston, MA, Massachusetts, Eastern, Southern, South Eastern, Cape Cod">
         
     </head>
 
     <body ng-controller="appController as app">
         <div class="view">
             <header></header>
-            <div class="content" ui-view></div>
+            <div class="content" ui-view>
+            </div>
             <footer></footer>
         </div>
     </body>

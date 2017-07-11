@@ -1,6 +1,13 @@
 <form class="form-horizontal col-md-6 col-md-offset-3">
 
-    <h1>Sapphire Show</h1>
+    <h4>
+        View Sapphire
+        <span ng-show="user" class="pull-right">
+            <a ui-sref="sapphireEdit()" class="btn btn-primary">Edit</a>
+        </span>
+    </h4>
+
+    <hr>
 
     <div class="form-group">
         <label>Landing Motto</label>
