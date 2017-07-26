@@ -1,0 +1,10 @@
+<div class="form-inline">
+    <div class="col-md-6">
+        <upload-input files="files"></upload-input>
+        <button ng-if="files.length > 0" ng-click="upload()" class="btn btn-default">Upload</button>
+        <span>{{value}}</span>
+    </div>
+    <div class="col-md-6">
+        <img class="img img-thumbnail img-responsive" src="{{value}}">
+    </div>
+</div>

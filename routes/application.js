@@ -23,7 +23,7 @@ router.post('/', function(req, res){
         from: config.mailOptions.from,
         to: req.body.email,
         subject: 'Sapphire Goldens Application',
-        html: '<h3>Your Application for a New Puppy Has Been Stored!</h3><p>We will reach out to you soon to confirm that the information is correct.</p><br><p>If there are any additional questions please give us a call or email!</p><h4>Contact Us!</h4><p>508-946-4169</p><p>sapphiregoldens@comcast.net</p>'
+        html: '<h3>Your Application for a New Puppy Has Been Stored!</h3><p>We will reach out to you soon to confirm that the information is correct.</p><br><p>Please do not respond to this email address, if there are any additional questions please give us a call or email!</p><h4>Contact Us!</h4><p>508-946-4169</p><p>sapphiregoldens@comcast.net</p>'
     };
     
     var recipientMailOptions = {

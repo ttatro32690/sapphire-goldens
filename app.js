@@ -45,6 +45,7 @@ passport.deserializeUser(User.deserializeUser());
 var applicationRoutes = require('./routes/application'),
        sapphireRoutes = require('./routes/sapphire'),
          goldenRoutes = require('./routes/goldens'),
+         uploadRoutes = require('./routes/uploads'),
           loginRoutes = require('./routes/users'),
           imageRoutes = require('./routes/images'),
            typeRoutes = require('./routes/types');
@@ -52,6 +53,7 @@ var applicationRoutes = require('./routes/application'),
 app.use('/application', applicationRoutes);
 app.use('/sapphire',    sapphireRoutes);
 app.use('/goldens',     goldenRoutes);
+app.use('/uploads',     uploadRoutes);
 app.use('/images',      imageRoutes);
 app.use('/types',       typeRoutes);
 app.use(loginRoutes);
@@ -69,9 +71,6 @@ app.get('*', function(req, res){
             });   
     }
 });
-
-// var seedDB = require('./seeds.js');
-// seedDB();
 
 // Server Listen Command
 app.listen(process.env.PORT, process.env.IP, function(){
